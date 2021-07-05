@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root {
+  //include all reusable variables like color, font, font-color, that will be used on all components
+  --color-primary: #002F52;
+  // --color-secondary: #e9e0ce;
+  // --color-secondary-dark: #bd8922;
+  // --color-background: #F3F4F9;
+
+  // --color-red: #DB6757;
+  // --color-red-highlight: #F0D5D5;
+
+ 
+}
+
+//reset
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* for all elements to inherit box-sizing attribute in body element css */
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px; 10px/16px = 62.5% -- 16px is default font size in browser*/
+  scroll-behavior: smooth;
+  // font-family: 'Roboto', sans-serif;
+  // font-size: 
+  // font-weight: 300;
+}
