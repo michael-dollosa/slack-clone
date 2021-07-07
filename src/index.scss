@@ -1,16 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 :root {
   //include all reusable variables like color, font, font-color, that will be used on all components
-  --color-primary: #002F52;
-  // --color-secondary: #e9e0ce;
-  // --color-secondary-dark: #bd8922;
-  // --color-background: #F3F4F9;
+  --color-primary-dark: #350d36;
+  --color-primary: #3F0E40;
 
-  // --color-red: #DB6757;
-  // --color-red-highlight: #F0D5D5;
 
- 
+  --font-color-black: #1D1C1D;
+  --font-color-gray: #1D1C1DB3;
+
+  --font-color-white-header: #FFFFFF;
+  --font-color-white-default: #CFC3CF;
+
+  --searchbox-shadow: inset 0 0 0 1px rgb(104 74 104);
+  --searchbox-background: rgb(67,30,68);
 }
 
 //reset
@@ -24,6 +27,7 @@
 
 html {
   font-size: 62.5%; /* 1rem = 10px; 10px/16px = 62.5% -- 16px is default font size in browser*/
+  font-family: 'Lato', sans-serif;
   scroll-behavior: smooth;
   // font-family: 'Roboto', sans-serif;
   // font-size: 
