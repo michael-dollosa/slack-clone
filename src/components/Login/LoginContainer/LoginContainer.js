@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./LoginContainer.scss"
 import { FcGoogle } from "react-icons/fc";
 import { DiApple } from "react-icons/di";
+import { userLogin } from "../../../api/api"
 
 const LoginContainer = () => {
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleEmailInput = (event) => {
+        setEmail(event.target.value)
+    }
+
+    const handlePasswordInput = (event) => {
+        setPassword(event.target.value)
+    }
+
+    const loginUser = () => {
+        //create data obj for API request
+        const data = {
+            email,
+            password
+        }
+
+        userLogin(data)
+    }
+
     return (
         <>
             <div className="login-container">
@@ -28,9 +51,29 @@ const LoginContainer = () => {
                 </div>
 
                 <div className="login-email-container">
-                    <input className="login-email" type="email" placeholder="name@workemail.com" />
-                    <input className="login-password" type="password" placeholder="password" />
-                    <button className="login-email-button"> Sign In with Email</button>
+                    <input 
+                        className="login-email" 
+                        type="email" 
+                        placeholder="name@workemail.com" 
+                        name="email" 
+                        value={email}
+                        onChange={handleEmailInput}
+                    />
+                    <input 
+                        className="login-password" 
+                        type="password" 
+                        placeholder="password" 
+                        name="password"
+                        value={password}
+                        onChange={handlePasswordInput}
+                    />
+
+                    <button 
+                        className="login-email-button"
+                        onClick={loginUser}
+                    >
+                    Sign In with Email
+                    </button>
                 </div>
             </div> 
         </>

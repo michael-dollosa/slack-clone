@@ -18,7 +18,7 @@ export const userLogin = ({ email, password }) => {
     email,
     password
   })
-  .then(response => response.text())
+  .then(response => response)
   .then(result => console.log("Login Result:", result))
   .catch(error => console.log("Login Error:", error))
 }
