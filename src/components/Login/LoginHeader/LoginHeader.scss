@@ -1,0 +1,18 @@
+.login-header {
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+
+    .login-header-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-header-right {
+        display: flex;
+        justify-content: flex-end;
+        text-align: right;
+    }
+}

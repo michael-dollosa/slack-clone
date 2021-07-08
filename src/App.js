@@ -1,11 +1,11 @@
-
 import "./App.scss"
+import Login from "./components/Login/Login"
 
 const App = () => {
 
   return(
     <div>
-      Slack Clone App
+      <Login />
     </div>
   )
 }
