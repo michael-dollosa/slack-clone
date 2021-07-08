@@ -1,5 +1,6 @@
 
 import "./App.scss"
+import SideBar from "./components/Sidebar/Sidebar"
 
 const App = () => {
 
