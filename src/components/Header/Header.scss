@@ -1,8 +1,14 @@
 .header-container{
     margin: 0;
     padding: 0;
+    padding-left: 8rem;
+    padding-right: 1rem;
     width: 100%;
     height: 3.9rem;
     border: 1px solid black;
     background-color: var(--color-primary-dark);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

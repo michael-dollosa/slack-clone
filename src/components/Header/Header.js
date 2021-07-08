@@ -1,18 +1,16 @@
 import "../Header/Header.scss";
+import HelpBtn from "./HeaderHelp";
+import History from "./HeaderHistory";
+import SearchBar from "./HeaderSearch";
+import HeaderUser from "./HeaderUser";
 
 const Header = () => {
     return (
         <div className="header-container">
-            <div className="header-history">
-                <button><i class="far fa-clock"></i></button>
-            </div>
-            <div className="header-search-bar">
-                <input type="text" placeholder="Search Avion School"/>
-            </div>
-            <div className="header-help">
-                <button><i class="far fa-question-circle"></i></button>
-            </div>
-            <div className="header-user"></div>
+            <History />
+            <SearchBar />
+            <HelpBtn />
+            <HeaderUser />
         </div>
     )
 }
