@@ -1,5 +1,6 @@
 import React from 'react'
 import './Sidebar.scss'
+import SidebarOption from './SidebarOption'
 
 function SideBar() {
     return (
@@ -10,6 +11,7 @@ function SideBar() {
                     <h3>Bryan Arboleda</h3>
                 </div>
             </div>
+            <SidebarOption />
         </div>
     )
 }
