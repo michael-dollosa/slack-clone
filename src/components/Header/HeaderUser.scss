@@ -1,4 +1,9 @@
 .header-user{
-    margin: 0;
-    padding: 0;
+    display: flex;
+    align-self: flex-end;
+    
+    button {
+        width: 3rem;
+        height: 3rem;
+    }
 }
