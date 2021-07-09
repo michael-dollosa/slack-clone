@@ -1,10 +1,14 @@
 import "./App.scss"
-import Header from "./components/Header/Header"
+import Main from "./pages/Main"
 
 const App = () => {
 
   return(
-    <Header />
+
+    <div>
+      <Main />
+    </div>
+
   )
 }
 
