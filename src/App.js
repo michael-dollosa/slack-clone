@@ -1,15 +1,16 @@
-import "./App.scss"
-import Main from "./pages/Main"
+import "./App.scss";
+import Main from "./pages/Main";
 
 const App = () => {
 
-  return(
-
+  return (
     <div>
       <Main />
     </div>
+  );
+};
 
-  )
-}
 
-export default App
+  
+
+export default App;
