@@ -3,7 +3,7 @@ import "../Header/HeaderSearch.scss"
 const SearchBar = () => {
     return (
         <div className="header-search-bar">
-            <input type="text" placeholder="Search Avion School"/>
+            <button>Search Avion School <i class="fas fa-search"></i></button>
         </div>
     )
 }
