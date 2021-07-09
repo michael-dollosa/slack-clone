@@ -1,10 +1,10 @@
 import "./App.scss";
-import Login from "./components/Login/Login";
+import Main from "./pages/Main";
 
 const App = () => {
   return (
     <div>
-      <Login />
+      <Main />
     </div>
   );
 };

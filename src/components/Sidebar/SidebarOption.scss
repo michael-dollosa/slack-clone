@@ -8,6 +8,7 @@
 .sidebar-option:hover {
   opacity: 0.9;
   background-color: var(--color-primary-dark);
+  color: white;
   cursor: pointer;
 }
 
@@ -18,4 +19,6 @@
 
 .sidebar-option > h3 {
   font-weight: 300;
+  font-size: 1.7rem;
+  color: var(--font-color-white-default);
 }

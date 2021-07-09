@@ -1,0 +1,28 @@
+
+.chat_container-header{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .7rem 1.5rem .7rem 1.5rem;
+  // flex-grow: 1;
+  border-bottom: .5px solid var(--color-gray-light);
+}
+
+.chat_container-header__label{
+  display: flex;
+  align-items: center;
+  >h3{
+    font-family: inherit;
+    font-size: 1.8rem;
+  }
+  >.icon{
+    font-size: 1.5rem;
+  }
+}
+
+.chat_container-header__icon{
+  font-size: 1rem;
+  padding: .8rem;
+  border: .5px solid var(--color-gray-light);
+}
