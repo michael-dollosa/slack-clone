@@ -1,12 +1,19 @@
-import React from 'react';
-import CommentIcon from '@material-ui/icons/Comment';
+import React from "react";
+import "./SidebarOption.scss";
 
-function SidebarOption() {
-    return (
-        <div className="sidebar-option-container">
-            <SidebarOption icon={CommentIcon}/>
-        </div>
-    )
+function SidebarOption({ Icon, title }) {
+  return (
+    <div className="sidebar-option">
+      {Icon && <Icon className="sidebar-option-icon" />}
+      {Icon ? (
+        <h3>{title}</h3>
+      ) : (
+        <h3>
+          <span className="sidebar-option-hash">#</span>
+        </h3>
+      )}
+    </div>
+  );
 }
 
-export default SidebarOption
+export default SidebarOption;

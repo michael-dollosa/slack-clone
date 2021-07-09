@@ -1,13 +1,12 @@
-import "./App.scss"
-import Login from "./components/Login/Login"
+import "./App.scss";
+import Login from "./components/Login/Login";
 
 const App = () => {
-
-  return(
+  return (
     <div>
       <Login />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
