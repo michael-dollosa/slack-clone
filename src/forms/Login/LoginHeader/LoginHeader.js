@@ -14,8 +14,8 @@ const LoginHeader = () => {
                 </div>
 
                 <div className= "login-header-right">
-                        New to Slack? <br></br>
-                        <a href="/">
+                        New to Slack?
+                        <a className="signup-link" href="/">
                             Create an account
                         </a>
                 </div>

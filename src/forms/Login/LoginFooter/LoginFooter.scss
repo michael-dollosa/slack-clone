@@ -1,0 +1,18 @@
+.footer-container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding-top: 80px;
+    margin: 0;
+    width:100%;
+
+    .footer-elements {
+        padding: 0 20px;
+        font-size: 16px;
+        text-decoration: none;
+            a {
+                text-decoration: none;
+                color: var(--font-color-gray);
+            }
+    }
+}

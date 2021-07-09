@@ -36,7 +36,7 @@ const LoginContainer = () => {
 
                 <div className="login-subheader">
                     We suggest using the 
-                    <strong>email address you use at work.</strong>
+                    <strong> email address you use at work.</strong>
                 </div>
 
                 <div className="login-buttons-container">
@@ -54,7 +54,7 @@ const LoginContainer = () => {
                     <input 
                         className="login-email" 
                         type="email" 
-                        placeholder="name@workemail.com" 
+                        placeholder="name@work-email.com" 
                         name="email" 
                         value={email}
                         onChange={handleEmailInput}
