@@ -4,7 +4,8 @@ const History = () => {
     return (
         <div className="header-history">
             <button className="header-history-btn">
-                <i class="far fa-clock"></i></button>
+                <i class="far fa-clock"></i>
+            </button>
         </div>
     )
 }
