@@ -107,7 +107,7 @@ export const getChannels = ({ token, client, expiry, uid }) => {
 //get channel details
 export const getChannelDetail = ({ id, headers:{ token, client, expiry, uid } }) => {
   return axios.get(
-    "http://206.189.91.54//api/v1/channels",
+    `http://206.189.91.54//api/v1/channels/${id}`,
     {
       headers:{
         "access-token": token,
@@ -115,9 +115,7 @@ export const getChannelDetail = ({ id, headers:{ token, client, expiry, uid } })
         "expiry": expiry,
         "uid": uid,
       },
-      params:{
-        "id": id //channel id
-      }
+      
     })
     .then(response => response)
     .then(result => result)

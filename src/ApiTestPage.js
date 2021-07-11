@@ -6,9 +6,9 @@ const ApiTestPage = () => {
   //hardcoded header for tests. But for the application, we should get the header parameter from the login return data.
   //take note of the "key" => it should match the name of the keys that are expected as parameter of the API function
   const headers = {
-    token: "vTbXQNoxmh0lS56FUm-Edg",
-    client: "jHFYPMzZW8o1qNH_Yuf19g",
-    expiry: "1627036215",
+    token: "DRNL4enaLaUNhJvGY0h2Aw",
+    client: "RbaRladV66yflYJ7BAF5XA",
+    expiry: "1627225916",
     uid: "dolee@example.com"
   }
 
@@ -34,14 +34,31 @@ const ApiTestPage = () => {
   }
 
   const handleChannels = () => {
-    const channelObject = {
-      token: "PFgDY82gKS4Z943bmQQ7kQ",
-      client: "LkZEDhf28EpfxOM-EIYHww",
-      expiry: 1627215796,
-      uid: "steph@gmail.com"
+    
+    getChannels(headers)
+    .then(response => console.log("All Channels:", response.data.data))
+  }
+
+  const handleCreateChannel = () => {
+    console.log("headers", headers)
+    const createChannelObj = {
+      name: "Dolee Channel 3",
+      user_ids: [128, 129, 130],
+      headers: headers
     }
-    getChannels(channelObject)
-    .then(response => console.log("All Channels:", response))
+    createChannel(createChannelObj)
+      .then(res  => console.log(res))
+      .catch(err => console.log(err))
+  }
+
+  const handleGetChannelDetails = () => {
+    const channelDetailsObj = {
+      id: 67,
+      headers: headers
+    }
+    getChannelDetail(channelDetailsObj)
+      .then(res => console.log("Channel Details",res))
+      .catch(err  => console.log(err))
   }
 
   return(
@@ -51,8 +68,12 @@ const ApiTestPage = () => {
       <button onClick={handleGetAllUsers}>Test Get All Users API</button>
       <br />
       <button onClick={handleChannels}>Channels</button>
+      <br />
+      <button onClick={handleCreateChannel}>Create Channel</button>
+      <br />
+      <button onClick={handleGetChannelDetails}>Get Channel Details </button>
+      <br />
     </div>
   )
 }
-
 export default ApiTestPage
