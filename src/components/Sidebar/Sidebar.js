@@ -13,29 +13,19 @@ import LockIcon from "@material-ui/icons/Lock";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import { getChannels } from "../../api/api";
-// import { getChannels } from "../../api/api";
 
-const Sidebar = () => {
+const Sidebar = ({channels}) => {
 
-  const [dms, setDms] = useState([]);
-
-  const headers = {
-    token: "vTbXQNoxmh0lS56FUm-Edg",
-    client: "jHFYPMzZW8o1qNH_Yuf19g",
-    expiry: "1627036215",
-    uid: "dolee@example.com"
-  }
-
-  const channels = () => {
-    getChannels(headers)
-    .then(response => console.log("All Channels:", response))
-  }
-
-  useEffect(() => {
-    channels()
+  //for cleaner code - always use a variable if you will map a list of component.
+  //then just call the variable via jsx
+  const renderChannelList = channels.data.data.map(channel => {
+    return(
+      <Link to={`/channel/${channel.id}`}>
+          <SidebarOption Icon={LockIcon} title={channel.name} />
+      </Link>
+    )
   })
-
+  
   return (
     <div className="sidebar-container-main">
       <div className="sidebar-header">
@@ -52,19 +42,11 @@ const Sidebar = () => {
         <SidebarOption Icon={AlternateEmailIcon} title="Mentions & reactions" />
         <SidebarOption Icon={MoreVertIcon} title="More" />
 
-        <SidebarOption Icon={ArrowDropDownIcon} title="Channels" onClick={channels}/>
-        
-        <Link to={`/${headers.client}/${headers.uid}`}>
-          <SidebarOption Icon={LockIcon} title="My Channel" />
-        </Link>
+        <SidebarOption Icon={ArrowDropDownIcon} title="Channels" />
+      
+        {renderChannelList}
         
         <SidebarOption Icon={AddIcon} title="Add channels" />
-        {/* {
-          channels.map(channel => (
-            <SidebarOption title={channel.name} id={channel.id} />
-            )
-          )
-        } */}
         
         <SidebarOption Icon={ArrowDropDownIcon} title="Direct Messages" />
         {/* {dms.map((dm) => (
