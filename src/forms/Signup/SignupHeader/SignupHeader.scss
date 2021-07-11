@@ -1,0 +1,13 @@
+.signup-header {
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    padding: 40px;
+
+    .signup-header-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
