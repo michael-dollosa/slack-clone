@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "./Sidebar.scss";
 import CreateIcon from "@material-ui/icons/Create";
 import InsertCommentIcon from "@material-ui/icons/InsertComment";
@@ -11,8 +12,30 @@ import AddIcon from "@material-ui/icons/Add";
 import LockIcon from "@material-ui/icons/Lock";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import { getChannels } from "../../api/api";
+// import { getChannels } from "../../api/api";
 
-function Sidebar() {
+const Sidebar = () => {
+
+  const [dms, setDms] = useState([]);
+
+  const headers = {
+    token: "vTbXQNoxmh0lS56FUm-Edg",
+    client: "jHFYPMzZW8o1qNH_Yuf19g",
+    expiry: "1627036215",
+    uid: "dolee@example.com"
+  }
+
+  const channels = () => {
+    getChannels(headers)
+    .then(response => console.log("All Channels:", response))
+  }
+
+  useEffect(() => {
+    channels()
+  })
+
   return (
     <div className="sidebar-container-main">
       <div className="sidebar-header">
@@ -22,20 +45,38 @@ function Sidebar() {
         <CreateIcon />
       </div>
 
-      <SidebarOption Icon={InsertCommentIcon} title="Threads" />
-      <SidebarOption Icon={ForumIcon} title="All DMs" />
-      <SidebarOption Icon={DraftsIcon} title="Drafts" />
-      <SidebarOption Icon={AlternateEmailIcon} title="Mentions & reactions" />
-      <SidebarOption Icon={MoreVertIcon} title="More" />
-      <SidebarOption Icon={ArrowDropDownIcon} title="Channels" />
-      <SidebarOption Icon={LockIcon} title="My Channel" />
-      <SidebarOption Icon={LockIcon} title="Group 1 Channel" />
-      <SidebarOption Icon={AddIcon} title="Add channels" />
-      <SidebarOption Icon={ArrowDropDownIcon} title="Direct Messages" />
-      <SidebarOption Icon={PersonOutlineIcon} title="Dolee" />
-      <SidebarOption Icon={PersonOutlineIcon} title="Frankie" />
-      <SidebarOption Icon={PersonOutlineIcon} title="Steph" />
-      <SidebarOption Icon={AddIcon} title="Add teammates" />
+      <Router>
+        <SidebarOption Icon={InsertCommentIcon} title="Threads" />
+        <SidebarOption Icon={ForumIcon} title="All DMs" />
+        <SidebarOption Icon={DraftsIcon} title="Drafts" />
+        <SidebarOption Icon={AlternateEmailIcon} title="Mentions & reactions" />
+        <SidebarOption Icon={MoreVertIcon} title="More" />
+
+        <SidebarOption Icon={ArrowDropDownIcon} title="Channels" onClick={channels}/>
+        
+        <Link to={`/${headers.client}/${headers.uid}`}>
+          <SidebarOption Icon={LockIcon} title="My Channel" />
+        </Link>
+        
+        <SidebarOption Icon={AddIcon} title="Add channels" />
+        {/* {
+          channels.map(channel => (
+            <SidebarOption title={channel.name} id={channel.id} />
+            )
+          )
+        } */}
+        
+        <SidebarOption Icon={ArrowDropDownIcon} title="Direct Messages" />
+        {/* {dms.map((dm) => (
+        <SidebarOption
+          Icon={PersonOutlineIcon}
+          title={dm.name}
+          id={dm.uid}
+          key={dm.uid}
+        />
+        ))} */}
+          <SidebarOption Icon={AddIcon} title="Add teammates" />
+      </Router>
     </div>
   );
 }

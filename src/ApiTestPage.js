@@ -33,11 +33,24 @@ const ApiTestPage = () => {
       .then(response => console.log("All Users:", response))
   }
 
+  const handleChannels = () => {
+    const channelObject = {
+      token: "PFgDY82gKS4Z943bmQQ7kQ",
+      client: "LkZEDhf28EpfxOM-EIYHww",
+      expiry: 1627215796,
+      uid: "steph@gmail.com"
+    }
+    getChannels(channelObject)
+    .then(response => console.log("All Channels:", response))
+  }
+
   return(
     <div>
       <button onClick={handleLogin}>Test Login API</button>
       <br />
       <button onClick={handleGetAllUsers}>Test Get All Users API</button>
+      <br />
+      <button onClick={handleChannels}>Channels</button>
     </div>
   )
 }
