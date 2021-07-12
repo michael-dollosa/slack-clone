@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import { userLogin } from '../../../api/api';
 import "./LoginContainer.scss"
 import { FcGoogle } from "react-icons/fc";
 import { DiApple } from "react-icons/di";
-import { userLogin } from "../../../api/api"
 
 const LoginContainer = () => {
 
@@ -24,7 +24,7 @@ const LoginContainer = () => {
             password
         }
 
-        userLogin(data)
+        userLogin(data).then(/*function*/).catch(/*error*/)
     }
 
     return (

@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { registerUser } from '../../../api/api'
+
 
 const SignupContainer = () => {
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirm, setConfirm] = useState("")
+
+    const handleEmailInput = (event) => {
+        setEmail(event.target.value)
+    }
+
+    const handlePasswordInput = (event) => {
+        setPassword(event.target.value)
+    }
+
+    const handleConfirmInput = (event) => {
+        setConfirm(event.target.value)
+    }
+
     return (
         <>
             <div className= "signup-container">
@@ -19,12 +38,16 @@ const SignupContainer = () => {
                         type="email" 
                         placeholder="name@work-email.com" 
                         name="email" 
+                        value={email}
+                        onChange={handleEmailInput}
                     />
                     <input 
                         className="signup-password" 
                         type="password" 
                         placeholder="password" 
                         name="password"
+                        value={password}
+                        onChange={handlePasswordInput}
                     />
 
                     <input 
@@ -32,6 +55,8 @@ const SignupContainer = () => {
                         type="password" 
                         placeholder="Confirm password" 
                         name="confirm-password"
+                        value={confirm}
+                        onChange={handleConfirmInput}
                     />
 
                     <button className="signup-email-button">
