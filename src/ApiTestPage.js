@@ -6,9 +6,9 @@ const ApiTestPage = () => {
   //hardcoded header for tests. But for the application, we should get the header parameter from the login return data.
   //take note of the "key" => it should match the name of the keys that are expected as parameter of the API function
   const headers = {
-    token: "DRNL4enaLaUNhJvGY0h2Aw",
-    client: "RbaRladV66yflYJ7BAF5XA",
-    expiry: "1627225916",
+    token: "3kV4gM7BW2vZf-z9S5uQ2A",
+    client: "XZ0OzNSZhjehbS9qQ3ffyQ",
+    expiry: 1627298670,
     uid: "dolee@example.com"
   }
 
@@ -61,6 +61,16 @@ const ApiTestPage = () => {
       .catch(err  => console.log(err))
   }
 
+  const handleGetMessage = () => {
+    const messageParams = {
+      receiver_id: 128,
+      receiver_class: "User",
+      headers: headers
+    }
+    getMessage(messageParams)
+      .then(res => console.log("Get Message", res))
+      .catch(err => console.log(err))
+  }
   return(
     <div>
       <button onClick={handleLogin}>Test Login API</button>
@@ -73,6 +83,7 @@ const ApiTestPage = () => {
       <br />
       <button onClick={handleGetChannelDetails}>Get Channel Details </button>
       <br />
+      <button onClick={handleGetMessage}> Get Message</button>
     </div>
   )
 }

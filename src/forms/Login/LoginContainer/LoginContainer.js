@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { DiApple } from "react-icons/di";
 import { userLogin } from "../../../api/api"
 
-const LoginContainer = () => {
+const LoginContainer = ({handleSetHeaderData}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -25,6 +25,11 @@ const LoginContainer = () => {
         }
 
         userLogin(data)
+            .then(res => {
+                console.log("Response from API", res.headers)
+                handleSetHeaderData(res.headers)
+            })
+            .catch(err => console.log(err))
     }
 
     return (
