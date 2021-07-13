@@ -4,7 +4,6 @@ import "./SidebarOption.scss";
 // import { createChannel } from "../../api/api";
 
 function SidebarOption({ Icon, id, addChannelOption, title }) {
-
   // const history = useHistory();
 
   // const selectChannel = () => {
@@ -25,8 +24,8 @@ function SidebarOption({ Icon, id, addChannelOption, title }) {
   // };
 
   return (
-    <div className="sidebar-option" > 
-    {/* onClick={addChannelOption ? addChannel : selectChannel} */}
+    <div className="sidebar-option">
+      {/* onClick={addChannelOption ? addChannel : selectChannel} */}
       {Icon && <Icon className="sidebar-option-icon" />}
       {Icon ? (
         <h3>{title}</h3>
