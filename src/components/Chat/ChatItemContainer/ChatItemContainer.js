@@ -1,16 +1,15 @@
 import ChatItem from "../ChatItem/ChatItem"
 import "./ChatItemContainer.scss"
 
-const ChatItemContainer = () => {
-
+const ChatItemContainer = ({chatData}) => {
+  const chatItemList = chatData.map((data,index) => {
+    return(
+      <ChatItem key={index} data={data}/>
+    )
+  })
   return(
     <section className="chat_container-body">
-      <ChatItem />
-      <ChatItem />
-      <ChatItem />
-      <ChatItem />
-      <ChatItem />
-      <ChatItem />
+      {chatItemList}
     </section>
   )
 }

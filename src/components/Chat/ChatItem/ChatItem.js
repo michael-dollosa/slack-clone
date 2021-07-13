@@ -1,10 +1,14 @@
 import "./ChatItem.scss"
 
-const ChatItem = ({id, name, date, body}) => {
-  id = 5;
-  name = "Sample Name"
-  date = "9:17 AM"
-  body =  "Sample Message Sample Messsage Hellow Hi."
+const ChatItem = ({data}) => {
+  //id = 5;
+  //name = "Sample Name"
+  //date = "9:17 AM"
+  //body =  "Sample Message Sample Messsage Hellow Hi."
+
+  //data structure
+  //{ body, created_at, sender: {email} }
+  const { body, created_at, sender: {id, email} } = data
   return(
     <div className="chat_container-item">
       <div className="chat_container-contents">
@@ -13,8 +17,8 @@ const ChatItem = ({id, name, date, body}) => {
         </section>
         <section className="chat_container-details">
           <div className="chat_details-name">
-            <h1>{ name }</h1>
-            <label>{ date }</label>
+            <h1>{ email }</h1>
+            <label>{ created_at }</label>
           </div>
           <div className="chat_details-body">
             { body }
