@@ -2,7 +2,7 @@ import ChatItem from "../ChatItem/ChatItem"
 import "./ChatItemContainer.scss"
 
 const ChatItemContainer = ({chatData}) => {
-  const chatItemList = chatData.map((data,index) => {
+  const chatItemList = chatData.reverse().map((data,index) => {
     return(
       <ChatItem key={index} data={data}/>
     )
