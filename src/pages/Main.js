@@ -10,7 +10,7 @@ const Main = () => {
   //declare states for application data
   const [userChannels, setUserChannels] = useState(""); //state to get channel data
   const [userList, setUserList] = useState(""); //state to get user Lists/ users that have messaged current user and/or was messaged by current user
-
+  
   //declare hardcoded header value of current user
   //this must be replaced by a prop that is passed down from App component when user logs in
   const headers = {
@@ -25,7 +25,6 @@ const Main = () => {
     getChannels(headers)
       .then((data) => setUserChannels(data))
       .catch((err) => console.log("Get Channel Function Error:", err));
-
     //trigger userApi for private message user list
   }, []);
 

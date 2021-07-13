@@ -3,6 +3,7 @@
   border-bottom: .5px solid var(--color-gray-light);
   min-height: 8rem;
   padding: 1rem;
+  padding-left: 2rem;
 }
 
 .chat_container-contents{
@@ -14,6 +15,9 @@
 .chat_container-img{
   width: 4rem;
   height: 4rem;
+  >img{
+    border-radius: 5px;
+  }
 }
 
 .chat_container-details{
@@ -30,14 +34,17 @@
   padding-bottom: .6rem;
   >h1{
     font-size: 1.5rem;
+    color: var(--font-color-black);
   }
   >label{
     font-size: 1.2rem;
+    color: var(--font-color-gray);
     padding-left: 1rem;
   }
 }
 
 .chat_details-body{
-  font-size: 1.3rem;
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--font-color-black);
 }

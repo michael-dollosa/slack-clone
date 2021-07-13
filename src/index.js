@@ -7,6 +7,6 @@ import Main from "./pages/Main"
 
 ReactDOM.render(
     // <ApiTestPage />, //use this if you want to test API
-    <Main />,
+    <App />,
   document.getElementById('root')
 );
