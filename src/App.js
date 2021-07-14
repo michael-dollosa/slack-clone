@@ -17,17 +17,16 @@ const App = () => {
     <Router>
       <div>
         <Switch>
-         
           <Route path="/login">
             <Login handleSetHeaderData={handleSetHeaderData} />
           </Route>
-          <Route path="/*">
+          <Route path="/">
             <Main />
           </Route>
         </Switch>
       </div>
     </Router>
-      );
+  );
 };
 
 export default App;
