@@ -4,6 +4,7 @@ import "./Sidebar.scss";
 import SidebarOption from "./SidebarOption";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AddIcon from "@material-ui/icons/Add";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { FiEdit } from "react-icons/fi";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { BiMessageRoundedDetail } from "react-icons/bi";
