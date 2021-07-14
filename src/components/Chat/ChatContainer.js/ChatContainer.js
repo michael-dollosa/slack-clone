@@ -31,7 +31,7 @@ const ChatContainer = (props) => {
     //use getmessage API
     console.log(id)
     getMessage(sampleGetMessageObj)
-      .then(data => setChatData(data.data.data))
+      .then(data => setChatData(data.data.data.reverse()))
       .catch(err  => console.log(err))
   }, [id])
 
