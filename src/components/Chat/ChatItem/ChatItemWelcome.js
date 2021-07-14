@@ -1,4 +1,5 @@
 import "./ChatItemWelcome.scss"
+import { formatEmail } from "../../../helper/helper"
 
 const ChatItemWelcome = ({recieverData, userData}) => {
   const { id, email } = recieverData
@@ -13,7 +14,7 @@ const ChatItemWelcome = ({recieverData, userData}) => {
           </section>
           <section className="chat_container_welcome-details">
             <div className="chat_details_welcome-name">
-              <h1>{ email }</h1>
+              <h1>{ formatEmail(email) }</h1>
               <label></label>
             </div>
           </section>
@@ -28,7 +29,7 @@ const ChatItemWelcome = ({recieverData, userData}) => {
             </>
           : 
             <>
-              This is the very beginning of your direct message history with @Andy. Only the two of you are in this conversation, and no one else can join it.
+              This is the very beginning of your direct message history with <label className="span-email"> @{formatEmail(email)} </label>. Only the two of you are in this conversation, and no one else can join it.
             </>
         }
             

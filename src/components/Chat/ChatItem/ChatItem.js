@@ -1,5 +1,5 @@
 import "./ChatItem.scss"
-import { parseDateTime } from "../../../helper/helper"
+import { parseDateTime, formatEmail } from "../../../helper/helper"
 const ChatItem = ({data}) => {
   
   const { body, created_at, sender: {id, email} } = data
@@ -13,7 +13,7 @@ const ChatItem = ({data}) => {
         </section>
         <section className="chat_container-details">
           <div className="chat_details-name">
-            <h1>{ email }</h1>
+            <h1>{ formatEmail(email) }</h1>
             <label>{ parsedDate } at { parsedTime }</label>
           </div>
           <div className="chat_details-body">
