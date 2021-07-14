@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { useHistory } from "react-router-dom";
 import "./SignupContainer.scss"
-import { registerUser } from '../../../api/api'
+import { useHistory } from "react-router-dom"
+import { registerUser, userLogin } from '../../../api/api'
 
 
-const SignupContainer = ({handleSetHeaderData}) => {
+const SignupContainer = ({handleSetLoginData}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [password_confirmation, setConfirm] = useState("")
+    const history = useHistory()
 
     const handleEmailInput = (event) => {
         setEmail(event.target.value)
@@ -21,19 +22,41 @@ const SignupContainer = ({handleSetHeaderData}) => {
     const handleConfirmInput = (event) => {
         setConfirm(event.target.value)
     }
-    
+
+    const resetInput = () => {
+        setEmail("")
+        setPassword("")
+        setConfirm("")
+    }
+
     const signupUser = () => {
         const data = {
             email,
             password,
             password_confirmation
         }
-        
+    
         registerUser(data)
             .then(res => {
-                console.log(data)
-                // s;
-                
+                //console log success
+                console.log("Registration Successful")
+                //reset state of inputs
+                resetInput()
+                //since we are inside success condition, automatically login user by triggering login api
+                const loginObj = {
+                    email: data.email,
+                    password: data.password
+                }
+
+                userLogin(loginObj)
+                    .then(res => {
+                        console.log("Login After Signup", res)
+                        handleSetLoginData(res)
+                        //redirect to URL of his own chat
+                        history.push(`/user/${res.data.data.id}`)
+
+                    })
+                    .catch(err => console.log(err))
             })
             .catch(err => console.log(err))
     }
