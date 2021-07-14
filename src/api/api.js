@@ -25,7 +25,7 @@ export const userLogin = ({ email, password }) => {
 
 //send message
 export const sendMessage = ({ receiver_id, receiver_class, body, headers:{ token, client, expiry, uid } }) => {
-  axios.post(
+  return axios.post(
     "http://206.189.91.54//api/v1/messages", 
   {
     receiver_id,

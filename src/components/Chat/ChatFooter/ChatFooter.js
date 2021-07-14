@@ -35,7 +35,12 @@ const ChatFooter = ({headers, handleSetToggleRender}) => {
     event.preventDefault()
     //send Message API
     sendMessage(sendMessageObj)
-    handleSetToggleRender()
+      .then(res => {
+        //toggle render if success
+        handleSetToggleRender()
+      })
+      .catch(err => console.log("Error Sending Message: ", err))
+    
     setChatMessage("")
   }
 

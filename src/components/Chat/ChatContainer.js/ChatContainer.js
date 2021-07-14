@@ -15,6 +15,7 @@ const ChatContainer = ({headers, userDetails}) => {
 
   //set handler for toggleRender
   const handleSetToggleRender = () => {
+    console.log("toggle render")
     setToggleRender(!toggleRender)
   }
   //get parameter from URL

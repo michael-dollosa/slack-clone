@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .7rem 1.5rem .7rem 1.5rem;
+  padding: 1.2rem 1.8rem 1.2rem 1.5rem;
   // flex-grow: 1;
   border-bottom: .5px solid var(--color-gray-light);
 }
@@ -15,6 +15,7 @@
   >h3{
     font-family: inherit;
     font-size: 1.7rem;
+    color: var(--font-color-black)
   }
   >.icon{
     font-size: 1.5rem;
