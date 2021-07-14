@@ -71,16 +71,7 @@ const Main = ({ loginData }) => {
   //always have a condition to render a Loading state
   //since we are using API which is asynchronus, components will mount even without the data. Since our components uses data, we need first to set a condition to render nothing while data is being populated
   //if we don't do this, our components will have an error -> usually error regarding no data, or data in the variable being used is undefined
-<<<<<<< HEAD
   if (!userChannels.data || !userList.data || !userList.data.data.length) {
-=======
-  if (
-    !userChannels.data ||
-    !userChannels.data.data.length ||
-    !userList.data ||
-    !userList.data.data.length
-  ) {
->>>>>>> 23264c5f53826e47bc6a00fd4a32efaa18975f30
     return <h1>Loading</h1>;
   }
 

@@ -1,11 +1,13 @@
 import "./App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Main from "./pages/Main";
 import Login from "./forms/Login/Login.js";
 import Signup from "./forms/Signup/Signup.js"
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
-const App = () => {
+import AddUser from "./forms/AddUser/AddUser";
+import { getAllUsers } from "./api/api";
 
+const App = () => {
   //header should be in headerData
   const [loginData, setLoginData] = useState("");
 
@@ -14,11 +16,11 @@ const App = () => {
     console.log("header data", data);
     setLoginData(data);
   };
-
   
   return (
     <Router>
       <div>
+        {/* <AddUser /> */}
         <Switch>
           <Route path="/signup">
             <Signup handleSetLoginData={handleSetLoginData} />
@@ -34,6 +36,7 @@ const App = () => {
           }
           </Route>
         </Switch>
+
       </div>
     </Router>
   );
