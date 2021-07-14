@@ -5,8 +5,8 @@ import ChatItemContainer from "../ChatItemContainer/ChatItemContainer";
 import { useParams, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { getMessage } from "../../../api/api"
-
-const ChatContainer = (props) => {
+import { captalizeWord } from "../../../helper/helper"
+const ChatContainer = ({headers}) => {
   //declare state variable to put chat room data
   const [chatData, setChatData] = useState("")
 
@@ -14,22 +14,22 @@ const ChatContainer = (props) => {
   const { type, id } = useParams()
 
   //token of dolee2
-  const headers = {
-    token: "1uWV-u5L5TB7gs67ji2POg",
-    client: "pmDD2Mv7__v66uV38mGAKQ",
-    expiry: 1627418296,
-    uid: "dolee2@example.com"
-  }
+  // const headers = {
+  //   token: "1uWV-u5L5TB7gs67ji2POg",
+  //   client: "pmDD2Mv7__v66uV38mGAKQ",
+  //   expiry: 1627418296,
+  //   uid: "dolee2@example.com"
+  // }
 
   const sampleGetMessageObj = {
-    receiver_id: 5,
-    receiver_class: "User",
+    receiver_id: parseInt(id),
+    receiver_class: captalizeWord(type),
     headers: headers
   }
 
   useEffect(() => {
     //use getmessage API
-    console.log(id)
+    console.log(sampleGetMessageObj)
     getMessage(sampleGetMessageObj)
       .then(data => setChatData(data.data.data.reverse()))
       .catch(err  => console.log(err))

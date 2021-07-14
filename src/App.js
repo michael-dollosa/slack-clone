@@ -3,7 +3,7 @@ import { useState } from "react";
 import Main from "./pages/Main";
 import Login from "./forms/Login/Login.js";
 import Signup from "./forms/Signup/Signup.js"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 const App = () => {
 
   //header should be in headerData
@@ -15,6 +15,7 @@ const App = () => {
     setLoginData(data);
   };
 
+  
   return (
     <Router>
       <div>
@@ -26,7 +27,11 @@ const App = () => {
             <Login handleSetLoginData={handleSetLoginData} />
           </Route>
           <Route path="/">
-            <Main loginData={loginData}/>
+          { 
+            loginData 
+            ? <Main loginData={loginData}/> 
+            : <Redirect to="/login" />
+          }
           </Route>
         </Switch>
       </div>
