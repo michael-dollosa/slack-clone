@@ -99,7 +99,7 @@ const Main = ({ loginData }) => {
         <section>
           <Switch>
             <Route path="/:type/:id">
-              <ChatContainer headers={userHeaders} />
+              <ChatContainer headers={userHeaders} userDetails={userDetails}/>
             </Route>
           </Switch>
         </section>

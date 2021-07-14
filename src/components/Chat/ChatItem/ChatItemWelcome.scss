@@ -1,0 +1,58 @@
+.chat_container_welcome-item-wrapper{
+  padding: 1rem;
+  padding-left: 2rem;
+}
+
+.chat_container_welcome-item{
+  width: 100%;
+  // border-bottom: .5px solid var(--color-gray-light);
+  height: auto;
+  
+  word-wrap: break-word;
+}
+
+.chat_container_welcome-contents{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.chat_container_welcome-img{
+  width: 8rem;
+  height: 8rem;
+  >img{
+    border-radius: 5px;
+  }
+}
+
+.chat_container_welcome-details{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
+.chat_details_welcome-name{
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: .6rem;
+  >h1{
+    font-size: 1.5rem;
+    color: var(--font-color-black);
+  }
+  >label{
+    font-size: 1.2rem;
+    color: var(--font-color-gray);
+    padding-left: 1rem;
+  }
+}
+
+.chat_details_welcome-body{
+  max-width: 75vw;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--font-color-black);
+  word-wrap: break-word;
+}

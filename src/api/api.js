@@ -159,3 +159,22 @@ export const getAllUsers = ({ token, client, expiry, uid }) => {
     .then(result => result)
     .catch(error => error)
 }
+
+//get specific user via id
+export const getSpecificUser = ({id, headers:{token, client, expiry, uid}}) => {
+  return axios.get(
+    "http://206.189.91.54//api/v1/users",
+    {
+      headers:{
+        "access-token": token,
+        "client": client,
+        "expiry": expiry,
+        "uid": uid,
+      }
+    })
+    .then(response => response)
+    .then(result => {
+      return result.data.data.filter(data => data.id === id) 
+    })
+    .catch(error => error)
+}
