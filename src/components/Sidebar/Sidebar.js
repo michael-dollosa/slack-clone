@@ -15,7 +15,7 @@ import { CgLock } from "react-icons/cg";
 import { BiCaretDown } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ channels, users }) => {
+const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
   //for cleaner code - always use a variable if you will map a list of component.
   //then just call the variable via jsx
   const renderChannelList = channels.data.data.map((channel, index) => {
@@ -31,8 +31,8 @@ const Sidebar = ({ channels, users }) => {
       <Link to={`/user/${user.id}`}>
         <SidebarOption key={index} Icon={ArrowDropDownIcon} title={user.uid} />
       </Link>
-    ) 
-  })
+    );
+  });
 
   return (
     <div className="sidebar-container-main">
@@ -45,22 +45,28 @@ const Sidebar = ({ channels, users }) => {
         <FiEdit />
       </div>
 
+      <SidebarOption Icon={BiMessageRoundedDetail} title="Threads" />
+      <SidebarOption Icon={IoChatbubblesOutline} title="All DMs" />
+      <SidebarOption Icon={HiOutlineDocumentDuplicate} title="Drafts" />
+      <SidebarOption Icon={GoMention} title="Mentions & reactions" />
+      <SidebarOption Icon={MoreVertIcon} title="More" />
+      <SidebarOption Icon={BiMessageRoundedDetail} title="Threads" />
+      <SidebarOption Icon={IoChatbubblesOutline} title="All DMs" />
+      <SidebarOption Icon={HiOutlineDocumentDuplicate} title="Drafts" />
+      <SidebarOption Icon={GoMention} title="Mentions & reactions" />
+      <SidebarOption Icon={MoreVertIcon} title="More" />
 
-        <SidebarOption Icon={BiMessageRoundedDetail} title="Threads" />
-        <SidebarOption Icon={IoChatbubblesOutline} title="All DMs" />
-        <SidebarOption Icon={HiOutlineDocumentDuplicate} title="Drafts" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={MoreVertIcon} title="More" />
+      <SidebarOption Icon={ArrowDropDownIcon} title="Channels" />
+      {renderChannelList}
+      <SidebarOption
+        Icon={AddIcon}
+        handleAddChannelToggle={handleAddChannelToggle}
+        title="Add channels"
+      />
 
-
-        <SidebarOption Icon={ArrowDropDownIcon} title="Channels" />
-        {renderChannelList}
-        <SidebarOption Icon={AddIcon} title="Add channels" />
-
-        <SidebarOption Icon={ArrowDropDownIcon} title="Direct Messages" />
-        {renderUserList}
-        <SidebarOption Icon={AddIcon} title="Add teammates" />
-
+      <SidebarOption Icon={ArrowDropDownIcon} title="Direct Messages" />
+      {renderUserList}
+      <SidebarOption Icon={AddIcon} title="Add teammates" />
     </div>
   );
 };
