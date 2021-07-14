@@ -4,6 +4,7 @@ import Main from "./pages/Main";
 import ApiTestPage from "./ApiTestPage";
 import Login from "./forms/Login/Login.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import AddUser from "./forms/AddUser/AddUser";
 const App = () => {
   //header should be in headerData
   const [headerData, setHeaderData] = useState("");
@@ -16,14 +17,15 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Switch>
+        <AddUser />
+        {/* <Switch>
           <Route path="/login">
             <Login handleSetHeaderData={handleSetHeaderData} />
           </Route>
           <Route path="/">
             <Main />
           </Route>
-        </Switch>
+        </Switch> */}
       </div>
     </Router>
   );
