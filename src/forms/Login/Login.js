@@ -4,11 +4,11 @@ import LoginHeader from './LoginHeader/LoginHeader'
 import LoginContainer from './LoginContainer/LoginContainer'
 import LoginFooter from './LoginFooter/LoginFooter'
 
-const Login = ({handleSetHeaderData}) => {
+const Login = ({handleSetLoginData}) => {
     return (
         <div className = "login-elements-container">
             <LoginHeader />
-            <LoginContainer  handleSetHeaderData={handleSetHeaderData}/>
+            <LoginContainer  handleSetLoginData={handleSetLoginData}/>
             <LoginFooter />
         </div>
     )
