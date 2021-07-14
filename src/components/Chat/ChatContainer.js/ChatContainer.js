@@ -2,7 +2,7 @@ import "./ChatContainer.scss"
 import ChatHeader from "../ChatHeader/ChatHeader";
 import ChatFooter from "../ChatFooter/ChatFooter";
 import ChatItemContainer from "../ChatItemContainer/ChatItemContainer";
-import { useParams, useLocation } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { getMessage, getSpecificUser } from "../../../api/api"
 import { captalizeWord } from "../../../helper/helper"
@@ -11,6 +11,12 @@ const ChatContainer = ({headers, userDetails}) => {
   const [chatData, setChatData] = useState("")
   //declare state to get specific reciever details
   const [recieverData, setReceiverData] = useState("")
+  const [toggleRender, setToggleRender] = useState(false)
+
+  //set handler for toggleRender
+  const handleSetToggleRender = () => {
+    setToggleRender(!toggleRender)
+  }
   //get parameter from URL
   const params = useParams()
   const { type, id } = params
@@ -34,16 +40,16 @@ const ChatContainer = ({headers, userDetails}) => {
     //get receiver data
     getSpecificUser(getSpecificUserObj)
       .then(data => {setReceiverData(data[0])})
-  }, [id])
+  }, [id, toggleRender])
 
   //condition to render only if object is populated
   // if(!chatData.length || !chatData) return <h1>Hello WOrld</h1>
   
   return(
     <main className="chat_container-main">
-        <ChatHeader />
+        <ChatHeader recieverData={recieverData} />
         <ChatItemContainer  chatData={chatData} recieverData={recieverData} userData={userDetails}/>
-        <ChatFooter />
+        <ChatFooter headers={headers} handleSetToggleRender={handleSetToggleRender}/>
     </main>
   )
 }

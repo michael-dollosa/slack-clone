@@ -1,26 +1,32 @@
 import "./ChatFooter.scss"
 import { MdSend } from "react-icons/md";
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import { useParams } from "react-router-dom"
 import { sendMessage } from "../../../api/api"
+import { captalizeWord } from "../../../helper/helper"
 
-const ChatFooter = () => {
+const ChatFooter = ({headers, handleSetToggleRender}) => {
 
   const [chatMessage, setChatMessage] = useState("")
+
+  //get parameter from URL
+  const params = useParams()
+  const { type, id } = params
 
   //input change handler
   const handleChatMessageInput = (event) => {
     setChatMessage(event.target.value)
   }
-  const headers = {
-    token: "1uWV-u5L5TB7gs67ji2POg",
-    client: "pmDD2Mv7__v66uV38mGAKQ",
-    expiry: 1627418296,
-    uid: "dolee2@example.com"
-  }
+  // const headers = {
+  //   token: "1uWV-u5L5TB7gs67ji2POg",
+  //   client: "pmDD2Mv7__v66uV38mGAKQ",
+  //   expiry: 1627418296,
+  //   uid: "dolee2@example.com"
+  // }
 
   const sendMessageObj = {
-    receiver_id: 5,
-    receiver_class: "User",
+    receiver_id: parseInt(id),
+    receiver_class: captalizeWord(type),
     body: chatMessage,
     headers: headers
   }
@@ -29,8 +35,8 @@ const ChatFooter = () => {
     event.preventDefault()
     //send Message API
     sendMessage(sendMessageObj)
+    handleSetToggleRender()
     setChatMessage("")
-
   }
 
 
