@@ -9,6 +9,7 @@ const ChatItem = ({data}) => {
   //data structure
   //{ body, created_at, sender: {email} }
   const { body, created_at, sender: {id, email} } = data
+  // console.log(typeof(created_at)) //2021-07-13T12:18:22.646Z
   return(
     <div className="chat_container-item">
       <div className="chat_container-contents">

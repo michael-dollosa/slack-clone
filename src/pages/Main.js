@@ -3,14 +3,14 @@ import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { getChannels } from "../api/api";
 import { useState, useEffect } from "react";
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import "./Main.scss";
 
 const Main = () => {
   //declare states for application data
   const [userChannels, setUserChannels] = useState(""); //state to get channel data
   const [userList, setUserList] = useState(""); //state to get user Lists/ users that have messaged current user and/or was messaged by current user
-  
+
   //declare hardcoded header value of current user
   //this must be replaced by a prop that is passed down from App component when user logs in
   const headers = {
@@ -19,6 +19,7 @@ const Main = () => {
     expiry: "1627386247",
     uid: "bryan@gmail.com",
   };
+
 
   useEffect(() => {
     //trigger getChannel API to get list of channels for current user
@@ -48,7 +49,11 @@ const Main = () => {
       </nav>
 
       <section>
-        <ChatContainer />
+        <Router>
+          <Switch>
+            <Route path="/:type/:id" component={ChatContainer} />
+          </Switch>
+        </Router>
       </section>
     </main>
   );

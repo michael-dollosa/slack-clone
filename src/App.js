@@ -17,11 +17,12 @@ const App = () => {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
+         
           <Route path="/login">
             <Login handleSetHeaderData={handleSetHeaderData} />
+          </Route>
+          <Route path="/*">
+            <Main />
           </Route>
         </Switch>
       </div>

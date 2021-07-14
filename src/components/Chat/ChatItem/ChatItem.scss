@@ -1,9 +1,10 @@
 .chat_container-item{
   width: 100%;
-  border-bottom: .5px solid var(--color-gray-light);
-  min-height: 8rem;
+  // border-bottom: .5px solid var(--color-gray-light);
+  height: auto;
   padding: 1rem;
   padding-left: 2rem;
+  word-wrap: break-word;
 }
 
 .chat_container-contents{
@@ -44,7 +45,9 @@
 }
 
 .chat_details-body{
+  max-width: 75vw;
   font-size: 1.4rem;
   font-weight: 400;
   color: var(--font-color-black);
+  word-wrap: break-word;
 }

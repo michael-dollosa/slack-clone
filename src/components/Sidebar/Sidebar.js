@@ -17,10 +17,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 const Sidebar = ({ channels }) => {
   //for cleaner code - always use a variable if you will map a list of component.
   //then just call the variable via jsx
-  const renderChannelList = channels.data.data.map((channel) => {
+  const renderChannelList = channels.data.data.map((channel, index) => {
     return (
       <Link to={`/channel/${channel.id}`}>
-        <SidebarOption Icon={LockIcon} title={channel.name} />
+        <SidebarOption key={index} Icon={LockIcon} title={channel.name} />
       </Link>
     );
   });
