@@ -1,12 +1,10 @@
-.header-container{
-    padding-left: 20rem;
-    padding-right: 1rem;
-    width: 100%;
-    height: 3.9rem;
-    border: 1px solid black;
-    background-color: var(--color-primary-dark);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.header-help{
+    margin-right: 30rem;
+}
+.header-help-btn{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: var(--font-color-white-default);
 }

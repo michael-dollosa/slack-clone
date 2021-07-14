@@ -40,21 +40,21 @@ const Main = () => {
 
   return (
     <main className="main-container">
-      <header>
-        <Header />
-      </header>
+      <Router>
+        <header>
+          <Header />
+        </header>
 
-      <nav>
-        <Sidebar channels={userChannels} />
-      </nav>
+        <nav>
+          <Sidebar channels={userChannels} />
+        </nav>
 
-      <section>
-        <Router>
-          <Switch>
-            <Route path="/:type/:id" component={ChatContainer} />
-          </Switch>
-        </Router>
-      </section>
+        <section>
+            <Switch>
+              <Route path="/:type/:id" component={ChatContainer} />
+            </Switch>
+        </section>
+      </Router>
     </main>
   );
 };
