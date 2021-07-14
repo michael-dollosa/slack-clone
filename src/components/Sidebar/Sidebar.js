@@ -14,7 +14,7 @@ import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { GoMention } from "react-icons/go";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-const Sidebar = ({ channels }) => {
+const Sidebar = ({ channels, users }) => {
   //for cleaner code - always use a variable if you will map a list of component.
   //then just call the variable via jsx
   const renderChannelList = channels.data.data.map((channel, index) => {
@@ -24,6 +24,14 @@ const Sidebar = ({ channels }) => {
       </Link>
     );
   });
+
+  const renderUserList = users.data.data.map((user, index) => {
+    return (
+      <Link to={`/user/${user.id}`}>
+        <SidebarOption key={index} Icon={ArrowDropDownIcon} title={user.uid} />
+      </Link>
+    ) 
+  })
 
   return (
     <div className="sidebar-container-main">
@@ -42,20 +50,11 @@ const Sidebar = ({ channels }) => {
         <SidebarOption Icon={MoreVertIcon} title="More" />
 
         <SidebarOption Icon={ArrowDropDownIcon} title="Channels" />
-
         {renderChannelList}
-
         <SidebarOption Icon={AddIcon} title="Add channels" />
 
         <SidebarOption Icon={ArrowDropDownIcon} title="Direct Messages" />
-        {/* {dms.map((dm) => (
-        <SidebarOption
-          Icon={PersonOutlineIcon}
-          title={dm.name}
-          id={dm.uid}
-          key={dm.uid}
-        />
-        ))} */}
+        {renderUserList}
         <SidebarOption Icon={AddIcon} title="Add teammates" />
 
     </div>
