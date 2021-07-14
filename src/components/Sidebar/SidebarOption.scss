@@ -1,7 +1,9 @@
 .sidebar-option {
   display: flex;
   align-items: center;
-  font-size: 12px;
+  // font-size: 5px;
+  height: 3.5vh;
+  padding-top: 5px;
   padding-left: 5px;
 }
 
@@ -12,21 +14,25 @@
 }
 
 .sidebar-option-icon {
-  padding: 15px;
-  font-size: 50px !important;
+  padding: 10px;
+  font-size: 38px !important;
+  color: #bcabbc;
+}
+
+.sidebar-option-icon > svg {
+  font-size: 500px;
 }
 
 .sidebar-option > h3 {
-  font-weight: 300;
-  font-size: 1.7rem;
-  color: var(--font-color-white-default);
+  font-weight: 400;
+  font-size: 15px;
+  color: #bcabbc;
 }
 
-.sidebar-option > h3 {
-  font-weight: 300;
-  font-size: 1.7rem;
-  color: var(--font-color-white-default);
+.sidebar-channels {
+  margin-left: 5%;
 }
+
 a {
   text-decoration: none;
 }
