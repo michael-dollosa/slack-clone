@@ -2,18 +2,25 @@ import { useState } from "react";
 import "./AddChannel.scss";
 import { createChannel } from "../../api/api";
 
-const AddChannel = () => {
+const AddChannel = ({ headers, handleDummyAddChannel }) => {
   const [addChannelName, setChannel] = useState("");
   const [addMembers, setMembers] = useState("");
 
   const onSubmit = (e) => {
-    e.prevent.default();
+    e.preventDefault();
 
     const addNewChannel = {
       name: addChannelName,
-      user_ids: +addMembers,
+      user_ids: parseInt(addMembers),
+      headers: headers,
     };
-    createChannel(addNewChannel);
+    console.log(addNewChannel);
+    createChannel(addNewChannel)
+      .then((res) => {
+        console.log("Add channel success", res);
+        handleDummyAddChannel();
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -42,6 +49,9 @@ const AddChannel = () => {
               setMembers(e.target.value);
             }}
           ></input>
+        </div>
+        <div className="addChannel-form-btn">
+          <button className="btn">Create</button>
         </div>
       </form>
     </div>
