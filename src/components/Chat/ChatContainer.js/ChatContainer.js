@@ -10,7 +10,7 @@ const ChatContainer = ({headers, userDetails}) => {
   //declare state variable to put chat room data
   const [chatData, setChatData] = useState("")
   //declare state to get specific reciever details
-  const [recieverData, setReceiverData] = useState("")
+  const [receiverData, setReceiverData] = useState("")
   const [toggleRender, setToggleRender] = useState(false)
 
   //set handler for toggleRender
@@ -43,11 +43,12 @@ const ChatContainer = ({headers, userDetails}) => {
 
   //condition to render only if object is populated
   // if(!chatData.length || !chatData) return <h1>Hello WOrld</h1>
-  
+  if(!receiverData) return <></>
+
   return(
     <main className="chat_container-main">
-        <ChatHeader recieverData={recieverData} />
-        <ChatItemContainer  chatData={chatData} recieverData={recieverData} userData={userDetails}/>
+        <ChatHeader receiverData={receiverData} />
+        <ChatItemContainer  chatData={chatData} receiverData={receiverData} userData={userDetails}/>
         <ChatFooter headers={headers} handleSetToggleRender={handleSetToggleRender}/>
     </main>
   )

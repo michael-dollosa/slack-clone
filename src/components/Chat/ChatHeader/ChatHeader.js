@@ -1,8 +1,8 @@
 import "./ChatHeader.scss"
 import { MdLock, MdErrorOutline } from "react-icons/md";
 import { formatEmail } from "../../../helper/helper"
-const ChatHeader = ({recieverData}) => {
-  const { email } = recieverData
+const ChatHeader = ({receiverData}) => {
+  const { email } = receiverData
 
   return(
     <section className="chat_container-header">

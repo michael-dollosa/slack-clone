@@ -1,8 +1,8 @@
 import "./ChatItemWelcome.scss"
 import { formatEmail } from "../../../helper/helper"
 
-const ChatItemWelcome = ({recieverData, userData}) => {
-  const { id, email } = recieverData
+const ChatItemWelcome = ({receiverData, userData}) => {
+  const { id, email } = receiverData
   const loggedInUserId = userData.data.id
   
   return(
