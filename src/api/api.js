@@ -2,7 +2,7 @@ import axios from "axios"
 
 //user registration
 export const registerUser = ({ email, password, password_confirmation }) => {
-  return axios.post("http://206.189.91.54//api/v1/users", {
+  return axios.post("http://206.189.91.54//api/v1/auth/", {
     email,
     password,
     password_confirmation
