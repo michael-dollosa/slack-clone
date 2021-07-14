@@ -3,14 +3,20 @@ import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { getAllUsers, getChannels, getMessage } from "../api/api";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./Main.scss";
+import AddChannel from "../components/Sidebar/AddChannel";
 
 const Main = () => {
   //declare states for application data
   const [userChannels, setUserChannels] = useState(""); //state to get channel data
   const [userList, setUserList] = useState(""); //state to get user Lists/ users that have messaged current user and/or was messaged by current user
+  //add channel toggle (test)
+  const [toggleAddChannel, setToggleAddChannel] = useState(false);
 
+  const handleAddChannelToggle = () => {
+    setToggleAddChannel(!toggleAddChannel);
+  };
 
   //declare hardcoded header value of current user
   //this must be replaced by a prop that is passed down from App component when user logs in
@@ -18,8 +24,8 @@ const Main = () => {
     token: "bmYDmIK8a7OPeUt73qJ8JQ",
     client: "qWGX141QEphMy7EYsGdHMQ",
     expiry: 1627457531,
-    uid: "steph@gmail.com"
-  }
+    uid: "steph@gmail.com",
+  };
 
   useEffect(() => {
     //trigger getChannel API to get list of channels for current user
@@ -28,8 +34,8 @@ const Main = () => {
       .catch((err) => console.log("Get Channel Function Error:", err));
     //trigger userApi for private message user list
     getAllUsers(headers)
-    .then((data) => setUserList(data))
-    .catch((err) => console.log(err))
+      .then((data) => setUserList(data))
+      .catch((err) => console.log(err));
   }, []);
 
   //render
@@ -41,28 +47,30 @@ const Main = () => {
     return <h1>Loading</h1>;
   }
 
-  if(!userList.data || !userList.data.data.length) {
-    return <h1>Loading</h1>
+  if (!userList.data || !userList.data.data.length) {
+    return <h1>Loading</h1>;
   }
 
   return (
     <main className="main-container">
+      {toggleAddChannel ? <AddChannel /> : null}
       <Router>
         <header>
           <Header />
         </header>
 
         <nav>
-          <Sidebar 
-          channels={userChannels} 
-          users={userList}
+          <Sidebar
+            channels={userChannels}
+            users={userList}
+            handleAddChannelToggle={handleAddChannelToggle}
           />
         </nav>
 
         <section>
-            <Switch>
-              <Route path="/:type/:id" component={ChatContainer} />
-            </Switch>
+          <Switch>
+            <Route path="/:type/:id" component={ChatContainer} />
+          </Switch>
         </section>
       </Router>
     </main>

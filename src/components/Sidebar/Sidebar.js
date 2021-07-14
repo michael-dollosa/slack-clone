@@ -15,7 +15,7 @@ import { CgLock } from "react-icons/cg";
 import { BiCaretDown } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ channels, users }) => {
+const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
   //for cleaner code - always use a variable if you will map a list of component.
   //then just call the variable via jsx
   const renderChannelList = channels.data.data.map((channel, index) => {
@@ -58,7 +58,11 @@ const Sidebar = ({ channels, users }) => {
 
       <SidebarOption Icon={ArrowDropDownIcon} title="Channels" />
       {renderChannelList}
-      <SidebarOption Icon={AddIcon} addChannelOption title="Add channels" />
+      <SidebarOption
+        Icon={AddIcon}
+        handleAddChannelToggle={handleAddChannelToggle}
+        title="Add channels"
+      />
 
       <SidebarOption Icon={ArrowDropDownIcon} title="Direct Messages" />
       {renderUserList}
