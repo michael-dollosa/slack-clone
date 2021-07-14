@@ -7,8 +7,8 @@ import { useHistory } from "react-router-dom"
 
 const LoginContainer = ({handleSetLoginData}) => {
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("testnochannel@example.com")
+    const [password, setPassword] = useState("test12345")
     const history = useHistory()
 
     const handleEmailInput = (event) => {

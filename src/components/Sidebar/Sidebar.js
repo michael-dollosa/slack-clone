@@ -18,13 +18,16 @@ import { Link } from "react-router-dom";
 const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
   //for cleaner code - always use a variable if you will map a list of component.
   //then just call the variable via jsx
-  const renderChannelList = channels.data.data.map((channel, index) => {
+
+  const renderChannelList = channels.data.data 
+  ? channels.data.data.map((channel, index) => {
     return (
       <Link to={`/channel/${channel.id}`}>
         <SidebarOption key={index} Icon={CgLock} title={channel.name} />
       </Link>
     );
-  });
+  })
+  : null
 
   const renderUserList = users.data.data.map((user, index) => {
     return (
