@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
+import { useHistory } from "react-router-dom";
+import "./SignupContainer.scss"
 import { registerUser } from '../../../api/api'
-import { userLogin } from '../../../api/api'
 
 
 const SignupContainer = ({handleSetHeaderData}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [confirm, setConfirm] = useState("")
+    const [password_confirmation, setConfirm] = useState("")
 
     const handleEmailInput = (event) => {
         setEmail(event.target.value)
@@ -25,13 +26,14 @@ const SignupContainer = ({handleSetHeaderData}) => {
         const data = {
             email,
             password,
-            confirm
+            password_confirmation
         }
         
         registerUser(data)
             .then(res => {
-                handleSetHeaderData(res.headers);
-                userDetails.push(data)
+                console.log(data)
+                // s;
+                
             })
             .catch(err => console.log(err))
     }
@@ -71,7 +73,7 @@ const SignupContainer = ({handleSetHeaderData}) => {
                         type="password" 
                         placeholder="Confirm password" 
                         name="confirm-password"
-                        value={confirm}
+                        value={password_confirmation}
                         onChange={handleConfirmInput}
                     />
 
@@ -81,7 +83,7 @@ const SignupContainer = ({handleSetHeaderData}) => {
                 </div>
 
                 <div className="signup-checkbox">
-                    <span className="email-notifications"> <input type="checkbox" name="emailnotifs" id="emailnotifs"/> <label htmlFor="emailnotifs">Its okay to send me emails about Slack.</label></span>
+                    <span className="email-notifications"> <input type="checkbox" name="emailnotifs" id="emailnotifs"/> <label htmlFor="emailnotifs">It's okay to send me emails about Slack.</label></span>
                     <span className="terms">By continuing, you’re agreeing to our 
                         <a href="https://slack.com/intl/en-ph/terms-of-service" target="_blank" rel="noreferrer"> Customer Terms of Service,</a> 
                         <a href="https://slack.com/intl/en-ph/trust/privacy/privacy-policy" target="_blank" rel="noreferrer"> Privacy Policy,</a>

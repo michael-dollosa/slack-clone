@@ -3,8 +3,9 @@ import { useState } from "react";
 import Main from "./pages/Main";
 import ApiTestPage from "./ApiTestPage";
 import Login from "./forms/Login/Login.js";
+import Signup from "./forms/Signup/Signup.js"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import AddUser from "./forms/AddUser/AddUser";
+
 const App = () => {
   //header should be in headerData
   const [headerData, setHeaderData] = useState("");
@@ -17,15 +18,19 @@ const App = () => {
   return (
     <Router>
       <div>
-        <AddUser />
-        {/* <Switch>
+
+        <Switch>
+          <Route path="/signup">
+            <Signup handleSetHeaderData={handleSetHeaderData}/>
+          </Route>
           <Route path="/login">
             <Login handleSetHeaderData={handleSetHeaderData} />
           </Route>
           <Route path="/">
             <Main />
           </Route>
-        </Switch> */}
+        </Switch>
+
       </div>
     </Router>
   );
