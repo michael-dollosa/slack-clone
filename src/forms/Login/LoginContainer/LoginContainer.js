@@ -3,11 +3,13 @@ import { userLogin } from '../../../api/api';
 import "./LoginContainer.scss"
 import { FcGoogle } from "react-icons/fc";
 import { DiApple } from "react-icons/di";
+import { useHistory } from "react-router-dom"
 
-const LoginContainer = ({handleSetHeaderData}) => {
+const LoginContainer = ({handleSetLoginData}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const history = useHistory()
 
     const handleEmailInput = (event) => {
         setEmail(event.target.value)
@@ -18,6 +20,7 @@ const LoginContainer = ({handleSetHeaderData}) => {
     }
 
     const loginUser = () => {
+        
         //create data obj for API request
         const data = {
             email,
@@ -26,8 +29,10 @@ const LoginContainer = ({handleSetHeaderData}) => {
 
         userLogin(data)
             .then(res => {
-                console.log("Response from API", res.headers)
-                handleSetHeaderData(res.headers)
+                console.log("Response from API", res)
+                handleSetLoginData(res)
+                //redirect to URL of his own chat
+                history.push(`/user/${res.data.data.id}`)
             })
             .catch(err => console.log(err))
     }

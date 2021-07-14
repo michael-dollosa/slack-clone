@@ -1,33 +1,34 @@
 import "./App.scss";
 import { useState } from "react";
 import Main from "./pages/Main";
-import ApiTestPage from "./ApiTestPage";
 import Login from "./forms/Login/Login.js";
 import Signup from "./forms/Signup/Signup.js"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 const App = () => {
+
   //header should be in headerData
-  const [headerData, setHeaderData] = useState("");
+  const [loginData, setLoginData] = useState("");
 
   //create function to set  header data to child components
-  const handleSetHeaderData = (data) => {
-    console.log("header data");
-    setHeaderData(data);
+  const handleSetLoginData = (data) => {
+    console.log("header data", data);
+    setLoginData(data);
   };
+
   return (
     <Router>
       <div>
 
         <Switch>
           <Route path="/signup">
-            <Signup handleSetHeaderData={handleSetHeaderData}/>
+            <Signup handleSetLoginData={handleSetLoginData} />
           </Route>
           <Route path="/login">
-            <Login handleSetHeaderData={handleSetHeaderData} />
+            <Login handleSetLoginData={handleSetLoginData} />
           </Route>
           <Route path="/">
-            <Main />
+            <Main loginData={loginData}/>
           </Route>
         </Switch>
 
