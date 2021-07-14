@@ -13,7 +13,7 @@ import { GoMention } from "react-icons/go";
 import { BiChevronDown } from "react-icons/bi";
 import { CgLock } from "react-icons/cg";
 import { BiCaretDown } from "react-icons/bi";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ channels, users }) => {
   //for cleaner code - always use a variable if you will map a list of component.
