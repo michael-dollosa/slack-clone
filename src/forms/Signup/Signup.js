@@ -4,11 +4,11 @@ import SignupHeader from './SignupHeader/SignupHeader'
 import SignupContainer from './SignupContainer/SignupContainer'
 import LoginFooter from '../Login/LoginFooter/LoginFooter'
 
-const Signup = () => {
+const Signup = ({handleSetHeaderData}) => {
     return (
         <div className="signup-elements-container">
             <SignupHeader />
-            <SignupContainer />
+            <SignupContainer handleSetHeaderData={handleSetHeaderData}/>
             <LoginFooter />
         </div>
     )
