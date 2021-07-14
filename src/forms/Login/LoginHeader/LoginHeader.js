@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import "./LoginHeader.scss"
 
 const LoginHeader = () => {
@@ -15,9 +16,9 @@ const LoginHeader = () => {
 
                 <div className= "login-header-right">
                         New to Slack?
-                        <a className="signup-link" href="/">
+                        <Link to="/Signup">
                             Create an account
-                        </a>
+                        </Link>
                 </div>
                     
             </section>

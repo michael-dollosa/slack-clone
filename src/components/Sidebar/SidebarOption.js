@@ -1,39 +1,9 @@
 import React, { useState } from "react";
 import "./SidebarOption.scss";
 import { useHistory } from "react-router-dom";
-import { createChannel } from "../../api/api";
+import AddChannel from "./AddChannel";
 
-// const AddChannelForm = () => {
-//   return (
-//     <form>
-//       <label>Enter channel name</label>
-//     </form>
-//   );
-// };
-
-function SidebarOption({ Icon, id, addChannelOption, title }) {
-  // const history = useHistory();
-
-  // const selectChannel = () => {
-  //       if (id) {
-  //           history.push(`/channels/${id}`)
-  //       } else {
-  //           history.push(title);
-  //       }
-  // };
-
-  const AddChannel = () => {
-    const [channeName, setChannel] = useState();
-    const [addMembers, setMembers] = useState();
-
-    return (
-      <form>
-        <label>Enter channel name</label>
-        <input name="channel-name"></input>
-      </form>
-    );
-  };
-
+const SidebarOption = ({ Icon, id, addChannelOption, title }) => {
   return (
     <div
       className="sidebar-option"
@@ -49,6 +19,6 @@ function SidebarOption({ Icon, id, addChannelOption, title }) {
       )}
     </div>
   );
-}
+};
 
 export default SidebarOption;

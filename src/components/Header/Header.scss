@@ -1,3 +1,14 @@
+.header-help{
+    margin-right: 30rem;
+}
+.header-help-btn{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: var(--font-color-white-default);
+}
+
 .header-container {
   // padding-left: 20rem;
   // padding-right: 1rem;
@@ -10,3 +21,4 @@
   justify-content: center;
   align-items: center;
 }
+
