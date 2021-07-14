@@ -8,7 +8,7 @@ export const registerUser = ({ email, password, password_confirmation }) => {
     password_confirmation
   })
   .then(response => response)
-  .then(result => result)
+  // .then(result => result)
   .catch(error => error)
 }
 

@@ -8,7 +8,7 @@ const SignupContainer = ({handleSetHeaderData}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [confirm, setConfirm] = useState("")
+    const [password_confirmation, setConfirm] = useState("")
 
     const handleEmailInput = (event) => {
         setEmail(event.target.value)
@@ -26,13 +26,13 @@ const SignupContainer = ({handleSetHeaderData}) => {
         const data = {
             email,
             password,
-            confirm
+            password_confirmation
         }
         
         registerUser(data)
             .then(res => {
                 console.log(data)
-                handleSetHeaderData(res.headers);
+                // s;
                 
             })
             .catch(err => console.log(err))
@@ -73,7 +73,7 @@ const SignupContainer = ({handleSetHeaderData}) => {
                         type="password" 
                         placeholder="Confirm password" 
                         name="confirm-password"
-                        value={confirm}
+                        value={password_confirmation}
                         onChange={handleConfirmInput}
                     />
 
