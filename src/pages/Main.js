@@ -35,7 +35,9 @@ const Main = ({loginData}) => {
     setUserHeaders(headers)
     //trigger getChannel API to get list of channels for current user
     getChannels(headers)
-      .then((data) => setUserChannels(data))
+      .then((data) => {
+        console.log("channel data", data)
+        setUserChannels(data)})
       .catch((err) => console.log("Get Channel Function Error:", err));
     //trigger userApi for private message user list
     getAllUsers(headers)
@@ -48,7 +50,7 @@ const Main = ({loginData}) => {
   //always have a condition to render a Loading state
   //since we are using API which is asynchronus, components will mount even without the data. Since our components uses data, we need first to set a condition to render nothing while data is being populated
   //if we don't do this, our components will have an error -> usually error regarding no data, or data in the variable being used is undefined
-  if (!userChannels.data || !userChannels.data.data.length || !userList.data || !userList.data.data.length) {
+  if (!userChannels.data || !userList.data || !userList.data.data.length) {
     return <h1>Loading</h1>;
   }
 
