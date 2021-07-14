@@ -36,38 +36,20 @@ const Sidebar = ({ channels }) => {
         <FiEdit />
       </div>
 
+      <SidebarOption Icon={BiMessageRoundedDetail} title="Threads" />
+      <SidebarOption Icon={IoChatbubblesOutline} title="All DMs" />
+      <SidebarOption Icon={HiOutlineDocumentDuplicate} title="Drafts" />
+      <SidebarOption Icon={GoMention} title="Mentions & reactions" />
+      <SidebarOption Icon={MoreVertIcon} title="More" />
 
-        <SidebarOption Icon={BiMessageRoundedDetail} title="Threads" />
-        <SidebarOption Icon={IoChatbubblesOutline} title="All DMs" />
-        <SidebarOption Icon={HiOutlineDocumentDuplicate} title="Drafts" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={GoMention} title="Mentions & reactions" />
-        <SidebarOption Icon={MoreVertIcon} title="More" />
-
-        <SidebarOption Icon={BiCaretDown} title="Channels" />
-        <div className="sidebar-channels">
-          {renderChannelList}
-          <SidebarOption Icon={AddIcon} title="Add channels" />
-        </div>
-        <br />
-        <SidebarOption Icon={BiCaretDown} title="Direct Messages" />
-        {/* {dms.map((dm) => (
+      <SidebarOption Icon={BiCaretDown} title="Channels" />
+      <div className="sidebar-channels">
+        {renderChannelList}
+        <SidebarOption Icon={AddIcon} addChannelOption title="Add channels" />
+      </div>
+      <br />
+      <SidebarOption Icon={BiCaretDown} title="Direct Messages" />
+      {/* {dms.map((dm) => (
         <SidebarOption
           Icon={PersonOutlineIcon}
           title={dm.name}
@@ -75,8 +57,7 @@ const Sidebar = ({ channels }) => {
           key={dm.uid}
         />
         ))} */}
-        <SidebarOption Icon={AddIcon} title="Add teammates" />
-
+      <SidebarOption Icon={AddIcon} title="Add teammates" />
     </div>
   );
 };
