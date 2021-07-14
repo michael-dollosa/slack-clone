@@ -1,7 +1,7 @@
 import ChatContainer from "../components/Chat/ChatContainer.js/ChatContainer";
 import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
-import { getChannels } from "../api/api";
+import { getAllUsers, getChannels, getMessage } from "../api/api";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import "./Main.scss";
@@ -11,15 +11,15 @@ const Main = () => {
   const [userChannels, setUserChannels] = useState(""); //state to get channel data
   const [userList, setUserList] = useState(""); //state to get user Lists/ users that have messaged current user and/or was messaged by current user
 
+
   //declare hardcoded header value of current user
   //this must be replaced by a prop that is passed down from App component when user logs in
   const headers = {
-    token: "SxvCNewMhm6IVXRX5-XGJw",
-    client: "YuHbhhopspaQarxT5Huewg",
-    expiry: "1627386247",
-    uid: "bryan@gmail.com",
-  };
-
+    token: "bmYDmIK8a7OPeUt73qJ8JQ",
+    client: "qWGX141QEphMy7EYsGdHMQ",
+    expiry: 1627457531,
+    uid: "steph@gmail.com"
+  }
 
   useEffect(() => {
     //trigger getChannel API to get list of channels for current user
@@ -27,6 +27,9 @@ const Main = () => {
       .then((data) => setUserChannels(data))
       .catch((err) => console.log("Get Channel Function Error:", err));
     //trigger userApi for private message user list
+    getAllUsers(headers)
+    .then((data) => setUserList(data))
+    .catch((err) => console.log(err))
   }, []);
 
   //render
@@ -38,6 +41,10 @@ const Main = () => {
     return <h1>Loading</h1>;
   }
 
+  if(!userList.data || !userList.data.data.length) {
+    return <h1>Loading</h1>
+  }
+
   return (
     <main className="main-container">
       <Router>
@@ -46,7 +53,10 @@ const Main = () => {
         </header>
 
         <nav>
-          <Sidebar channels={userChannels} />
+          <Sidebar 
+          channels={userChannels} 
+          users={userList}
+          />
         </nav>
 
         <section>
