@@ -20,7 +20,7 @@ const App = () => {
   return (
     <Router>
       <div>
-
+        {/* <AddUser /> */}
         <Switch>
           <Route path="/signup">
             <Signup handleSetLoginData={handleSetLoginData} />

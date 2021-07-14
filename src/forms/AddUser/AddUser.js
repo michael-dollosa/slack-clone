@@ -20,19 +20,14 @@ const AddUser = () => {
 
     useEffect(() =>{
         getAllUsers(headers)
-        .then(res => setAllUsers(res))
+        .then(res => setAllUsers(res));
     }, [])
 
-    // useEffect(() =>{
-    //     if(!allUsers)
-    //     .then(res => setAllUsers(res))
-    // }, [])
-
-    // const renderUserList = users.data.data.map((user) => {
-    //     return (
-    //         user.id
-    //     ) 
-    // })
+    useEffect(() =>{
+        setUserList(allUsers.filter((allUser) => allUser.name.toLowerCase())
+        )
+    }, [allUsers])
+    //give up haha tuloy ko mamaya
 
     return (
         <div className="addUserContainer">
