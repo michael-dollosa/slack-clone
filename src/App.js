@@ -4,6 +4,7 @@ import Main from "./pages/Main";
 import Login from "./forms/Login/Login.js";
 import Signup from "./forms/Signup/Signup.js"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import AddUser from "./forms/AddUser/AddUser";
 
 const App = () => {
 
@@ -19,7 +20,7 @@ const App = () => {
   return (
     <Router>
       <div>
-
+       
         <Switch>
           <Route path="/signup">
             <Signup handleSetLoginData={handleSetLoginData} />
