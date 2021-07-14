@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { registerUser } from '../../../api/api'
+import { userLogin } from '../../../api/api'
 
 
-const SignupContainer = () => {
+const SignupContainer = ({handleSetHeaderData}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -18,6 +19,21 @@ const SignupContainer = () => {
 
     const handleConfirmInput = (event) => {
         setConfirm(event.target.value)
+    }
+    
+    const signupUser = () => {
+        const data = {
+            email,
+            password,
+            confirm
+        }
+        
+        registerUser(data)
+            .then(res => {
+                handleSetHeaderData(res.headers);
+                userDetails.push(data)
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -59,7 +75,7 @@ const SignupContainer = () => {
                         onChange={handleConfirmInput}
                     />
 
-                    <button className="signup-email-button">
+                    <button className="signup-email-button" onClick={signupUser}>
                     Sign Up with Email
                     </button>
                 </div>

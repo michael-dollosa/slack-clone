@@ -1,10 +1,11 @@
 import "../Header/HeaderHistory.scss"
+import  { GrClock } from 'react-icons/gr'
 
 const History = () => {
     return (
         <div className="header-history">
             <button className="header-history-btn">
-                <i class="far fa-clock"></i>
+                <GrClock />
             </button>
         </div>
     )
