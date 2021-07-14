@@ -21,7 +21,7 @@ const ChatContainer = (props) => {
     uid: "dolee2@example.com"
   }
 
-  let sampleGetMessageObj = {
+  const sampleGetMessageObj = {
     receiver_id: 5,
     receiver_class: "User",
     headers: headers
@@ -33,13 +33,10 @@ const ChatContainer = (props) => {
     getMessage(sampleGetMessageObj)
       .then(data => setChatData(data.data.data))
       .catch(err  => console.log(err))
-
   }, [id])
 
   //condition to render only if object is populated
-  if(!chatData.length || !chatData) {
-    return <> Loading </>
-  }
+  if(!chatData.length || !chatData) return <></>
   
   return(
     <main className="chat_container-main">

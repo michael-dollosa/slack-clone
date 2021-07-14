@@ -34,7 +34,7 @@ const Sidebar = ({ channels }) => {
         <FiEdit />
       </div>
 
-      <Router>
+
         <SidebarOption Icon={BiMessageRoundedDetail} title="Threads" />
         <SidebarOption Icon={IoChatbubblesOutline} title="All DMs" />
         <SidebarOption Icon={HiOutlineDocumentDuplicate} title="Drafts" />
@@ -57,7 +57,7 @@ const Sidebar = ({ channels }) => {
         />
         ))} */}
         <SidebarOption Icon={AddIcon} title="Add teammates" />
-      </Router>
+
     </div>
   );
 };
