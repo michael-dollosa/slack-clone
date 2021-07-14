@@ -1,14 +1,38 @@
 import "../AddUser/AddUser.scss"
 import { HiLockClosed } from "react-icons/hi";
 import { GrFormClose } from "react-icons/gr";
+import { useState, useEffect } from "react";
+import { getAllUsers } from "../../api/api";
 
-const AddUser = ({users}) => {
+const AddUser = () => {
+    const headers = {
+      token: "bmYDmIK8a7OPeUt73qJ8JQ",
+      client: "qWGX141QEphMy7EYsGdHMQ",
+      expiry: 1627457531,
+      uid: "steph@gmail.com"
+  }
+    const [userList, setUserList] = useState("");
+    const [allUsers, setAllUsers] = useState("");
 
-    const renderUserList = users.data.data.map((user, index) => {
-        return (
-          <input key={index} type="search" placeholder="Enter a name, email, or user group"/>
-        ) 
-    })
+    const handleUsers = (event) => {
+        setUserList(event.target.value)
+    }
+
+    useEffect(() =>{
+        getAllUsers(headers)
+        .then(res => setAllUsers(res))
+    }, [])
+
+    // useEffect(() =>{
+    //     if(!allUsers)
+    //     .then(res => setAllUsers(res))
+    // }, [])
+
+    // const renderUserList = users.data.data.map((user) => {
+    //     return (
+    //         user.id
+    //     ) 
+    // })
 
     return (
         <div className="addUserContainer">
@@ -23,7 +47,7 @@ const AddUser = ({users}) => {
 
                 
                 <div className="addUser_searchBar">
-                    {renderUserList}
+                    <input type="search" placeholder="Enter a name, email, or user group" onChange={event => handleUsers(event)} value={userList} />
                 </div>
                 <div className="addUser_DoneBtn">
                     <button>Done</button>
