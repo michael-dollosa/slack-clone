@@ -21,7 +21,7 @@ const ChatItem = ({data}) => {
         <section className="chat_container-details">
           <div className="chat_details-name">
             <h1>{ email }</h1>
-            <label>{ parsedTime }</label>
+            <label>{ parsedDate } at { parsedTime }</label>
           </div>
           <div className="chat_details-body">
             { body }
