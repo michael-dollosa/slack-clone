@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./Main.scss";
 import AddChannel from "../components/Sidebar/AddChannel";
+import ChatNewMessage from "../components/Chat/ChatNewMessage/ChatNewMessage";
 
 const Main = ({ loginData }) => {
   //declare states for application data
@@ -113,8 +114,11 @@ const Main = ({ loginData }) => {
 
         <section>
           <Switch>
-            <Route path="/:type/:id">
+            <Route exact path="/:type/:id">
               <ChatContainer headers={userHeaders} userDetails={userDetails} />
+            </Route>
+            <Route exact path="/new-message">
+              <ChatNewMessage headers={userHeaders} />
             </Route>
           </Switch>
         </section>
