@@ -5,7 +5,8 @@ import Login from "./forms/Login/Login.js";
 import Signup from "./forms/Signup/Signup.js"
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import AddUser from "./forms/AddUser/AddUser";
-import { getAllUsers } from "./api/api";
+import Header from "./components/Header/Header";
+import SearchBar from "./components/Header/Search/HeaderSearch";
 
 const App = () => {
   //header should be in headerData
@@ -20,7 +21,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <AddUser />
+        <SearchBar />
         {/* <Switch>
           <Route path="/signup">
             <Signup handleSetLoginData={handleSetLoginData} />

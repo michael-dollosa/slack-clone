@@ -9,7 +9,13 @@ const Header = () => {
     return (
         <div className="header-container">
             <History />
-            <SearchBar />
+            <div className="header-search">
+                <button className="header-search-btn">
+                    <i class="fas fa-search"></i>
+                    <span>Search Avion School</span> 
+                </button>
+            </div>
+            {/* <SearchBar /> */}
             <HelpBtn />
             <HeaderUser />
         </div>

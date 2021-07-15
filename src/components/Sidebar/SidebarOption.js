@@ -3,13 +3,7 @@ import "./SidebarOption.scss";
 import { useHistory } from "react-router-dom";
 import AddChannel from "./AddChannel";
 
-const SidebarOption = ({
-  Icon,
-  id,
-  addChannelOption,
-  title,
-  handleAddChannelToggle = null,
-}) => {
+const SidebarOption = ({Icon, id, addChannelOption, title, handleAddChannelToggle = null,}) => {
   return (
     <div className="sidebar-option">
       {Icon && <Icon className="sidebar-option-icon" />}

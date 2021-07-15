@@ -2,13 +2,13 @@ import "../AddUser/AddUser.scss"
 import { HiLockClosed } from "react-icons/hi";
 import { GrFormClose } from "react-icons/gr";
 import { useState, useEffect } from "react";
-import { getAllUsers } from "../../api/api";
+import { searchUser } from "../../api/api";
 
 const AddUser = () => {
     const headers = {
-      token: "bmYDmIK8a7OPeUt73qJ8JQ",
-      client: "qWGX141QEphMy7EYsGdHMQ",
-      expiry: 1627457531,
+      token: "ZaIU1ptRK4arZ3MbSeYrlA",
+      client: "IMV_7cNEPy0gArKnq8slmQ",
+      expiry: 1627560704,
       uid: "steph@gmail.com"
   }
     const [searchInput, setSearchInput] = useState("");
@@ -16,6 +16,11 @@ const AddUser = () => {
 
     const handleSearchInput = (event) => {
         setSearchInput(event.target.value)
+    }
+
+    const searchObj = {
+        str: searchInput,
+        headers: headers
     }
 
     useEffect(() => {
