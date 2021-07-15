@@ -16,30 +16,29 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // const addNewChannel = {
-    //   name: addChannelName,
-    //   user_ids: parseInt(addMembers),
-    //   headers: headers,
-    // };
-    // console.log(addNewChannel);
-    // createChannel(addNewChannel)
-    //   .then((res) => {
-    //     console.log("Add channel success", res);
-    //     handleDummyAddChannel();
-    //   })
-    //   .catch((err) => console.log(err));
+    const addNewChannel = {
+      name: addChannelName,
+      user_ids: parseInt(addMembers),
+      headers: headers,
+    };
+    console.log(addNewChannel);
+    createChannel(addNewChannel)
+      .then((res) => {
+        console.log("Add channel success", res);
+        handleDummyAddChannel();
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
+    //main container
     <div className="addChannel-form-container">
+      {/* add channel container */}
       <div className="addChannel-form-items">
         <div
-          className={
-            formToggle
-              ? `addChannel-form-header addChannel-hidden`
-              : `addChannel-form-header addChannel-block`
-          }
-        >
+          className=
+            { formToggle ? `addChannel-form-header addChannel-hidden`
+              : `addChannel-form-header addChannel-block`}>
           <h1>Create a private channel</h1>
           <IoCloseOutline onClick={handleClose} />
         </div>
