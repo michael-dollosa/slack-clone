@@ -18,7 +18,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
 
     const addNewChannel = {
       name: addChannelName,
-      user_ids: parseInt(addMembers),
+      // user_ids: parseInt(addMembers),
       headers: headers,
     };
     console.log(addNewChannel);
@@ -39,8 +39,11 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
           className=
             { formToggle ? `addChannel-form-header addChannel-hidden`
               : `addChannel-form-header addChannel-block`}>
-          <h1>Create a private channel</h1>
-          <IoCloseOutline onClick={handleClose} />
+          <h3>Create a private channel</h3>
+          <div className="addChannel-closeBtn">
+            <IoCloseOutline onClick={handleClose} />
+          </div>
+          
         </div>
 
         <div
@@ -50,10 +53,10 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
               : `addChannel-form-text addChannel-block`
           }
         >
-          <h2>
+          <span>
             Channels are where your team communicates. They’re best when <br />
             organized around a topic — #marketing, for example.
-          </h2>
+          </span>
         </div>
 
         <div
@@ -63,7 +66,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
               : `addChannel-form-header  addChannel-block`
           }
         >
-          <h2>Add people</h2>
+          {/* <h2>Add people</h2> */}
           <h6>{addChannelName}</h6>
         </div>
 
@@ -100,7 +103,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
             </button>
           </div>
 
-          <div
+          {/* <div
             className={
               formToggle
                 ? `addChannel-form addChannel-block`
@@ -128,7 +131,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
                 <h3>Add</h3>
               </button>
             </div>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>

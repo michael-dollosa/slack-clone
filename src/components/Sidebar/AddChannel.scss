@@ -33,24 +33,22 @@
 }
 
 .addChannel-form-header {
+  border: 1px solid black;
+  height: 5vh;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  min-height: 70px;
-  overflow: hidden;
-  padding: 10px;
-  width: 100%;
+  flex-direction: column;
+  font-family: inherit;
 
-  > svg {
-    font-size: x-large;
-  }
+  // > h1,
+  // h2 {
+  //   font-family: "Noto Sans", sans-serif;
+  //   font-weight: normal;
+  //   font-size: 30px;
+  // }
+}
 
-  > h1,
-  h2 {
-    font-family: "Noto Sans", sans-serif;
-    font-weight: normal;
-    font-size: 30px;
-  }
+.addChannel-closeBtn{
+  font-size: 2rem;
 }
 
 // .addChannel-form-closebtn {
@@ -61,12 +59,12 @@
 //   text-align: center;
 // }
 
-.addChannel-form-text > h2 {
-  color: var(--color-gray-dark);
-  font-weight: 500;
-  font-size: 15px;
-  margin-left: 1.5rem;
-}
+// .addChannel-form-text > span {
+//   color: var(--color-gray-dark);
+//   font-weight: 500;
+//   // font-size: 15px;
+//   margin-left: 1.5rem;
+// }
 
 .addChannel-hidden {
   display: none;
