@@ -20,7 +20,10 @@
 .chat_container_welcome-img{
   width: 8rem;
   height: 8rem;
+  overflow: hidden;
   >img{
+    background-size: cover;
+    background-position: center;
     border-radius: 5px;
   }
 }
