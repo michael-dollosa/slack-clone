@@ -3,11 +3,12 @@ import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { getAllUsers, getChannels, getInteractedUsers } from "../api/api";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch,useParams } from "react-router-dom";
 import "./Main.scss";
 import AddChannel from "../components/Sidebar/AddChannel";
 import ChatNewMessage from "../components/Chat/ChatNewMessage/ChatNewMessage";
 import SearchBar from "../components/Header/Search/HeaderSearch"
+import AddUser from "../forms/AddUser/AddUser";
 
 const Main = ({ loginData }) => {
 
@@ -40,7 +41,6 @@ const Main = ({ loginData }) => {
   const [userDetails, setUserDetails] = useState("");
 
   useEffect(() => {
-    console.log("useEffect");
     //set User Details
     setUserDetails(loginData.data);
     //set Header details required for API
@@ -54,7 +54,6 @@ const Main = ({ loginData }) => {
     //trigger getChannel API to get list of channels for current user
     getChannels(headers)
       .then((data) => {
-        console.log("channel data", data);
         setUserChannels(data);
       })
       .catch((err) => console.log("Get Channel Function Error:", err));
@@ -83,41 +82,45 @@ const Main = ({ loginData }) => {
 
   return (
     <main className="main-container">
-      { 
-        toggleSearchBar
-        ? null
-        : <SearchBar handleToggleSearch={handleToggleSearch} headers={userHeaders}/> 
-      }
-      {toggleAddChannel ? (
-        <AddChannel
-          headers={userHeaders}
-          handleDummyAddChannel={handleDummyAddChannel}
-          handleClose={handleClose}
-        />
-      ) : null}
       <Router>
-        <header>
-          <Header userID={userDetails.data.id} handleToggleSearch={handleToggleSearch}/>
-        </header>
+          { 
+            toggleSearchBar
+            ? <SearchBar handleToggleSearch={handleToggleSearch} headers={userHeaders}/> 
+            : null
+          }
 
-        <nav>
-          <Sidebar
-            channels={userChannels}
-            interactedUsers={userInteractedList}
-            handleAddChannelToggle={handleAddChannelToggle}
-          />
-        </nav>
+      
 
-        <section>
-          <Switch>
-            <Route exact path="/:type/:id">
-              <ChatContainer headers={userHeaders} userDetails={userDetails} />
-            </Route>
-            <Route exact path="/new-message">
-              <ChatNewMessage headers={userHeaders} />
-            </Route>
-          </Switch>
-        </section>
+          {toggleAddChannel ? (
+            <AddChannel
+              headers={userHeaders}
+              handleDummyAddChannel={handleDummyAddChannel}
+              handleClose={handleClose}
+            />
+          ) : null}
+      
+          <header>
+            <Header userID={userDetails.data.id} handleToggleSearch={handleToggleSearch}/>
+          </header>
+
+          <nav>
+            <Sidebar
+              channels={userChannels}
+              interactedUsers={userInteractedList}
+              handleAddChannelToggle={handleAddChannelToggle}
+            />
+          </nav>
+
+          <section>
+            <Switch>
+              <Route path="/:type/:id">
+                <ChatContainer headers={userHeaders} userDetails={userDetails} />
+              </Route>
+              <Route exact path="/new-message">
+                <ChatNewMessage headers={userHeaders} />
+              </Route>
+            </Switch>
+          </section>
       </Router>
     </main>
   );
