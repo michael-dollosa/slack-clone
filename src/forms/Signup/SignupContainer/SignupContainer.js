@@ -26,7 +26,6 @@ const SignupContainer = ({handleSetLoginData}) => {
     }
 
     const handleToggleWarning = () => {
-        console.log("toggle warning")
         setToggleWarning(!toggleWarning)
     }
     const resetInput = () => {
