@@ -14,7 +14,7 @@ const Main = ({ loginData }) => {
   //add channel toggle (test)
   const [toggleAddChannel, setToggleAddChannel] = useState(false);
   const [dummyAddChannel, setDummyAddChannel] = useState(true);
-  
+
   const handleDummyAddChannel = () => {
     setDummyAddChannel(!dummyAddChannel);
   };
@@ -58,8 +58,9 @@ const Main = ({ loginData }) => {
     //trigger getChannel API to get list of channels for current user
     getChannels(headers)
       .then((data) => {
-        console.log("channel data", data)
-        setUserChannels(data)})
+        console.log("channel data", data);
+        setUserChannels(data);
+      })
       .catch((err) => console.log("Get Channel Function Error:", err));
     //trigger userApi for private message user list
     getAllUsers(headers)
@@ -100,7 +101,7 @@ const Main = ({ loginData }) => {
         <section>
           <Switch>
             <Route path="/:type/:id">
-              <ChatContainer headers={userHeaders} userDetails={userDetails}/>
+              <ChatContainer headers={userHeaders} userDetails={userDetails} />
             </Route>
           </Switch>
         </section>
