@@ -4,8 +4,8 @@ import Main from "./pages/Main";
 import Login from "./forms/Login/Login.js";
 import Signup from "./forms/Signup/Signup.js"
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
-import AddUser from "./forms/AddUser/AddUser";
-import { getAllUsers } from "./api/api";
+
+
 
 const App = () => {
   //header should be in headerData
@@ -17,10 +17,10 @@ const App = () => {
     setLoginData(data);
   };
   
+
   return (
     <Router>
-      <div>
-        {/* <AddUser /> */}
+      <div> 
         <Switch>
           <Route path="/signup">
             <Signup handleSetLoginData={handleSetLoginData} />
@@ -38,7 +38,7 @@ const App = () => {
         </Switch>
 
       </div>
-    </Router>
+      </Router>
   );
 };
 

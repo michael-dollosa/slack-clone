@@ -2,32 +2,33 @@ import "../AddUser/AddUser.scss"
 import { HiLockClosed } from "react-icons/hi";
 import { GrFormClose } from "react-icons/gr";
 import { useState, useEffect } from "react";
-import { getAllUsers } from "../../api/api";
+import { searchUser } from "../../api/api";
 
 const AddUser = () => {
     const headers = {
-      token: "bmYDmIK8a7OPeUt73qJ8JQ",
-      client: "qWGX141QEphMy7EYsGdHMQ",
-      expiry: 1627457531,
+      token: "ZaIU1ptRK4arZ3MbSeYrlA",
+      client: "IMV_7cNEPy0gArKnq8slmQ",
+      expiry: 1627560704,
       uid: "steph@gmail.com"
   }
-    const [userList, setUserList] = useState("");
-    const [allUsers, setAllUsers] = useState("");
+    const [searchInput, setSearchInput] = useState("");
 
-    const handleUsers = (event) => {
-        setUserList(event.target.value)
+
+    const handleSearchInput = (event) => {
+        setSearchInput(event.target.value)
     }
 
-    useEffect(() =>{
-        getAllUsers(headers)
-        .then(res => setAllUsers(res));
-    }, [])
+    const searchObj = {
+        str: searchInput,
+        headers: headers
+    }
 
-    useEffect(() =>{
-        setUserList(allUsers.filter((allUser) => allUser.name.toLowerCase())
-        )
-    }, [allUsers])
-    //give up haha tuloy ko mamaya
+    useEffect(() => {
+        searchUser(searchObj)
+          .then(res => console.log("search response: ", res))
+          .catch(err => console.log("search error: ", err))
+    })
+    
 
     return (
         <div className="addUserContainer">
@@ -42,7 +43,9 @@ const AddUser = () => {
 
                 
                 <div className="addUser_searchBar">
-                    <input type="search" placeholder="Enter a name, email, or user group" onChange={event => handleUsers(event)} value={userList} />
+                    <input type="search" placeholder="Enter a name, email, or user group" 
+                    onChange={event => handleSearchInput(event)} value={searchInput}
+                     />
                 </div>
                 <div className="addUser_DoneBtn">
                     <button>Done</button>
