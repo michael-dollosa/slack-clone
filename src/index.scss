@@ -35,4 +35,8 @@ html {
   // font-family: 'Roboto', sans-serif;
   // font-size: 
   // font-weight: 300;
+
+  @media only screen and (max-width: 500px) {
+    font-size: 32.5%;
+  }
 }

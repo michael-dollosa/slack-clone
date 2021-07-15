@@ -86,7 +86,7 @@ const Main = ({ loginData }) => {
       ) : null}
       <Router>
         <header>
-          <Header />
+          <Header userID={userDetails.data.id}/>
         </header>
 
         <nav>
