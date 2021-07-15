@@ -51,13 +51,6 @@ const ChatNewMessage = ({headers , userDetails}) => {
     )
   })
 
-
-  // useEffect(() => {
-  //   searchUser(searchObj)
-  //     .then(res => console.log("search response: ", res))
-  //     .catch(err => console.log("search error: ", err))
-  // })
-
   return(
     <div>
       <main className="chat_container-main">

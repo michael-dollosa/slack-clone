@@ -4,7 +4,7 @@ import { MdAccessTime } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 
-const Header = ({userID}) => {
+const Header = ({userID, handleToggleSearch}) => {
 
     return(
         <div className="header-container ">
@@ -13,9 +13,7 @@ const Header = ({userID}) => {
             </section>
 
             <section className="header-search">
-                <button className="header-search-btn" 
-                // onClick={handleShow}
-                >
+                <button className="header-search-btn" onClick={handleToggleSearch}>
                     <FiSearch className="icon"/>
                     <span>Search Avion School</span> 
                 </button>

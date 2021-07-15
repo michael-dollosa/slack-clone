@@ -18,6 +18,7 @@ const Main = ({ loginData }) => {
   //add channel toggle (test)
   const [toggleAddChannel, setToggleAddChannel] = useState(false);
   const [dummyAddChannel, setDummyAddChannel] = useState(true);
+  const [toggleSearchBar, setToggleSearchBar] = useState(false)
 
   const handleDummyAddChannel = () => {
     setDummyAddChannel(!dummyAddChannel);
@@ -27,28 +28,16 @@ const Main = ({ loginData }) => {
     setToggleAddChannel(!toggleAddChannel);
   };
 
+  const handleToggleSearch = () => {
+    console.log("search toggle")
+    setToggleSearchBar(!toggleSearchBar)
+  }
+
   //close toggle add channel
   const handleClose = () => setToggleAddChannel(false);
 
-  //declare hardcoded header value of current user
-  //this must be replaced by a prop that is passed down from App component when user logs in
-  // const headers = {
-  //   token: "bmYDmIK8a7OPeUt73qJ8JQ",
-  //   client: "qWGX141QEphMy7EYsGdHMQ",
-  //   expiry: 1627457531,
-  //   uid: "steph@gmail.com",
-  // };
   const [userHeaders, setUserHeaders] = useState("");
   const [userDetails, setUserDetails] = useState("");
-
-  //declare hardcoded header value of current user
-  //this must be replaced by a prop that is passed down from App component when user logs in
-  // const headers = {
-  //   token: "bmYDmIK8a7OPeUt73qJ8JQ",
-  //   client: "qWGX141QEphMy7EYsGdHMQ",
-  //   expiry: 1627457531,
-  //   uid: "steph@gmail.com"
-  // }
 
   useEffect(() => {
     console.log("useEffect");
@@ -76,7 +65,7 @@ const Main = ({ loginData }) => {
     getInteractedUsers(headers)
       .then((data) => setUserInteractedList(data.data.data))
       .catch((err) => console.log("Fetch Interacted Users Error: ", err));
-  }, [dummyAddChannel]);
+  }, [dummyAddChannel, toggleSearchBar]);
 
   //render
 
@@ -94,9 +83,11 @@ const Main = ({ loginData }) => {
 
   return (
     <main className="main-container">
-      {/* <SearchBar 
-        handleClose={handleClose}
-      /> */}
+      { 
+        toggleSearchBar
+        ? null
+        : <SearchBar handleToggleSearch={handleToggleSearch} headers={userHeaders}/> 
+      }
       {toggleAddChannel ? (
         <AddChannel
           headers={userHeaders}
@@ -106,7 +97,7 @@ const Main = ({ loginData }) => {
       ) : null}
       <Router>
         <header>
-          <Header userID={userDetails.data.id} />
+          <Header userID={userDetails.data.id} handleToggleSearch={handleToggleSearch}/>
         </header>
 
         <nav>
