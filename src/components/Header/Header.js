@@ -1,9 +1,10 @@
 import "../Header/Header.scss";
+import { useState } from "react";
 import { MdAccessTime } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 
-const Header = ({userID}) => {
+const Header = ({userID, handleShow}) => {
 
     return(
         <div className="header-container ">
@@ -12,7 +13,7 @@ const Header = ({userID}) => {
             </section>
 
             <section className="header-search">
-                <button className="header-search-btn">
+                <button className="header-search-btn" onClick={handleShow}>
                     <FiSearch className="icon"/>
                     <span>Search Avion School</span> 
                 </button>

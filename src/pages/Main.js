@@ -6,8 +6,16 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./Main.scss";
 import AddChannel from "../components/Sidebar/AddChannel";
+import SearchBar from "../components/Header/Search/HeaderSearch"
 
 const Main = ({ loginData }) => {
+
+  const [show, setShow] = useState(false)
+  const handleShow = () => {
+      setShow(!show)
+  }
+  const handleClose = () => setShow(false);
+
   //declare states for application data
   const [userChannels, setUserChannels] = useState(""); //state to get channel data
   const [userList, setUserList] = useState(""); 
@@ -82,6 +90,9 @@ const Main = ({ loginData }) => {
 
   return (
     <main className="main-container">
+      <SearchBar 
+        handleClose={handleClose}
+      />
       {toggleAddChannel ? (
         <AddChannel
           headers={userHeaders}
@@ -90,7 +101,10 @@ const Main = ({ loginData }) => {
       ) : null}
       <Router>
         <header>
-          <Header userID={userDetails.data.id}/>
+          <Header
+            handleShow={handleShow} 
+            userID={userDetails.data.id}
+            />
         </header>
 
         <nav>

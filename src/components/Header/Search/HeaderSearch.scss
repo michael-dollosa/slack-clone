@@ -2,23 +2,28 @@
     width: 100%;
     height: 100vh;
     padding-left: 22rem;
-    margin-top: 0.5rem;
+    top: 0.5rem;
+    position: absolute;
+    z-index: 10;
+    
 }
 
 .searchBar_items{
-    border: 1px solid black;
     width: 81%;
     height: 30vh;
     border-radius: 7px;
+    border: 1px solid var(--color-gray-light);
+    background-color: white;
+    z-index: 10;
 }
 
 .searchBar_input{
-    border: 1px solid red;
     height: 6vh;
     padding-left: 1rem;
     padding-right: 1rem;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid var(--color-gray-light);
 }
 
 .searchBar_input>input{
@@ -34,8 +39,46 @@
 .icon-close{
     padding: 0.5rem;
     font-size: 3.5rem;
+    cursor: pointer;
 }
+
 .searchBar_body{
-    border: 1px solid blue;
+    padding: 2rem;
     height: 17vh;
+    font-size: 1.3rem;
+    color: var(--font-color-light-gray);
+}
+
+.searchBar-body-buttons{
+    margin-top: 1rem;
+    width: 50%;
+    height: 5vh;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchBar-body-buttons > button{
+    padding: 0 12px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background-color: rgba(29,155,209,.1);
+    cursor: pointer;
+}
+.searchBar-body-buttons > button:hover{
+    background-color: rgba(0, 0, 255, 0.705);
+    color: var(--color-white);
+}
+
+.searchBar_footer{
+    width: 100%;
+    height: 6.7vh;
+    padding: 1rem;
+    font-size: 1.3rem;
+    background-color: #f8f8f8;
+    border-radius: 7px;
+}
+
+.footer-items{
+    float: right;
 }
