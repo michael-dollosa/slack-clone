@@ -71,7 +71,11 @@
 
 .header-user-img{
   position: absolute;
-  right: 0;
-  padding: 1.4rem;
-  border-radius: 10px;
+  right: 2rem;
+  height: 2.6rem;
+  width: 2.6rem;
+  overflow: hidden;
+  >img{
+    border-radius: 4px;
+  }
 }
