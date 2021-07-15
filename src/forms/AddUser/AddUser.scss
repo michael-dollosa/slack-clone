@@ -1,61 +1,59 @@
-.addUserContainer{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
+.addUserContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
 }
 
-.addUser_Items{
-    padding: 1rem;
-    width: 25vw;
-    height: 20vh;
-    border: 1px solid var(--font-color-black);
-    border-radius: 5px;
+.addUser_Items {
+  padding: 1rem;
+  width: 25vw;
+  height: 20vh;
+  border: 1px solid var(--font-color-black);
+  border-radius: 5px;
 
-    > h5{
-        color: var(--font-color-light-gray);
-        font-family: inherit;
-        font-weight: normal;
-    }
-}
-
-.addUser_Text{
-    display: flex;
-    justify-content: space-between;
+  > h5 {
+    color: var(--font-color-light-gray);
     font-family: inherit;
-    font-size: 1.2rem;
-
-    .closebtn{
-        display: flex;
-        float: right;
-        font-size: 2rem;
-    }
+    font-weight: normal;
+    font-size: 90px;
+  }
 }
 
-.addUser_searchBar >input{
-    margin-top: 1rem;
-    width: 95%;
-    height: 5vh;
-    padding: 0.5rem;
-    outline: none;
-}
+.addUser_Text {
+  display: flex;
+  justify-content: space-between;
+  font-family: inherit;
+  font-size: 1.2rem;
 
-.addUser_DoneBtn{
-    margin-top: 1rem;
+  .closebtn {
+    display: flex;
     float: right;
-    width: 20%;
-
-    > button{
-        width: 100%;
-        height: 4vh;
-        border-radius: 5px;
-        border-style: none;
-        outline: none;
-    }
+    font-size: 2rem;
+  }
 }
 
+.addUser_searchBar > input {
+  margin-top: 1rem;
+  width: 95%;
+  height: 5vh;
+  padding: 0.5rem;
+  outline: none;
+}
 
+.addUser_DoneBtn {
+  margin-top: 1rem;
+  float: right;
+  width: 20%;
 
+  > button {
+    width: 100%;
+    height: 4vh;
+    border-radius: 5px;
+    border-style: none;
+    outline: none;
+  }
+}
