@@ -11,14 +11,15 @@ import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { GoMention } from "react-icons/go";
 import { BiChevronDown } from "react-icons/bi";
 import { CgLock } from "react-icons/cg";
-import { Link, NavLink } from "react-router-dom";
-
+import { useHistory, NavLink } from "react-router-dom";
+  
 
 
 const Sidebar = ({ channels, interactedUsers, handleAddChannelToggle }) => {
 
   const [toggleUserDropdown, setToggleUserDropdown] = useState(false)
   const [toggleChannelDropdown, setToggleChannelDropdown] = useState(false)
+  const history = useHistory()
 
   const handleToggleUserDropdown = () => {
     setToggleUserDropdown(!toggleUserDropdown)
@@ -26,6 +27,10 @@ const Sidebar = ({ channels, interactedUsers, handleAddChannelToggle }) => {
 
   const handleToggleChannelDropdown = () => {
     setToggleChannelDropdown(!toggleChannelDropdown)
+  }
+
+  const newMessageHistoryPush = () => {
+    history.push(`/new-message`)
   }
   //for cleaner code - always use a variable if you will map a list of component.
   //then just call the variable via jsx
@@ -43,9 +48,9 @@ const Sidebar = ({ channels, interactedUsers, handleAddChannelToggle }) => {
   const renderUserList = interactedUsers
   ? interactedUsers.map((user, index) => {
     return (
-      <Link to={`/user/${user.id}`}>
+      <NavLink to={`/user/${user.id}`}>
         <SidebarOption key={index} Icon={`https://picsum.photos/id/${user.id}/20`} title={user.uid}  optionType="user"/>
-      </Link>
+      </NavLink>
     );
   })
   : null
@@ -58,7 +63,7 @@ const Sidebar = ({ channels, interactedUsers, handleAddChannelToggle }) => {
             Avion School <BiChevronDown className="icon"/>
           </h2>
         </div>
-        <FiEdit />
+        <FiEdit onClick={newMessageHistoryPush}/>
       </div>
     <div className="sidebar-option-container">
 
