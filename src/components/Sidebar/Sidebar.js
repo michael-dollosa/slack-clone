@@ -23,7 +23,7 @@ const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
   ? channels.data.data.map((channel, index) => {
     return (
       <Link to={`/channel/${channel.id}`}>
-        <SidebarOption key={index} Icon={CgLock} title={channel.name} />
+        <SidebarOption key={index} Icon={CgLock} title={channel.name} optionType="channel"/>
       </Link>
     );
   })
@@ -32,7 +32,7 @@ const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
   const renderUserList = users.data.data.map((user, index) => {
     return (
       <Link to={`/user/${user.id}`}>
-        <SidebarOption key={index} Icon={ArrowDropDownIcon} title={user.uid} />
+        <SidebarOption key={index} Icon={ArrowDropDownIcon} title={user.uid}  optionType="user"/>
       </Link>
     );
   });
@@ -42,12 +42,12 @@ const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
       <div className="sidebar-header">
         <div className="sidebar-info">
           <h2>
-            Avion School <BiChevronDown />
+            Avion School <BiChevronDown className="icon"/>
           </h2>
         </div>
         <FiEdit />
       </div>
-
+    <div className="sidebar-option-container">
       <SidebarOption Icon={BiMessageRoundedDetail} title="Threads" />
       <SidebarOption Icon={IoChatbubblesOutline} title="All DMs" />
       <SidebarOption Icon={HiOutlineDocumentDuplicate} title="Drafts" />
@@ -60,7 +60,9 @@ const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
       <SidebarOption Icon={MoreVertIcon} title="More" />
 
       <SidebarOption Icon={ArrowDropDownIcon} title="Channels" />
-      {renderChannelList}
+        <div className="sidebaroption-child">
+         {renderChannelList}
+        </div>
       <SidebarOption
         Icon={AddIcon}
         handleAddChannelToggle={handleAddChannelToggle}
@@ -68,8 +70,12 @@ const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
       />
 
       <SidebarOption Icon={ArrowDropDownIcon} title="Direct Messages" />
-      {renderUserList}
+        <div className="sidebaroption-child">
+          {renderUserList}
+        </div>
       <SidebarOption Icon={AddIcon} title="Add teammates" />
+    </div>
+      
     </div>
   );
 };
