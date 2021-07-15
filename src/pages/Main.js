@@ -7,15 +7,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./Main.scss";
 import AddChannel from "../components/Sidebar/AddChannel";
 import ChatNewMessage from "../components/Chat/ChatNewMessage/ChatNewMessage";
-import SearchBar from "../components/Header/Search/HeaderSearch"
+import SearchBar from "../components/Header/Search/HeaderSearch";
 
 const Main = ({ loginData }) => {
-
   //declare states for application data
   const [userChannels, setUserChannels] = useState(""); //state to get channel data
   const [userList, setUserList] = useState("");
   const [userInteractedList, setUserInteractedList] = useState(""); //state to get user Lists/ users that have messaged current user and/or was messaged by current user
-  //add channel toggle (test)
+  //add channel toggle
   const [toggleAddChannel, setToggleAddChannel] = useState(false);
   const [dummyAddChannel, setDummyAddChannel] = useState(true);
 

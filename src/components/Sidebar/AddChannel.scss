@@ -13,20 +13,21 @@
 }
 
 .addChannel-form-container::before {
+  display: flex;
   content: "";
   top: 0;
   position: absolute;
   height: 100vh;
   width: 100%;
   background-color: black;
-  opacity: 0.3;
+  opacity: 0.6;
 }
 
 .addChannel-form-items {
   padding: 1rem;
   width: 28%;
   height: 32vh;
-  border: 1px solid var(--font-color-black);
+  border: 1px;
   border-radius: 5px;
   background-color: var(--font-color-white-header);
   z-index: 5;

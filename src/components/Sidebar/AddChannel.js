@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./AddChannel.scss";
 import { IoCloseOutline } from "react-icons/io5";
 import { createChannel } from "../../api/api";
+import AddUser from "../../forms/AddUser/AddUser";
 
 const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
   const [addChannelName, setChannel] = useState("");
@@ -57,17 +58,6 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
           </h2>
         </div>
 
-        <div
-          ClassName={
-            formToggle
-              ? `addChannel-form-header addChannel-hidden`
-              : `addChannel-form-header  addChannel-block`
-          }
-        >
-          <h2>Add people</h2>
-          <h6>{addChannelName}</h6>
-        </div>
-
         <form onSubmit={onSubmit}>
           <div
             className={
@@ -109,7 +99,9 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
             }
           >
             <label htmlFor="text">
-              <h4>Add members</h4>
+              <h4>Add people</h4>
+              <h6>{addChannelName}</h6>
+              <IoCloseOutline onClick={handleClose} />
             </label>
             <input
               type="number"
@@ -121,12 +113,12 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
             <div
               className={
                 formToggle
-                  ? `addChannel-form-btn addChannel-hidden`
-                  : `addChannel-form-btn addChannel-block`
+                  ? `addChannel-form-btn addChannel-block`
+                  : `addChannel-form-btn addChannel-hidden`
               }
             >
               <button className="btn">
-                <h3>Add</h3>
+                <h3>Done</h3>
               </button>
             </div>
           </div>
