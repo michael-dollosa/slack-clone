@@ -1,0 +1,20 @@
+.container-warning{
+  margin-bottom: 3rem;
+  background-color: rgb(250, 143, 143);
+  >.warning{
+      padding: 1rem;
+      >h1{
+          font-family: inherit;
+          font-size: 1.4rem;
+          color: rgb(184, 46, 46);
+      }
+  }
+}
+
+.show-warning{
+  visibility: visible;
+}
+
+.hide-warning{
+  visibility: hidden;
+}

@@ -4,6 +4,7 @@
     background-color: transparent;
     font-size: 20px;
     color: var(--font-color-white-default);
+    
 }
 
 .header-container {
@@ -42,7 +43,7 @@
   font-family: inherit;
   font-size: 1.3rem;
   z-index: -1;
-
+  cursor: pointer;
   >.icon{
     margin-right: 1rem;
     font-size: 1.4rem;
