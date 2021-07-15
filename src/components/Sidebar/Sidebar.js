@@ -12,8 +12,6 @@ import { GoMention } from "react-icons/go";
 import { BiChevronDown } from "react-icons/bi";
 import { CgLock } from "react-icons/cg";
 import { useHistory, NavLink } from "react-router-dom";
-  
-
 
 const Sidebar = ({ channels, interactedUsers, handleAddChannelToggle }) => {
 
