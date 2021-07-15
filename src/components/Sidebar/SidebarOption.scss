@@ -3,15 +3,23 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  padding-left: 1rem;
 }
 
 .sidebar-option {
   display: flex;
   align-items: center;
-  height: 3.5vh;
-  padding: 2px 0 2px 0;
+  height: 3vh;
+  // padding: 2px 0 2px 0;
   @media only screen and (max-width: 500px) {
     height: 2vh;
+  }
+}
+
+.sidebar-option-user-img{
+  padding-right: 1rem;
+  >img{
+    border-radius: 2px;
   }
 }
 
@@ -22,8 +30,8 @@
 }
 
 .sidebar-option-icon {
-  padding: 10px;
-  font-size: 36px !important;
+  padding: 5px;
+  font-size: 25px !important;
   color: #bcabbc;
   @media only screen and (max-width: 500px) {
     font-size: 18px !important;
@@ -50,4 +58,11 @@
 
 a {
   text-decoration: none;
+}
+
+.sidebar-option-flex-center{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }

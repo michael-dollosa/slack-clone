@@ -58,4 +58,48 @@
 
 .sidebaroption-child{
   padding-left: 1rem;
+
+  &.hidden{
+    display: none;
+  }
+}
+
+.sidebar-option-header,
+.sidebar-option-channelList,
+.sidebar-option-userList{
+  padding-bottom: 1rem;
+}
+
+.sidebar-option-list-header{
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  
+  >.icon{
+    margin-right: 2px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: .3s;
+    &.rotate{
+      transform: rotateZ(-90deg);
+    }
+  }
+  >.icon:hover{
+    background-color: #7e43813f;
+    border-radius: 5px;
+  }
+  
+  >h1{
+    font-weight: 400;
+    font-size: 1.45rem;
+    color: #bcabbc;
+    @media only screen and (max-width: 500px) {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.active{
+  background-color: blue;
 }
