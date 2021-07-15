@@ -1,15 +1,35 @@
-import { registerUser, userLogin, sendMessage, getMessage, createChannel, getChannels, getChannelDetail, addMemberToChannel, getAllUsers } from "./api/api"
-import { useState } from "react"
+import { searchUser, registerUser, userLogin, sendMessage, getMessage, createChannel, getChannels, getChannelDetail, addMemberToChannel, getAllUsers } from "./api/api"
+import { useState, useEffect } from "react"
 
 const ApiTestPage = () => {
 
   //hardcoded header for tests. But for the application, we should get the header parameter from the login return data.
   //take note of the "key" => it should match the name of the keys that are expected as parameter of the API function
   const headers = {
-    token: "3kV4gM7BW2vZf-z9S5uQ2A",
-    client: "XZ0OzNSZhjehbS9qQ3ffyQ",
-    expiry: 1627298670,
-    uid: "dolee@example.com"
+    token: "PIj6UEKNzUX7yJqbVfyk2g",
+    client: "j7uq8--cOJN32bBEfpOoug",
+    expiry: 1627559290,
+    uid: "testnochannel@example.com"
+  }
+
+  //state for handling input
+  const [searchInput, setSearchInput] = useState("")
+
+  const searchObj = {
+    str: searchInput,
+    headers: headers
+  }
+
+  useEffect(() => {
+    searchUser(searchObj)
+      .then(res => console.log("search response: ", res))
+      .catch(err => console.log("search error: ", err))
+  })
+
+  
+
+  const handleSearchInput = (event) => {
+    setSearchInput(event.target.value)
   }
 
   const handleLogin = () => {
@@ -84,6 +104,8 @@ const ApiTestPage = () => {
       <button onClick={handleGetChannelDetails}>Get Channel Details </button>
       <br />
       <button onClick={handleGetMessage}> Get Message</button>
+
+      <input type="text" value={searchInput} onChange={event => handleSearchInput(event)} />
     </div>
   )
 }

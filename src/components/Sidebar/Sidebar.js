@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
   //for cleaner code - always use a variable if you will map a list of component.
   //then just call the variable via jsx
-
+  //in this variable, since we are dealing with API data, variable in conditioned based first if there is data or not.
   const renderChannelList = channels.data.data 
   ? channels.data.data.map((channel, index) => {
     return (
