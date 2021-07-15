@@ -8,6 +8,7 @@ import "./Main.scss";
 import AddChannel from "../components/Sidebar/AddChannel";
 import ChatNewMessage from "../components/Chat/ChatNewMessage/ChatNewMessage";
 import SearchBar from "../components/Header/Search/HeaderSearch";
+import AddUser from "../forms/AddUser/AddUser";
 
 const Main = ({ loginData }) => {
   //declare states for application data
@@ -93,9 +94,8 @@ const Main = ({ loginData }) => {
 
   return (
     <main className="main-container">
-      {/* <SearchBar 
-        handleClose={handleClose}
-      /> */}
+      {/* <AddUser headers={userHeaders}/> */}
+
       {toggleAddChannel ? (
         <AddChannel
           headers={userHeaders}
