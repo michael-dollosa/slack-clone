@@ -14,6 +14,7 @@ const Main = ({ loginData }) => {
   //add channel toggle (test)
   const [toggleAddChannel, setToggleAddChannel] = useState(false);
   const [dummyAddChannel, setDummyAddChannel] = useState(true);
+  
   const handleDummyAddChannel = () => {
     setDummyAddChannel(!dummyAddChannel);
   };
