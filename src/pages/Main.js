@@ -7,14 +7,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./Main.scss";
 import AddChannel from "../components/Sidebar/AddChannel";
 import ChatNewMessage from "../components/Chat/ChatNewMessage/ChatNewMessage";
+import SearchBar from "../components/Header/Search/HeaderSearch"
 
 const Main = ({ loginData }) => {
-
-  const [show, setShow] = useState(false)
-  const handleShow = () => {
-      setShow(!show)
-  }
-  const handleClose = () => setShow(false);
 
   //declare states for application data
   const [userChannels, setUserChannels] = useState(""); //state to get channel data
@@ -90,9 +85,9 @@ const Main = ({ loginData }) => {
 
   return (
     <main className="main-container">
-      <SearchBar 
+      {/* <SearchBar 
         handleClose={handleClose}
-      />
+      /> */}
       {toggleAddChannel ? (
         <AddChannel
           headers={userHeaders}
@@ -102,7 +97,7 @@ const Main = ({ loginData }) => {
       <Router>
         <header>
           <Header
-            handleShow={handleShow} 
+            // handleShow={handleShow} 
             userID={userDetails.data.id}
             />
         </header>
