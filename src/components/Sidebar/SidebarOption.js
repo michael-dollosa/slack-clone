@@ -3,9 +3,6 @@ import "./SidebarOption.scss";
 import { useHistory } from "react-router-dom";
 import AddChannel from "./AddChannel";
 
-<<<<<<< HEAD
-const SidebarOption = ({Icon, id, addChannelOption, title, handleAddChannelToggle = null,}) => {
-=======
 const SidebarOption = ({
   Icon,
   id,
@@ -14,7 +11,6 @@ const SidebarOption = ({
   handleAddChannelToggle = null,
   optionType
 }) => {
->>>>>>> 7415c3772a797646c456cb6dc3a8363d782c7923
   return (
     <section className="sidebar-option-item">
       <div className="sidebar-option">

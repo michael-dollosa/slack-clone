@@ -1,4 +1,4 @@
-import { Search } from "@material-ui/icons";
+import { FiSearch } from "react-icons/fi";
 import { GrFormClose } from "react-icons/gr";
 import "../Search/HeaderSearch.scss"
 import { Link } from "react-router-dom";
@@ -15,11 +15,11 @@ const SearchBar = () => {
         <div className="searchBar_container">
             <div className="searchBar_items">
                 <div className="searchBar_input">
-                    <Search />
+                    <FiSearch className="searchBar-icon" />
                     <input type="search" 
                     placeholder="Search the log of All Conversation and Knowledge">
                     </input>
-                    <GrFormClose />
+                    <GrFormClose className="icon-close" />
                 </div>
                 <div className="searchBar_body">
                     <span>I'm Looking for...</span>
