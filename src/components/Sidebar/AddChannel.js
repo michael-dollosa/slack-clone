@@ -33,7 +33,13 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
 
   return (
     <div className="addChannel-form-container">
-      <div className="addChannel-form-items">
+      <div
+        className={
+          formToggle
+            ? `addChannel-form-items addChannel-hidden`
+            : `addChannel-form-items addChannel-block`
+        }
+      >
         <div
           className={
             formToggle
@@ -78,7 +84,6 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
               }}
             ></input>
           </div>
-
           <div
             className={
               formToggle
@@ -90,8 +95,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
               <h3>Create</h3>
             </button>
           </div>
-
-          <div
+          {/* <div
             className={
               formToggle
                 ? `addChannel-form addChannel-block`
@@ -121,6 +125,23 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
                 <h3>Done</h3>
               </button>
             </div>
+          </div> */}
+
+          <div
+            className={
+              formToggle
+                ? `addUser-form addChannel-hidden`
+                : `addUser-form addChannel-block`
+            }
+          >
+            <AddUser
+              className={
+                formToggle
+                  ? `addUser-form addChannel-hidden`
+                  : `addUser-form addChannel-block`
+              }
+              headers={headers}
+            />
           </div>
         </form>
       </div>
