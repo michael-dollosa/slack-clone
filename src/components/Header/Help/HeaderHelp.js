@@ -1,4 +1,4 @@
-import "../Header/HeaderHelp.scss"
+import "../Help/HelpBtn.scss";
 
 const HelpBtn = () => {
 

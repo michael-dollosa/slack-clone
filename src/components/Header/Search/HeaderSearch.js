@@ -1,4 +1,4 @@
-import "../Header/HeaderSearch.scss"
+import "../Search/HeaderSearch.scss"
 
 const SearchBar = () => {
     return (

@@ -20,8 +20,8 @@ const App = () => {
   return (
     <Router>
       <div>
-        {/* <AddUser /> */}
-        <Switch>
+        <AddUser />
+        {/* <Switch>
           <Route path="/signup">
             <Signup handleSetLoginData={handleSetLoginData} />
           </Route>
@@ -35,7 +35,7 @@ const App = () => {
             : <Redirect to="/login" />
           }
           </Route>
-        </Switch>
+        </Switch> */}
 
       </div>
     </Router>

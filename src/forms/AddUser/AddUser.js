@@ -11,23 +11,19 @@ const AddUser = () => {
       expiry: 1627457531,
       uid: "steph@gmail.com"
   }
-    const [userList, setUserList] = useState("");
-    const [allUsers, setAllUsers] = useState("");
+    const [searchInput, setSearchInput] = useState("");
 
-    const handleUsers = (event) => {
-        setUserList(event.target.value)
+
+    const handleSearchInput = (event) => {
+        setSearchInput(event.target.value)
     }
 
-    useEffect(() =>{
-        getAllUsers(headers)
-        .then(res => setAllUsers(res));
-    }, [])
-
-    useEffect(() =>{
-        setUserList(allUsers.filter((allUser) => allUser.name.toLowerCase())
-        )
-    }, [allUsers])
-    //give up haha tuloy ko mamaya
+    useEffect(() => {
+        searchUser(searchObj)
+          .then(res => console.log("search response: ", res))
+          .catch(err => console.log("search error: ", err))
+    })
+    
 
     return (
         <div className="addUserContainer">
@@ -42,7 +38,9 @@ const AddUser = () => {
 
                 
                 <div className="addUser_searchBar">
-                    <input type="search" placeholder="Enter a name, email, or user group" onChange={event => handleUsers(event)} value={userList} />
+                    <input type="search" placeholder="Enter a name, email, or user group" 
+                    onChange={event => handleSearchInput(event)} value={searchInput}
+                     />
                 </div>
                 <div className="addUser_DoneBtn">
                     <button>Done</button>

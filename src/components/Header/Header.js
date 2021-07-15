@@ -1,8 +1,9 @@
 import "../Header/Header.scss";
-import HelpBtn from "./HeaderHelp";
-import History from "./HeaderHistory";
-import SearchBar from "./HeaderSearch";
-import HeaderUser from "./HeaderUser";
+import History from "./History/HeaderHistory";
+import SearchBar from "./Search/HeaderSearch";
+import HelpBtn from "./Help/HeaderHelp"
+import HeaderUser from "./User/HeaderUser";
+
 
 const Header = () => {
     return (

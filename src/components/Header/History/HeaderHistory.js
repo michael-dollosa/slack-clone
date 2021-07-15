@@ -1,4 +1,4 @@
-import "../Header/HeaderHistory.scss"
+import "../History/HeaderHistory.scss"
 import  { GrClock } from 'react-icons/gr'
 
 const History = () => {
