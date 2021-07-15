@@ -9,6 +9,7 @@ import { IoChatbubblesOutline } from "react-icons/io5";
 import { IoPeopleOutline } from "react-icons/io5"
 
 const SearchBar = ({handleClose}) => {
+
     
     return (
         <div className="searchBar_container" >
