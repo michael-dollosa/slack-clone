@@ -15,7 +15,7 @@ import { Link, NavLink } from "react-router-dom";
 
 
 
-const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
+const Sidebar = ({ channels, interactedUsers, handleAddChannelToggle }) => {
 
   const [toggleUserDropdown, setToggleUserDropdown] = useState(false)
   const [toggleChannelDropdown, setToggleChannelDropdown] = useState(false)
@@ -39,14 +39,16 @@ const Sidebar = ({ channels, users, handleAddChannelToggle }) => {
     );
   })
   : null
-
-  const renderUserList = users.data.data.map((user, index) => {
+  
+  const renderUserList = interactedUsers
+  ? interactedUsers.map((user, index) => {
     return (
       <Link to={`/user/${user.id}`}>
         <SidebarOption key={index} Icon={`https://picsum.photos/id/${user.id}/20`} title={user.uid}  optionType="user"/>
       </Link>
     );
-  });
+  })
+  : null
 
   return (
     <div className="sidebar-container-main">

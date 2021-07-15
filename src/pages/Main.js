@@ -1,7 +1,7 @@
 import ChatContainer from "../components/Chat/ChatContainer.js/ChatContainer";
 import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
-import { getAllUsers, getChannels, getMessage } from "../api/api";
+import { getAllUsers, getChannels, getInteractedUsers } from "../api/api";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./Main.scss";
@@ -10,7 +10,8 @@ import AddChannel from "../components/Sidebar/AddChannel";
 const Main = ({ loginData }) => {
   //declare states for application data
   const [userChannels, setUserChannels] = useState(""); //state to get channel data
-  const [userList, setUserList] = useState(""); //state to get user Lists/ users that have messaged current user and/or was messaged by current user
+  const [userList, setUserList] = useState(""); 
+  const [userInteractedList, setUserInteractedList] = useState("");//state to get user Lists/ users that have messaged current user and/or was messaged by current user
   //add channel toggle (test)
   const [toggleAddChannel, setToggleAddChannel] = useState(false);
   const [dummyAddChannel, setDummyAddChannel] = useState(true);
@@ -65,6 +66,9 @@ const Main = ({ loginData }) => {
     getAllUsers(headers)
       .then((data) => setUserList(data))
       .catch((err) => console.log(err));
+    getInteractedUsers(headers)
+        .then((data) => setUserInteractedList(data.data.data))
+        .catch((err) => console.log("Fetch Interacted Users Error: ", err))
   }, [dummyAddChannel]);
 
   //render
@@ -72,7 +76,7 @@ const Main = ({ loginData }) => {
   //always have a condition to render a Loading state
   //since we are using API which is asynchronus, components will mount even without the data. Since our components uses data, we need first to set a condition to render nothing while data is being populated
   //if we don't do this, our components will have an error -> usually error regarding no data, or data in the variable being used is undefined
-  if (!userChannels.data || !userList.data || !userList.data.data.length) {
+  if (!userChannels.data || !userList.data || !userList.data.data.length || !userInteractedList ) {
     return <h1>Loading</h1>;
   }
 
@@ -92,7 +96,7 @@ const Main = ({ loginData }) => {
         <nav>
           <Sidebar
             channels={userChannels}
-            users={userList}
+            interactedUsers={userInteractedList}
             handleAddChannelToggle={handleAddChannelToggle}
           />
         </nav>
