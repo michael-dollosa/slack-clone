@@ -33,12 +33,13 @@ const ChatNewMessage = ({headers , userDetails}) => {
       setToggleSearch(false)
     }
     document.body.addEventListener("click", hideSearchResult, { capture: true })
-
+    console.log("search List", searchList)
     //cleanup
     return () => {
       document.body.removeEventListener("click", hideSearchResult, { capture: true })
     }
-  }, [])
+  }, [searchList])
+
 
   const searchItemList = searchList.map(item => {
     return(
@@ -51,13 +52,6 @@ const ChatNewMessage = ({headers , userDetails}) => {
     )
   })
 
-
-  // useEffect(() => {
-  //   searchUser(searchObj)
-  //     .then(res => console.log("search response: ", res))
-  //     .catch(err => console.log("search error: ", err))
-  // })
-
   return(
     <div>
       <main className="chat_container-main">
@@ -68,7 +62,13 @@ const ChatNewMessage = ({headers , userDetails}) => {
           
         </section>
         <div className={toggleSearch ? `search-result-container container-visible` : `search-result-container`  }  >
-            {searchItemList}
+            {
+              searchList.length > 0
+              ? searchItemList
+              : <div className="search-result-item">
+                  <h1>No Item</h1>
+                </div>
+            }
           </div>
       </main>
     </div>

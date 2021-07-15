@@ -25,7 +25,7 @@
 .search-result-container{
   display: none;
   margin-top: -1rem;
-  width: 90%;
+  width: 95%;
   // height: 30rem; //to be deleted
   max-height: 20rem;
   border-radius: 5px;
@@ -33,6 +33,7 @@
   background-color: #F7F7F7;
   overflow-y: scroll;
   padding: 1rem 0 1rem 0;
+  
 }
 
 .search-result-item{
@@ -63,7 +64,6 @@
   >h3{
     color: var(--color-white);
   }
-  
 }
 
 .container-visible{
