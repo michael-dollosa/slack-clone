@@ -106,14 +106,7 @@ const Main = ({ loginData }) => {
       ) : null}
       <Router>
         <header>
-<<<<<<< HEAD
-          <Header
-            // handleShow={handleShow} 
-            userID={userDetails.data.id}
-            />
-=======
           <Header userID={userDetails.data.id} />
->>>>>>> cfd86e23b88f50e28c0200676cad00c1d00459cb
         </header>
 
         <nav>
