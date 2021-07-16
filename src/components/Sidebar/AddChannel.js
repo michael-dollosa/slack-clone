@@ -129,7 +129,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
                 setChannel(e.target.value);
               }}
               minlength="3"
-              maxlength="10"
+              maxlength="15"
               required
             ></input>
           </div>
