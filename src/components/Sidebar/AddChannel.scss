@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap");
-
 .addChannel-form-container {
-  display: flex;
-  flex-direction: column;
   position: absolute;
   height: 100vh;
   width: 100%;
@@ -11,7 +8,13 @@
   background: transparent;
   z-index: 1;
 }
-
+.addChannel-form {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .addChannel-form-container::before {
   content: "";
   top: 0;
@@ -19,73 +22,53 @@
   height: 100vh;
   width: 100%;
   background-color: black;
-  opacity: 0.6;
+  opacity: 0.3;
 }
-
 .addChannel-form-items {
   padding: 1rem;
   width: 28%;
   height: 32vh;
-  border: 1px;
   border-radius: 5px;
+  border: 1px solid var(--font-color-black);
   background-color: var(--font-color-white-header);
   z-index: 5;
 }
-
-.addChannel-form-items::before {
-  height: 10vh;
-  border: 1px;
-}
-
 .addChannel-form-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  min-height: 70px;
-  overflow: hidden;
-  padding: 10px;
+  padding: 0.5rem;
+  height: 6vh;
+  font-family: inherit;
+  font-weight: 400px;
+  color: #1d1c1d;
+}
+.addChannel-closeBtn {
+  font-size: 2rem;
+  float: right;
+}
+h5 {
+  color: #616061;
+  font-size: 1.2rem;
+  font-family: inherit;
+  font-weight: normal;
+  padding-bottom: 2rem;
+}
+.addChannel-form-input {
+  font-size: 1.2rem;
+  color: #1d1c1d;
+}
+.addChannel-form-input > input {
   width: 100%;
-
-  > svg {
-    font-size: x-large;
-  }
-
-  > h1,
-  h2 {
-    font-family: "Noto Sans", sans-serif;
-    font-weight: normal;
-    font-size: 30px;
-  }
+  background: var(--color-white);
 }
-
-// .addChannel-form-closebtn {
-//   display: flex;
-// }
-
-// .addChannel-form-text {
-//   text-align: center;
-// }
-
-.addChannel-form-text > h2 {
-  color: var(--color-gray-dark);
-  font-weight: 500;
-  font-size: 15px;
-  margin-left: 1.5rem;
-}
-
 .addChannel-hidden {
   display: none;
 }
-
 .addChannel-block {
   display: block;
 }
-
 .addChannel-form {
   margin-top: 2rem;
   margin-left: 1.5rem;
 }
-
 .addChannel-form > input {
   margin-top: 1rem;
   width: 95%;
@@ -93,14 +76,12 @@
   padding: 0.5rem;
   outline: none;
 }
-
 .addChannel-form-btn {
   margin-top: 3rem;
   margin-right: 2.2rem;
   float: right;
   width: 20%;
 }
-
 .btn {
   width: 100%;
   height: 4vh;

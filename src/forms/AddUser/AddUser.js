@@ -38,12 +38,10 @@ const AddUser = ({ headers }) => {
   }, []);
   const searchUserItemList = searchUserList.map((item) => {
     return (
-      <NavLink to={`/user/${item.id}`}>
-        <div className="search-result-item">
-          <img src={`https://picsum.photos/id/${item.id}/20`} />
-          <h3>{item.email}</h3>
-        </div>
-      </NavLink>
+      <div className="search-result-item">
+        <img src={`https://picsum.photos/id/${item.id}/20`} />
+        <h3>{item.email}</h3>
+      </div>
     );
   });
   return (
