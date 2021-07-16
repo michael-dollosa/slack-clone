@@ -3,65 +3,104 @@ import "./AddChannel.scss";
 import { IoCloseOutline } from "react-icons/io5";
 import { createChannel } from "../../api/api";
 import AddUser from "../../forms/AddUser/AddUser";
-import Add from "@material-ui/icons/Add";
+import { useHistory } from "react-router-dom"
 
-const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
+const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChannel }) => {
   const [addChannelName, setChannel] = useState("");
   const [addMembers, setMembers] = useState("");
-  const [formToggle, setFormToggle] = useState(false);
+  const [formCreateChannelToggle, setFormCreateChannelToggle] = useState(false);
+  const [formAddUserToggle, setFormAddUserToggle] = useState(false)
   const [addUserToggle, setAddUserToggle] = useState(false);
+  const [getUserArr, setGetUserArr] = useState([])
 
+  //used to push to URL of created channel upon success
+  const history = useHistory()
+
+  const handlesetGetUserArr = (usersToBeAdded) => {
+    const pullUserId = usersToBeAdded.map(user => user.id)
+    console.log("inside add channel: ", pullUserId)
+    setGetUserArr(pullUserId)
+  }
   const showAddUser = () => {
     setAddUserToggle(!addUserToggle);
   };
 
-  const handleFormToggle = () => {
-    if (addChannelName === "") return;
-    setFormToggle(!formToggle);
+  const handleFormCreateChannelToggle = () => {
+    // if (addChannelName === "") return;
+    console.log("Add Channel Form 1 Toggle", formCreateChannelToggle)
+    setFormCreateChannelToggle(!formCreateChannelToggle);
+    handleClose()
   };
+
+  const handleFormCreateChannelConfirmBtn = () => {
+    setFormCreateChannelToggle(!formCreateChannelToggle);
+    setFormAddUserToggle(!formAddUserToggle)
+  }
+
+  const handleFormSubmitToggle = () => {
+    handleDummyAddChannel()
+    setFormAddUserToggle(false)
+    setFormCreateChannelToggle(false)
+    handleClose()
+  }
+
+  const handleFormAddUserExit = () => {
+    setFormAddUserToggle(false)
+    handleClose()
+
+  }
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    // const addNewChannel = {
-    //   name: addChannelName,
-    //   user_ids: parseInt(addMembers),
-    //   headers: headers,
-    // };
-    // console.log(addNewChannel);
-    // createChannel(addNewChannel)
-    //   .then((res) => {
-    //     console.log("Add channel success", res);
-    //     handleDummyAddChannel();
-    //   })
-    //   .catch((err) => console.log(err));
+    console.log("On Submit Triggered")
+  
+    const addNewChannel = {
+      name: addChannelName,
+      user_ids: getUserArr,
+      headers: headers,
+    };
+    console.log(addNewChannel);
+    createChannel(addNewChannel)
+      .then((res) => {
+        console.log("Add channel success", res);
+        const channelId = res.data.data.id
+        handleFormSubmitToggle()
+        //push to URL of Channel
+        history.push(`/channel/${channelId}`)
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div
       className={
-        formToggle
+        !toggleAddChannel
           ? `addChannel-form-container addChannel-hidden`
           : `addChannel-form-container addChannel-block`
       }
     >
       <form className="addChannel-form" onSubmit={onSubmit}>
+
         <div
           className={
-            formToggle
+            formAddUserToggle
+              ? `addUserForm-container addChannel-block`
+              : `addUserForm-container addChannel-hidden`
+          }
+        >
+        <AddUser headers={headers} handleFormAddUserExit={handleFormAddUserExit} handlesetGetUserArr={handlesetGetUserArr}/>
+        </div>
+
+        <div
+          className={
+            formCreateChannelToggle
               ? `addChannel-form-items addChannel-hidden`
               : `addChannel-form-items addChannel-block`
           }
         >
-          <div
-            className={
-              formToggle
-                ? `addChannel-form-header addChannel-hidden`
-                : `addChannel-form-header addChannel-block`
-            }
-          >
+          <div className="addChannel-form-header">
             <div className="addChannel-closeBtn">
-              <IoCloseOutline onClick={handleClose} />
+              <IoCloseOutline onClick={handleFormCreateChannelToggle} />
             </div>
             <h1>Create a private channel</h1>
           </div>
@@ -72,13 +111,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
               organized around a topic — #marketing, for example.
             </span>
           </h5>
-          <div
-            className={
-              formToggle
-                ? `addChannel-form-input addChannel-hidden`
-                : `addChannel-form-input addChannel-block`
-            }
-          >
+          <div className="addChannel-form-input">
             <h3>Name</h3>
             <input
               type="text"
@@ -89,9 +122,17 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
               }}
             ></input>
           </div>
+          
           <div className="addChannel-form-createBtn">
-            <button onClick={handleFormToggle}>Create</button>
+            <button type="button" onClick={handleFormCreateChannelConfirmBtn}>Create</button>
           </div>
+        </div>  
+        
+        
+        
+        
+          {/*
+            Add User
           <div
             className={
               formToggle
@@ -101,7 +142,8 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
           >
             <AddUser />
           </div>
-        </div>
+          */}
+        
       </form>
     </div>
     //main container

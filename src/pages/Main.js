@@ -26,10 +26,12 @@ const Main = ({ loginData }) => {
   const [userDetails, setUserDetails] = useState("");
 
   const handleDummyAddChannel = () => {
+    console.log("add channel toggle")
     setDummyAddChannel(!dummyAddChannel);
   };
 
   const handleAddChannelToggle = () => {
+    console.log("Add Channel Sidebar Toggle", toggleAddChannel)
     setToggleAddChannel(!toggleAddChannel);
   };
 
@@ -99,9 +101,10 @@ const Main = ({ loginData }) => {
             headers={userHeaders}
             handleDummyAddChannel={handleDummyAddChannel}
             handleClose={handleClose}
+            toggleAddChannel={toggleAddChannel}
           />
-        ) : null}
-
+          ) : null}
+  
         <header>
           <Header
             userID={userDetails.data.id}
