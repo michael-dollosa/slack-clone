@@ -110,7 +110,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
             <div className="addChannel-closeBtn">
               <IoCloseOutline onClick={handleFormCreateChannelToggle} />
             </div>
-            <h1>Create a private channel</h1>
+            <h1>Create a channel</h1>
           </div>
           <Warning body={ "Name should within 3 - 15 characters long" } showWarning={toggleWarning}/>
           <h5>
@@ -129,131 +129,16 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
                 setChannel(e.target.value);
               }}
               minlength="3"
+              maxlength="10"
               required
             ></input>
           </div>
-          
           <div className="addChannel-form-createBtn">
-            <button type="button" onClick={handleFormCreateChannelConfirmBtn}>Create</button>
+            <button type="button" onClick={handleFormCreateChannelConfirmBtn}>Next</button>
           </div>
         </div>  
-        
-        
-        
-        
-          {/*
-            Add User
-          <div
-            className={
-              formToggle
-                ? `addUser-container addChannel-block`
-                : `addUser-container addChannel-hidden`
-            }
-          >
-            <AddUser />
-          </div>
-          */}
-        
       </form>
     </div>
-    //main container
-    // <div className="addChannel-form-container">
-    //   {/* add channel container */}
-    //   <div className="addChannel-form-items">
-    //     <div
-    //       className=
-    //         { formToggle ? `addChannel-form-header addChannel-hidden`
-    //           : `addChannel-form-header addChannel-block`}>
-    //       <div className="addChannel-closeBtn">
-    //         <IoCloseOutline onClick={handleClose} />
-    //       </div>
-    //       <h1>Create a private channel</h1>
-    //     </div>
-    //     <h5
-    //       className={
-    //         formToggle
-    //           ? `addChannel-form-text addChannel-hidden`
-    //           : `addChannel-form-text addChannel-block`
-    //       }
-    //     >
-    //       <span>
-    //         Channels are where your team communicates. They're best when <br />
-    //         organized around a topic — #marketing, for example.
-    //       </span>
-    //     </h5>
-    //     {/* <div
-    //       ClassName={
-    //         formToggle
-    //           ? `addChannel-form-header addChannel-hidden`
-    //           : `addChannel-form-header  addChannel-block`
-    //       }
-    //     >
-    //       <h2>Add people</h2>
-    //       <h6>{addChannelName}</h6>
-    //     </div> */}
-    //     <form onSubmit={onSubmit}>
-    //       <div
-    //         className={
-    //           formToggle
-    //             ? `addChannel-form addChannel-hidden`
-    //             : `addChannel-form addChannel-block`
-    //         }
-    //       >
-    //         <label htmlFor="text">
-    //           <h3>Name</h3>
-    //         </label>
-    //         <input
-    //           type="text"
-    //           placeholder="e.g. plan-budget"
-    //           value={addChannelName}
-    //           onChange={(e) => {
-    //             setChannel(e.target.value);
-    //           }}
-    //         ></input>
-    //       </div>
-    //       <div
-    //         className={
-    //           formToggle
-    //             ? `addChannel-form-btn addChannel-hidden`
-    //             : `addChannel-form-btn addChannel-block`
-    //         }
-    //       >
-    //         <button className="btn" onClick={handleFormToggle}>
-    //           <h3>Create</h3>
-    //         </button>
-    //       </div>
-    //       {/* <div
-    //         className={
-    //           formToggle
-    //             ? `addChannel-form addChannel-block`
-    //             : `addChannel-form addChannel-hidden`
-    //         }
-    //       >
-    //         <label htmlFor="text">
-    //           <h4>Add members</h4>
-    //         </label>
-    //         <input
-    //           type="number"
-    //           value={addMembers}
-    //           onChange={(e) => {
-    //             setMembers(e.target.value);
-    //           }}
-    //         ></input>
-    //         <div
-    //           className={
-    //             formToggle
-    //               ? `addChannel-form-btn addChannel-hidden`
-    //               : `addChannel-form-btn addChannel-block`
-    //           }
-    //         >
-    //           <button className="btn">
-    //             <h3>Add</h3>
-    //           </button>
-    //         </div>
-    //       </div> */}
-    //     </form>
-    //   </div>
-    // </div>
   );
 };
 export default AddChannel;
