@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap");
 
 .addChannel-form-container {
-  display: flex;
-  flex-direction: column;
   position: absolute;
   height: 100vh;
   width: 100%;
@@ -10,6 +8,14 @@
   align-items: center;
   background: transparent;
   z-index: 1;
+}
+
+.addChannel-form{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .addChannel-form-container::before {
@@ -33,18 +39,11 @@
 }
 
 .addChannel-form-header {
-  // border: 1px solid black;
   padding: 0.5rem;
   height: 6vh;
   font-family: inherit;
   font-weight: 400px;
-
-  // > h1,
-  // h2 {
-  //   font-family: "Noto Sans", sans-serif;
-  //   font-weight: normal;
-  //   font-size: 30px;
-  // }
+  color: #1d1c1d;
 }
 
 .addChannel-closeBtn{
@@ -53,25 +52,22 @@
 }
 
 h5{
-  color: var(--font-color-light-gray);
+  color: #616061;
+  font-size: 1.2rem;
   font-family: inherit;
   font-weight: normal;
+  padding-bottom: 2rem;
 }
 
-// .addChannel-form-closebtn {
-//   display: flex;
-// }
+.addChannel-form-input{
+  font-size: 1.2rem;
+  color: #1d1c1d;
+}
 
-// .addChannel-form-text {
-//   text-align: center;
-// }
-
-// .addChannel-form-text > span {
-//   color: var(--color-gray-dark);
-//   font-weight: 500;
-//   // font-size: 15px;
-//   margin-left: 1.5rem;
-// }
+.addChannel-form-input > input{
+  width: 100%;
+  background: var(--color-white);
+}
 
 .addChannel-hidden {
   display: none;
@@ -108,3 +104,4 @@ h5{
   border-style: none;
   outline: none;
 }
+
