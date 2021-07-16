@@ -4,7 +4,7 @@ import { MdLock, MdErrorOutline } from "react-icons/md";
 const ChatHeader = ({receiverData, chatType, type}) => {
   const email = receiverData ? receiverData.email : null
   const name = (receiverData && receiverData.data) ? receiverData.data.data.name : null
-  console.log("Chat Header", email)
+
   return(
     <section className="chat_container-header">
       <div className="chat_container-header__label">

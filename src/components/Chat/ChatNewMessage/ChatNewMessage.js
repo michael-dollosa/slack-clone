@@ -33,7 +33,7 @@ const ChatNewMessage = ({headers , userDetails}) => {
       setToggleSearch(false)
     }
     document.body.addEventListener("click", hideSearchResult, { capture: true })
-    console.log("search List", searchList)
+
     //cleanup
     return () => {
       document.body.removeEventListener("click", hideSearchResult, { capture: true })
@@ -45,7 +45,7 @@ const ChatNewMessage = ({headers , userDetails}) => {
     return(
       <NavLink to={`/user/${item.id}`} >
         <div className="search-result-item">
-          <img src={`https://picsum.photos/id/${item.id}/20`} />
+          <img src={`https://picsum.photos/id/${item.id}/20`} alt=""/>
           <h3>{item.email}</h3>
         </div>
       </NavLink>

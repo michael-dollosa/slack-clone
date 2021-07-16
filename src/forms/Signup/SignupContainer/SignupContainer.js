@@ -25,9 +25,6 @@ const SignupContainer = ({handleSetLoginData}) => {
         setConfirm(event.target.value)
     }
 
-    const handleToggleWarning = () => {
-        setToggleWarning(!toggleWarning)
-    }
     const resetInput = () => {
         setEmail("")
         setPassword("")

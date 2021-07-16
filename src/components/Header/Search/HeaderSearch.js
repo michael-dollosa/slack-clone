@@ -42,7 +42,7 @@ const SearchBar = ({headers, handleToggleSearch}) => {
         return(
           <NavLink to={`/user/${item.id}`} onClick={handleToggleSearch}>
             <div className="searchBar_results_items">
-                <img src={`https://picsum.photos/id/${item.id}/20`} />
+                <img src={`https://picsum.photos/id/${item.id}/20`} alt="" />
                 <h3>{item.email}</h3>
             </div>
           </NavLink>

@@ -45,7 +45,6 @@ const ChatContainer = ({headers, userDetails, handleToggleRender}) => {
     else{
       getChannelDetail(getDataObj)
       .then(res => {
-        console.log("channel data", res.data.data)
         setReceiverData(res)
       })
     }

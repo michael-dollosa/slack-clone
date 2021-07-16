@@ -14,8 +14,8 @@ const ChatItemWelcome = ({receiverData, userData, type}) => {
           <section className="chat_container_welcome-img">
           {
             type === "user"
-            ? <img src={`https://picsum.photos/id/${receiverUserId}/80`} /> 
-            : <img src={`https://picsum.photos/id/${receiverChannelId}/80`} /> 
+            ? <img src={`https://picsum.photos/id/${receiverUserId}/80`} alt=""/> 
+            : <img src={`https://picsum.photos/id/${receiverChannelId}/80`} alt=""/> 
           }
             
           </section>

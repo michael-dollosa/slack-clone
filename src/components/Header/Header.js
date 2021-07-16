@@ -1,5 +1,4 @@
 import "../Header/Header.scss";
-import { useState } from "react";
 import { MdAccessTime } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { IoIosHelpCircleOutline } from "react-icons/io";
@@ -23,7 +22,7 @@ const Header = ({userID, handleToggleSearch}) => {
                 <IoIosHelpCircleOutline className="header-side-icons"/>
             </section>
             <section className="header-user-img">
-                <img src={`https://picsum.photos/id/${userID}/26`} />
+                <img src={`https://picsum.photos/id/${userID}/26`} alt="" />
             </section>
         </div>
     )

@@ -3,7 +3,7 @@ import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { getAllUsers, getChannels, getInteractedUsers } from "../api/api";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch,useParams } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./Main.scss";
 import AddChannel from "../components/Sidebar/AddChannel";
 import ChatNewMessage from "../components/Chat/ChatNewMessage/ChatNewMessage";
