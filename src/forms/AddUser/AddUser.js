@@ -5,23 +5,26 @@ import { useState, useEffect, useRef } from "react";
 import { searchUser } from "../../api/api";
 import { NavLink } from "react-router-dom"
 
-const AddUser = ({headers}) => {
-
+const AddUser = ({headers, setId}) => {
+    // useState to function setSearchInput value={searchInput}
     const [searchInput, setSearchInput] = useState("");
+     // useState to function setSearchUserList
     const [searchUserList, setSearchUserList] = useState([])
-    const [toggleSearchUserList, setToggleSearchUserList] = useState(false)
 
     const searchUserObj = {
         str: searchInput,
         headers: headers
     }
-
     const handleSearchInput = (event) => {
         setSearchInput(event.target.value)
         searchUser(searchUserObj)
         .then(res => setSearchUserList(res))
         .catch(err => console.log("search err", err))
     }
+   
+
+    //useState to toggleSearchUserList
+    const [toggleSearchUserList, setToggleSearchUserList] = useState(false)
 
     const handleToggleSearchUserList = (toggle) => {
         setToggleSearchUserList(toggle)
@@ -39,12 +42,12 @@ const AddUser = ({headers}) => {
         return () => {
             document.body.removeEventListener("click", hideSeachUserList, {capture: true})
         }
-    }, [])
+    }, [searchUserList])
 
     const searchUserItemList = searchUserList.map(item => {
         return(
         
-            <div className="search-result-item">
+            <div className="search-result-item" onClick={() => {}}>
               <img src={`https://picsum.photos/id/${item.id}/20`} alt=""/>
               <h3>{item.email}</h3>
             </div>
@@ -69,7 +72,7 @@ const AddUser = ({headers}) => {
                      />
                 </div>
                 <div className={toggleSearchUserList ? `search-result-container container-visible` : `search-result-container` }>
-                {searchUserItemList}
+                {searchUserList.length > 0 ? searchUserItemList : <div><h1>No Item</h1></div>}
                 </div>
                 <div className="addUser_DoneBtn">
                     <button>Done</button>

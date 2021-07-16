@@ -8,7 +8,6 @@ import "./Main.scss";
 import AddChannel from "../components/Sidebar/AddChannel";
 import ChatNewMessage from "../components/Chat/ChatNewMessage/ChatNewMessage";
 import SearchBar from "../components/Header/Search/HeaderSearch"
-import AddUser from "../forms/AddUser/AddUser";
 import Loader from "../components/Loader/Loader";
 
 const Main = ({ loginData }) => {

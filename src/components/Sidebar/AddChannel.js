@@ -66,7 +66,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
 
         </div>
 
-          <AddUser />
+          {/* <AddUser /> */}
 
 
       </form>
