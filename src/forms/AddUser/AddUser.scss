@@ -13,7 +13,8 @@
 
 .addUser-items {
   padding: 2rem;
-  width: 40vw;
+  width: 40rem;
+  height: 50rem;
   border-radius: 5px;
   background: white;
   // overflow-y: scroll;
@@ -37,7 +38,8 @@
 .addUser-search-body-container{
   // margin-top: 2rem;
   overflow-y: scroll;
-  max-height: 50rem;
+  height: 35rem;
+  // background-color: red;
 }
 
 
@@ -107,7 +109,7 @@
   display: none;
   position: absolute;
   // margin-top: -1rem;
-  width: 131%;
+  width: 36rem;
   // height: 30rem; //to be deleted
   max-height: 20rem;
   border-radius: 5px;
