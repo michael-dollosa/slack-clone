@@ -1,12 +1,14 @@
 import "./ChatItemWelcome.scss"
-
+import { formatEmail } from "../../../helper/helper"
 const ChatItemWelcome = ({receiverData, userData, type}) => {
   const loggedInUserId = userData.data.id
-  const email = receiverData ? receiverData.email : null
+  // const email = receiverData ? receiverData.email : null
+  const email = (receiverData && ( type==="user" ) ) ? receiverData.email : ""
   const receiverUserId = receiverData ? receiverData.id : null
   const receiverChannelId = (receiverData && receiverData.data) ? receiverData.data.data.id : null
   const name = (receiverData && receiverData.data) ? receiverData.data.data.name : null
 
+  if(email === undefined ) return <></>
   return(
     <section className = "chat_container_welcome-item-wrapper">
       <div className="chat_container_welcome-item">
@@ -23,7 +25,7 @@ const ChatItemWelcome = ({receiverData, userData, type}) => {
             <div className="chat_details_welcome-name">
             {
               type === "user"
-              ? <h1>{ email }</h1>
+              ? <h1>{ formatEmail(email) }</h1>
               : <h1>{ name }</h1>
             }
               
@@ -41,7 +43,7 @@ const ChatItemWelcome = ({receiverData, userData, type}) => {
               </>
             :
               <>
-                This is the very beginning of your direct message history with <label className="span-email"> @{email} </label>. Only the two of you are in this conversation, and no one else can join it.
+                This is the very beginning of your direct message history with <label className="span-email"> @{formatEmail(email)} </label>. Only the two of you are in this conversation, and no one else can join it.
               </>
           : <>
               This is the very beginning of your direct message history in <label className="span-email"> #{name} </label>. Only the members of this channel can see the messages.

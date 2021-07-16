@@ -1,10 +1,16 @@
 import "./ChatHeader.scss"
 import { MdLock, MdErrorOutline } from "react-icons/md";
-
+import { formatEmail } from "../../../helper/helper"
 const ChatHeader = ({receiverData, chatType, type}) => {
-  const email = receiverData ? receiverData.email : null
+  const email = (receiverData && ( type==="user" ) ) ? receiverData.email : ""
+  // const email = receiverData
+  //               ? type === "user"
+  //                 ? receiverData.email
+  //                 : null
+  //               : null
   const name = (receiverData && receiverData.data) ? receiverData.data.data.name : null
 
+  if(email === undefined ) return <></>
   return(
     <section className="chat_container-header">
       <div className="chat_container-header__label">
@@ -14,11 +20,11 @@ const ChatHeader = ({receiverData, chatType, type}) => {
         : type === "user"
           ? <>
             <MdLock className="icon"/>  
-            <h3>{email}</h3>  
+              <h3>{formatEmail(email)}</h3> 
             </>
           : <>
             <MdLock className="icon"/>  
-            <h3>{name}</h3>  
+              <h3>{name}</h3>  
             </>
       }
       </div>
