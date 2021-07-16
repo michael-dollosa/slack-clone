@@ -7,21 +7,20 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./Main.scss";
 import AddChannel from "../components/Sidebar/AddChannel";
 import ChatNewMessage from "../components/Chat/ChatNewMessage/ChatNewMessage";
-import SearchBar from "../components/Header/Search/HeaderSearch"
+import SearchBar from "../components/Header/Search/HeaderSearch";
 import AddUser from "../forms/AddUser/AddUser";
 import Loader from "../components/Loader/Loader";
 
 const Main = ({ loginData }) => {
-
   //declare states for application data
   const [userChannels, setUserChannels] = useState(""); //state to get channel data
   const [userList, setUserList] = useState("");
   const [userInteractedList, setUserInteractedList] = useState(""); //state to get user Lists/ users that have messaged current user and/or was messaged by current user
-  //add channel toggle (test)
+  //add channel toggle
   const [toggleAddChannel, setToggleAddChannel] = useState(false);
   const [dummyAddChannel, setDummyAddChannel] = useState(true);
-  const [toggleSearchBar, setToggleSearchBar] = useState(false)
-  const [toggleRender, setToggleRender] = useState(false)
+  const [toggleSearchBar, setToggleSearchBar] = useState(false);
+  const [toggleRender, setToggleRender] = useState(false);
   //user details
   const [userHeaders, setUserHeaders] = useState("");
   const [userDetails, setUserDetails] = useState("");
@@ -35,17 +34,15 @@ const Main = ({ loginData }) => {
   };
 
   const handleToggleSearch = () => {
-    setToggleSearchBar(!toggleSearchBar)
-  }
+    setToggleSearchBar(!toggleSearchBar);
+  };
 
   const handleToggleRender = () => {
-    setToggleRender(!toggleRender)
-  }
+    setToggleRender(!toggleRender);
+  };
 
   //close toggle add channel
   const handleClose = () => setToggleAddChannel(false);
-
-  
 
   useEffect(() => {
     //set User Details
@@ -73,7 +70,6 @@ const Main = ({ loginData }) => {
     getInteractedUsers(headers)
       .then((data) => setUserInteractedList(data.data.data))
       .catch((err) => console.log("Fetch Interacted Users Error: ", err));
-      
   }, [dummyAddChannel, toggleSearchBar, toggleRender]);
 
   //always have a condition to render a Loading state
@@ -91,44 +87,52 @@ const Main = ({ loginData }) => {
   return (
     <main className="main-container">
       <Router>
-          { 
-            toggleSearchBar
-            ? <SearchBar handleToggleSearch={handleToggleSearch} headers={userHeaders}/> 
-            : null
-          }
+        {toggleSearchBar ? (
+          <SearchBar
+            handleToggleSearch={handleToggleSearch}
+            headers={userHeaders}
+          />
+        ) : null}
 
-          {toggleAddChannel ? (
-            <AddChannel
-              headers={userHeaders}
-              handleDummyAddChannel={handleDummyAddChannel}
-              handleClose={handleClose}
-            />
-          ) : null}
-      
-          <header>
-            <Header userID={userDetails.data.id} handleToggleSearch={handleToggleSearch}/>
-          </header>
+        {toggleAddChannel ? (
+          <AddChannel
+            headers={userHeaders}
+            handleDummyAddChannel={handleDummyAddChannel}
+            handleClose={handleClose}
+          />
+        ) : null}
 
-          <nav>
-            <Sidebar
-              channels={userChannels}
-              interactedUsers={userInteractedList}
-              handleAddChannelToggle={handleAddChannelToggle}
-              toggleRender={toggleRender}
-              userDetails={userDetails}
-            />
-          </nav>
+        <header>
+          <Header
+            userID={userDetails.data.id}
+            handleToggleSearch={handleToggleSearch}
+          />
+        </header>
 
-          <section>
-            <Switch>
-              <Route path="/:type/:id">
-                <ChatContainer headers={userHeaders} userDetails={userDetails} handleToggleRender={handleToggleRender}/>
-              </Route>
-              <Route exact path="/new-message">
-                <ChatNewMessage headers={userHeaders} />
-              </Route>
-            </Switch>
-          </section>
+        <nav>
+          <Sidebar
+            channels={userChannels}
+            interactedUsers={userInteractedList}
+            handleAddChannelToggle={handleAddChannelToggle}
+            toggleRender={toggleRender}
+            userDetails={userDetails}
+          />
+        </nav>
+
+        <section>
+          <Switch>
+            <Route path="/:type/:id">
+              <ChatContainer
+                headers={userHeaders}
+                userDetails={userDetails}
+                handleToggleRender={handleToggleRender}
+              />
+            </Route>
+            <Route exact path="/new-message">
+              <ChatNewMessage headers={userHeaders} />
+            </Route>
+          </Switch>
+        </section>
       </Router>
     </main>
   );

@@ -4,7 +4,7 @@
   border-top: 1px solid #7e438169;
   max-width: 300px;
   height: 100%;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .sidebar-header {
@@ -23,7 +23,7 @@
   background-color: var(--color-primary-dark);
 }
 
-.sidebar-info{
+.sidebar-info {
   > h2 {
     font-size: 1.8rem;
     font-weight: 900;
@@ -35,7 +35,7 @@
 }
 
 .sidebar-header > svg {
-  padding: .8rem;
+  padding: 0.8rem;
   color: #49274b;
   font-size: 3.3rem;
   background-color: var(--color-white);
@@ -46,7 +46,7 @@
   }
 }
 
-.sidebar-option-container{
+.sidebar-option-container {
   height: 150%;
   padding-top: 1rem;
   overflow-y: scroll;
@@ -57,41 +57,41 @@
   padding-bottom: 55rem;
 }
 
-.sidebaroption-child{
+.sidebaroption-child {
   // padding-left: 1rem;
 
-  &.hidden{
+  &.hidden {
     display: none;
   }
 }
 
 .sidebar-option-header,
 .sidebar-option-channelList,
-.sidebar-option-userList{
+.sidebar-option-userList {
   padding-bottom: 1rem;
 }
 
-.sidebar-option-list-header{
+.sidebar-option-list-header {
   display: flex;
   align-items: center;
   padding-left: 1rem;
-  padding-bottom: .7rem;
-  
-  >.icon{
+  padding-bottom: 0.7rem;
+
+  > .icon {
     margin-right: 2px;
     font-size: 2.5rem;
     cursor: pointer;
-    transition: .3s;
-    &.rotate{
+    transition: 0.3s;
+    &.rotate {
       transform: rotateZ(-90deg);
     }
   }
-  >.icon:hover{
+  > .icon:hover {
     background-color: #7e43813f;
     border-radius: 5px;
   }
-  
-  >h1{
+
+  > h1 {
     font-weight: 400;
     font-size: 1.45rem;
     color: #bcabbc;
@@ -101,6 +101,6 @@
   }
 }
 
-.active{
+.active {
   background-color: blue;
 }
