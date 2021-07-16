@@ -4,29 +4,39 @@ import { IoCloseOutline } from "react-icons/io5";
 import { createChannel } from "../../api/api";
 import AddUser from "../../forms/AddUser/AddUser";
 import Add from "@material-ui/icons/Add";
+
 const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
   const [addChannelName, setChannel] = useState("");
   const [addMembers, setMembers] = useState("");
   const [formToggle, setFormToggle] = useState(false);
+  const [addUserToggle, setAddUserToggle] = useState(false);
+
+  const showAddUser = () => {
+    setAddUserToggle(!addUserToggle);
+  };
+
   const handleFormToggle = () => {
     if (addChannelName === "") return;
     setFormToggle(!formToggle);
   };
-  const addNewChannel = {
-    name: addChannelName,
-    user_ids: parseInt(addMembers),
-    headers: headers,
-  };
-  console.log(addNewChannel);
+
   const onSubmit = (e) => {
     e.preventDefault();
-    createChannel(addNewChannel)
-      .then((res) => {
-        console.log("Add channel success", res);
-        handleDummyAddChannel();
-      })
-      .catch((err) => console.log(err));
+
+    // const addNewChannel = {
+    //   name: addChannelName,
+    //   user_ids: parseInt(addMembers),
+    //   headers: headers,
+    // };
+    // console.log(addNewChannel);
+    // createChannel(addNewChannel)
+    //   .then((res) => {
+    //     console.log("Add channel success", res);
+    //     handleDummyAddChannel();
+    //   })
+    //   .catch((err) => console.log(err));
   };
+
   return (
     <div
       className={
@@ -82,15 +92,15 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
           <div className="addChannel-form-createBtn">
             <button onClick={handleFormToggle}>Create</button>
           </div>
-        </div>
-        <div
-          className={
-            formToggle
-              ? `addUser-container addChannel-hidden`
-              : `addUser-container addChannel-block`
-          }
-        >
-          <AddUser />
+          <div
+            className={
+              formToggle
+                ? `addUser-container addChannel-block`
+                : `addUser-container addChannel-hidden`
+            }
+          >
+            <AddUser />
+          </div>
         </div>
       </form>
     </div>
