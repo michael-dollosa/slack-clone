@@ -47,7 +47,9 @@
   display: flex;
   justify-content: space-between;
   font-family: inherit;
- 
+  >h1{
+    font-size: 1.5rem;
+  }
   .closebtn {
     display: flex;
     float: right;
@@ -137,10 +139,11 @@
 }
 
 .addUser_confirm-list{
-  margin-top: 5rem;
+  // margin-top: 5rem;
   width: 100%;
   // height: 20rem;
   // background-color: red;
+  
 }
 
 .addUser_users-list{

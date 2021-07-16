@@ -27,7 +27,27 @@
   align-items: center;
   font-size: 1rem;
   padding: .8rem;
+  cursor: pointer;
   >.icon{
+    margin-right: .5rem;
     font-size: 1.5rem;
   }
+}
+
+.addmember-container{
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.addmember-container::before{
+  content: "";
+  top: 0;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  opacity: 0.3;
 }

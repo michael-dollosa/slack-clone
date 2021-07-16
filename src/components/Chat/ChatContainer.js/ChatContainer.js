@@ -57,7 +57,7 @@ const ChatContainer = ({headers, userDetails, handleToggleRender}) => {
 
   return(
     <main className="chat_container-main">
-        <ChatHeader receiverData={receiverData} type={type} />
+        <ChatHeader receiverData={receiverData} type={type} headers={headers} handleSetToggleRender={handleSetToggleRender}/>
         <ChatItemContainer  chatData={chatData} receiverData={receiverData} userData={userDetails} type={type}/>
         <ChatFooter headers={headers} handleSetToggleRender={handleSetToggleRender}/>
     </main>
