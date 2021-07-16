@@ -4,6 +4,7 @@ import { GrFormClose } from "react-icons/gr";
 import { useState, useEffect, useRef } from "react";
 import { searchUser } from "../../api/api";
 import { NavLink } from "react-router-dom";
+
 const AddUser = ({ headers }) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchUserList, setSearchUserList] = useState([]);
@@ -39,7 +40,7 @@ const AddUser = ({ headers }) => {
   const searchUserItemList = searchUserList.map((item) => {
     return (
       <div className="search-result-item">
-        <img src={`https://picsum.photos/id/${item.id}/20`} />
+        <img src={`https://picsum.photos/id/${item.id}/20`} alt="" />
         <h3>{item.email}</h3>
       </div>
     );

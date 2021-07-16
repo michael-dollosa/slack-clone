@@ -3,17 +3,13 @@ import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { getAllUsers, getChannels, getInteractedUsers } from "../api/api";
 import { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./Main.scss";
 import AddChannel from "../components/Sidebar/AddChannel";
 import ChatNewMessage from "../components/Chat/ChatNewMessage/ChatNewMessage";
 import SearchBar from "../components/Header/Search/HeaderSearch";
 import AddUser from "../forms/AddUser/AddUser";
+import Loader from "../components/Loader/Loader";
 
 const Main = ({ loginData }) => {
   //declare states for application data
@@ -24,6 +20,10 @@ const Main = ({ loginData }) => {
   const [toggleAddChannel, setToggleAddChannel] = useState(false);
   const [dummyAddChannel, setDummyAddChannel] = useState(true);
   const [toggleSearchBar, setToggleSearchBar] = useState(false);
+  const [toggleRender, setToggleRender] = useState(false);
+  //user details
+  const [userHeaders, setUserHeaders] = useState("");
+  const [userDetails, setUserDetails] = useState("");
 
   const handleDummyAddChannel = () => {
     setDummyAddChannel(!dummyAddChannel);
@@ -34,15 +34,15 @@ const Main = ({ loginData }) => {
   };
 
   const handleToggleSearch = () => {
-    console.log("search toggle");
     setToggleSearchBar(!toggleSearchBar);
+  };
+
+  const handleToggleRender = () => {
+    setToggleRender(!toggleRender);
   };
 
   //close toggle add channel
   const handleClose = () => setToggleAddChannel(false);
-
-  const [userHeaders, setUserHeaders] = useState("");
-  const [userDetails, setUserDetails] = useState("");
 
   useEffect(() => {
     //set User Details
@@ -54,6 +54,8 @@ const Main = ({ loginData }) => {
       expiry: loginData.headers.expiry,
       uid: loginData.headers.uid,
     };
+
+    // console.log(loginData.data.data.id)
     setUserHeaders(headers);
     //trigger getChannel API to get list of channels for current user
     getChannels(headers)
@@ -68,9 +70,7 @@ const Main = ({ loginData }) => {
     getInteractedUsers(headers)
       .then((data) => setUserInteractedList(data.data.data))
       .catch((err) => console.log("Fetch Interacted Users Error: ", err));
-  }, [dummyAddChannel, toggleSearchBar]);
-
-  //render
+  }, [dummyAddChannel, toggleSearchBar, toggleRender]);
 
   //always have a condition to render a Loading state
   //since we are using API which is asynchronus, components will mount even without the data. Since our components uses data, we need first to set a condition to render nothing while data is being populated
@@ -81,7 +81,7 @@ const Main = ({ loginData }) => {
     !userList.data.data.length ||
     !userInteractedList
   ) {
-    return <h1>Loading</h1>;
+    return <Loader />;
   }
 
   return (
@@ -114,13 +114,19 @@ const Main = ({ loginData }) => {
             channels={userChannels}
             interactedUsers={userInteractedList}
             handleAddChannelToggle={handleAddChannelToggle}
+            toggleRender={toggleRender}
+            userDetails={userDetails}
           />
         </nav>
 
         <section>
           <Switch>
             <Route path="/:type/:id">
-              <ChatContainer headers={userHeaders} userDetails={userDetails} />
+              <ChatContainer
+                headers={userHeaders}
+                userDetails={userDetails}
+                handleToggleRender={handleToggleRender}
+              />
             </Route>
             <Route exact path="/new-message">
               <ChatNewMessage headers={userHeaders} />

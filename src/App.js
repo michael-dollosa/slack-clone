@@ -1,5 +1,5 @@
 import "./App.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Main from "./pages/Main";
 import Login from "./forms/Login/Login.js";
 import Signup from "./forms/Signup/Signup.js"
@@ -17,7 +17,7 @@ const App = () => {
     setLoginData(data);
   };
   
-
+  
   return (
     <Router>
       <div> 
@@ -30,7 +30,7 @@ const App = () => {
           </Route>
           <Route path="/">
           { 
-            loginData 
+            loginData
             ? <Main loginData={loginData}/> 
             : <Redirect to="/login" />
           }
