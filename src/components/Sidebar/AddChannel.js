@@ -33,13 +33,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
 
   return (
     <div className="addChannel-form-container">
-      <div
-        className={
-          formToggle
-            ? `addChannel-form-items addChannel-hidden`
-            : `addChannel-form-items addChannel-block`
-        }
-      >
+      <div className="addChannel-form-items">
         <div
           className={
             formToggle
@@ -50,7 +44,6 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
           <h1>Create a private channel</h1>
           <IoCloseOutline onClick={handleClose} />
         </div>
-
         <div
           className={
             formToggle
@@ -63,7 +56,6 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
             organized around a topic — #marketing, for example.
           </h2>
         </div>
-
         <form onSubmit={onSubmit}>
           <div
             className={
@@ -95,7 +87,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
               <h3>Create</h3>
             </button>
           </div>
-          {/* <div
+          <div
             className={
               formToggle
                 ? `addChannel-form addChannel-block`
@@ -125,24 +117,17 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
                 <h3>Done</h3>
               </button>
             </div>
-          </div> */}
+          </div>
 
-          <div
+          {/* <div
             className={
               formToggle
-                ? `addUser-form addChannel-hidden`
-                : `addUser-form addChannel-block`
+                ? `addChannel-form addChannel-block`
+                : `addChannel-form addChannel-hidden`
             }
           >
-            <AddUser
-              className={
-                formToggle
-                  ? `addUser-form addChannel-hidden`
-                  : `addUser-form addChannel-block`
-              }
-              headers={headers}
-            />
-          </div>
+            <AddUser headers={headers} />
+          </div> */}
         </form>
       </div>
     </div>

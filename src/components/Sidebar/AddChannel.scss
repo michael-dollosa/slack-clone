@@ -13,7 +13,6 @@
 }
 
 .addChannel-form-container::before {
-  display: flex;
   content: "";
   top: 0;
   position: absolute;
@@ -31,6 +30,11 @@
   border-radius: 5px;
   background-color: var(--font-color-white-header);
   z-index: 5;
+}
+
+.addChannel-form-items::before {
+  height: 10vh;
+  border: 1px;
 }
 
 .addChannel-form-header {
