@@ -4,7 +4,7 @@ import ChatFooter from "../ChatFooter/ChatFooter";
 import ChatItemContainer from "../ChatItemContainer/ChatItemContainer";
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { getMessage, getSpecificUser } from "../../../api/api"
+import { getMessage, getSpecificUser, getChannelDetail } from "../../../api/api"
 import { captalizeWord } from "../../../helper/helper"
 const ChatContainer = ({headers, userDetails}) => {
   //declare state variable to put chat room data
@@ -27,18 +27,29 @@ const ChatContainer = ({headers, userDetails}) => {
     headers: headers
   }
 
-  const getSpecificUserObj = {
+  const getDataObj = {
     id: parseInt(id),
     headers: headers
   }
   useEffect(() => {
+    console.log("reciever data", receiverData)
     //use getmessage API
     getMessage(sampleGetMessageObj)
       .then(data => setChatData(data.data.data.reverse()))
       .catch(err  => console.log(err))
     //get receiver data
-    getSpecificUser(getSpecificUserObj)
+    if(type==="user"){
+      getSpecificUser(getDataObj)
       .then(data => {setReceiverData(data[0])})
+    }
+    else{
+      getChannelDetail(getDataObj)
+      .then(res => {
+        console.log("channel data", res.data.data)
+        setReceiverData(res)
+      })
+    }
+    
   }, [id, toggleRender])
 
   //condition to render only if object is populated
@@ -47,8 +58,8 @@ const ChatContainer = ({headers, userDetails}) => {
 
   return(
     <main className="chat_container-main">
-        <ChatHeader receiverData={receiverData} />
-        <ChatItemContainer  chatData={chatData} receiverData={receiverData} userData={userDetails}/>
+        <ChatHeader receiverData={receiverData} type={type} />
+        <ChatItemContainer  chatData={chatData} receiverData={receiverData} userData={userDetails} type={type}/>
         <ChatFooter headers={headers} handleSetToggleRender={handleSetToggleRender}/>
     </main>
   )
