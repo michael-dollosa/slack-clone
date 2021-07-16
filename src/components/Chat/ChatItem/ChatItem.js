@@ -1,6 +1,7 @@
 import "./ChatItem.scss"
 import React  from 'react';
 import Moment from 'react-moment'
+import { formatEmail } from "../../../helper/helper"
 
 const ChatItem = ({data}) => {
   
@@ -14,7 +15,7 @@ const ChatItem = ({data}) => {
         </section>
         <section className="chat_container-details">
           <div className="chat_details-name">
-            <h1>{email}</h1>
+            <h1>{formatEmail(email)}</h1>
             <label><Moment fromNow ago date={created_at} /> ago</label>
           </div>
           <div className="chat_details-body">
