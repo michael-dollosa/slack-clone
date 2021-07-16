@@ -4,6 +4,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { createChannel } from "../../api/api";
 import AddUser from "../../forms/AddUser/AddUser";
 import { useHistory } from "react-router-dom"
+import Warning from "../Warnings/Warning";
 
 const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChannel }) => {
   const [addChannelName, setChannel] = useState("");
@@ -12,7 +13,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
   const [formAddUserToggle, setFormAddUserToggle] = useState(false)
   const [addUserToggle, setAddUserToggle] = useState(false);
   const [getUserArr, setGetUserArr] = useState([])
-
+  const [toggleWarning, setToggleWarning] = useState(false)
   //used to push to URL of created channel upon success
   const history = useHistory()
 
@@ -33,6 +34,8 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
   };
 
   const handleFormCreateChannelConfirmBtn = () => {
+    console.log(addChannelName.length, addChannelName)
+    if(addChannelName.length < 3 || (addChannelName === "") ) return setToggleWarning(true)
     setFormCreateChannelToggle(!formCreateChannelToggle);
     setFormAddUserToggle(!formAddUserToggle)
   }
@@ -88,7 +91,12 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
               : `addUserForm-container addChannel-hidden`
           }
         >
-        <AddUser headers={headers} handleFormAddUserExit={handleFormAddUserExit} handlesetGetUserArr={handlesetGetUserArr}/>
+        <AddUser 
+          headers={headers} 
+          handleFormAddUserExit={handleFormAddUserExit} 
+          handlesetGetUserArr={handlesetGetUserArr}
+          name={addChannelName}
+        />
         </div>
 
         <div
@@ -104,10 +112,10 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
             </div>
             <h1>Create a private channel</h1>
           </div>
+          <Warning body={ "Name should within 3 - 15 characters long" } showWarning={toggleWarning}/>
           <h5>
             <span>
               Channels are where your team communicates. They're best when
-              <br />
               organized around a topic — #marketing, for example.
             </span>
           </h5>
@@ -120,6 +128,8 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
               onChange={(e) => {
                 setChannel(e.target.value);
               }}
+              minlength="3"
+              required
             ></input>
           </div>
           

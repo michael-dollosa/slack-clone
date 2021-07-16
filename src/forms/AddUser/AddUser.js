@@ -4,7 +4,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { useState, useEffect, useRef } from "react";
 import { searchUser, getSpecificUser } from "../../api/api";
 
-const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null }) => {
+const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, name="" }) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchUserList, setSearchUserList] = useState([]);
   const [toggleSearchUserList, setToggleSearchUserList] = useState(false);
@@ -97,7 +97,7 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null }) =
         </div>
 
         <h5>
-          <HiLockClosed /> batch9_Channel
+          <HiLockClosed /> {name}
         </h5>
         <div className="addUser_searchBar" ref={userSearchRef}>
           <input

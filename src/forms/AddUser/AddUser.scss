@@ -20,6 +20,8 @@
   // -ms-overflow-style: none;  /* IE and Edge */
   // scrollbar-width: none;  /* Firefox */
   > h5 {
+    display: flex;
+    align-items: center;
     color: var(--font-color-light-gray);
     font-family: inherit;
     font-weight: normal;
