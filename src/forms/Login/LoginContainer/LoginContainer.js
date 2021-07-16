@@ -21,10 +21,6 @@ const LoginContainer = ({handleSetLoginData}) => {
         setPassword(event.target.value)
     }
 
-    const handleToggleWarning = () => {
-        setToggleWarning(!toggleWarning)
-    }
-
     const loginUser = (event) => {
         event.preventDefault()
         //create data obj for API request

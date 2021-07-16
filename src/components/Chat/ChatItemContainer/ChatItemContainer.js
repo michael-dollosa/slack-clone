@@ -2,7 +2,7 @@ import ChatItem from "../ChatItem/ChatItem"
 import ChatItemWelcome from "../ChatItem/ChatItemWelcome"
 import "./ChatItemContainer.scss"
 
-const ChatItemContainer = ({chatData, receiverData, userData}) => {
+const ChatItemContainer = ({chatData, receiverData, userData, type}) => {
   const chatItemList = chatData.length > 0
   ? chatData.map((data,index) => {
     return( <ChatItem key={index} data={data} /> )
@@ -14,7 +14,7 @@ const ChatItemContainer = ({chatData, receiverData, userData}) => {
       { 
         chatData.length > 0
         ? chatItemList
-        : <ChatItemWelcome receiverData={receiverData} userData={userData}/> 
+        : <ChatItemWelcome receiverData={receiverData} userData={userData} type={type}/> 
       }
     </section>
   )

@@ -1,20 +1,21 @@
 import "./ChatItem.scss"
-import { parseDateTime, formatEmail } from "../../../helper/helper"
+import React  from 'react';
+import Moment from 'react-moment'
+
 const ChatItem = ({data}) => {
   
   const { body, created_at, sender: {id, email} } = data
-  const { parsedDate, parsedTime } = parseDateTime(created_at)
   
   return(
     <div className="chat_container-item">
       <div className="chat_container-contents">
         <section className="chat_container-img">
-          <img src={`https://picsum.photos/id/${id}/40`} /> 
+          <img src={`https://picsum.photos/id/${id}/40`} alt=""/> 
         </section>
         <section className="chat_container-details">
           <div className="chat_details-name">
-            <h1>{ formatEmail(email) }</h1>
-            <label>{ parsedDate } at { parsedTime }</label>
+            <h1>{ /*formatEmail(email) */}{email}</h1>
+            <label><Moment fromNow ago date={created_at} /> ago</label>
           </div>
           <div className="chat_details-body">
             { body }

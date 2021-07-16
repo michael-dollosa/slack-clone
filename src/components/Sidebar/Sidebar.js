@@ -13,7 +13,7 @@ import { BiChevronDown } from "react-icons/bi";
 import { CgLock } from "react-icons/cg";
 import { useHistory, NavLink } from "react-router-dom";
 
-const Sidebar = ({ channels, interactedUsers, handleAddChannelToggle }) => {
+const Sidebar = ({ channels, interactedUsers, handleAddChannelToggle, toggleRender }) => {
 
   const [toggleUserDropdown, setToggleUserDropdown] = useState(false)
   const [toggleChannelDropdown, setToggleChannelDropdown] = useState(false)
@@ -53,6 +53,9 @@ const Sidebar = ({ channels, interactedUsers, handleAddChannelToggle }) => {
   })
   : null
 
+  useEffect(() => {
+    
+  }, [toggleRender])
   return (
     <div className="sidebar-container-main">
       <div className="sidebar-header">
