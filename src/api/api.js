@@ -1,8 +1,11 @@
 import axios from "axios"
 
+const axiosFetch = axios.create({
+  baseURL: process.env.REACT_APP_SLACK_API_URL
+})
 //user registration
 export const registerUser = ({ email, password, password_confirmation }) => {
-  return axios.post("http://206.189.91.54//api/v1/auth/", {
+  return axiosFetch.post("/api/v1/auth/", {
     email,
     password,
     password_confirmation
@@ -14,7 +17,7 @@ export const registerUser = ({ email, password, password_confirmation }) => {
 
 //login
 export const userLogin = ({ email, password }) => {
-  return axios.post("http://206.189.91.54//api/v1/auth/sign_in", {
+  return axiosFetch.post("/api/v1/auth/sign_in", {
     email,
     password
   })
@@ -25,8 +28,8 @@ export const userLogin = ({ email, password }) => {
 
 //send message
 export const sendMessage = ({ receiver_id, receiver_class, body, headers:{ token, client, expiry, uid } }) => {
-  return axios.post(
-    "http://206.189.91.54//api/v1/messages", 
+  return axiosFetch.post(
+    "/api/v1/messages", 
   {
     receiver_id,
     receiver_class,
@@ -47,8 +50,8 @@ export const sendMessage = ({ receiver_id, receiver_class, body, headers:{ token
 
 //get messages
 export const getMessage = ({ receiver_id, receiver_class, headers:{ token, client, expiry, uid } }) => {
-  return axios.get(
-    "http://206.189.91.54//api/v1/messages",
+  return axiosFetch.get(
+    "/api/v1/messages",
     {
       headers:{
         "access-token": token,
@@ -68,8 +71,8 @@ export const getMessage = ({ receiver_id, receiver_class, headers:{ token, clien
 
 //create channel
 export const createChannel = ({ name, user_ids, headers:{ token, client, expiry, uid } }) => {
-  return axios.post(
-    "http://206.189.91.54//api/v1/channels", 
+  return axiosFetch.post(
+    "/api/v1/channels", 
   {
     name,
     user_ids
@@ -89,8 +92,8 @@ export const createChannel = ({ name, user_ids, headers:{ token, client, expiry,
 
 //get all channels
 export const getChannels = ({ token, client, expiry, uid }) => {
-  return axios.get(
-    "http://206.189.91.54//api/v1/channels",
+  return axiosFetch.get(
+    "/api/v1/channels",
     {
       headers:{
         "access-token": token,
@@ -106,8 +109,8 @@ export const getChannels = ({ token, client, expiry, uid }) => {
 
 //get channel details
 export const getChannelDetail = ({ id, headers:{ token, client, expiry, uid } }) => {
-  return axios.get(
-    `http://206.189.91.54//api/v1/channels/${id}`,
+  return axiosFetch.get(
+    `/api/v1/channels/${id}`,
     {
       headers:{
         "access-token": token,
@@ -124,8 +127,8 @@ export const getChannelDetail = ({ id, headers:{ token, client, expiry, uid } })
 
 //add user to channel
 export const addMemberToChannel = ({ id, member_id, headers:{ token, client, expiry, uid } }) => {
-  return axios.post(
-    "http://206.189.91.54//api/v1/channel/add_member", 
+  return axiosFetch.post(
+    "/api/v1/channel/add_member", 
   {
     id,
     member_id
@@ -145,8 +148,8 @@ export const addMemberToChannel = ({ id, member_id, headers:{ token, client, exp
 
 //get all users
 export const getAllUsers = ({ token, client, expiry, uid }) => {
-  return axios.get(
-    "http://206.189.91.54//api/v1/users",
+  return axiosFetch.get(
+    "/api/v1/users",
     {
       headers:{
         "access-token": token,
@@ -162,8 +165,8 @@ export const getAllUsers = ({ token, client, expiry, uid }) => {
 
 //get specific user via id
 export const getSpecificUser = ({id, headers:{token, client, expiry, uid}}) => {
-  return axios.get(
-    "http://206.189.91.54//api/v1/users",
+  return axiosFetch.get(
+    "/api/v1/users",
     {
       headers:{
         "access-token": token,
@@ -180,8 +183,8 @@ export const getSpecificUser = ({id, headers:{token, client, expiry, uid}}) => {
 }
 
 export const searchUser = ({str, headers:{token, client, expiry, uid}}) => {
-  return axios.get(
-    "http://206.189.91.54//api/v1/users",
+  return axiosFetch.get(
+    "/api/v1/users",
     {
       headers:{
         "access-token": token,
@@ -202,8 +205,8 @@ export const searchUser = ({str, headers:{token, client, expiry, uid}}) => {
 }
 
   export const getInteractedUsers = ({token, client, expiry, uid}) => {
-  return axios.get(
-    "http://206.189.91.54//api/v1/users/recent/",
+  return axiosFetch.get(
+    "/api/v1/users/recent/",
     {
       headers:{
         "access-token": token,

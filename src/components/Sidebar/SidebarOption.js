@@ -15,7 +15,7 @@ const SidebarOption = ({
         optionType
         ? optionType === "user"
           ? 
-            <div className="sidebar-option">
+            <div className="sidebar-option sidebar-padding">
               <section className="sidebar-option-user-img sidebar-option-flex-center">
                 <img src={Icon} alt="" />
               </section>
@@ -31,7 +31,7 @@ const SidebarOption = ({
                 }
             </div>
           : 
-          <div className="sidebar-option">
+          <div className="sidebar-option sidebar-padding">
             {Icon && <Icon className="sidebar-option-icon sidebar-option-flex-center" />}
             {Icon 
               ? (

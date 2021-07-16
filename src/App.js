@@ -17,7 +17,7 @@ const App = () => {
     setLoginData(data);
   };
   
-
+  
   return (
     <Router>
       <div> 
@@ -30,7 +30,7 @@ const App = () => {
           </Route>
           <Route path="/">
           { 
-            loginData 
+            loginData
             ? <Main loginData={loginData}/> 
             : <Redirect to="/login" />
           }
