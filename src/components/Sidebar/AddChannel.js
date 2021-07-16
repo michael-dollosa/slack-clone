@@ -3,6 +3,7 @@ import "./AddChannel.scss";
 import { IoCloseOutline } from "react-icons/io5";
 import { createChannel } from "../../api/api";
 import AddUser from "../../forms/AddUser/AddUser";
+import Add from "@material-ui/icons/Add";
 const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
   const [addChannelName, setChannel] = useState("");
   const [addMembers, setMembers] = useState("");
@@ -82,8 +83,15 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
             <button onClick={handleFormToggle}>Create</button>
           </div>
         </div>
-
-        <AddUser />
+        <div
+          className={
+            formToggle
+              ? `addUser-container addChannel-hidden`
+              : `addUser-container addChannel-block`
+          }
+        >
+          <AddUser />
+        </div>
       </form>
     </div>
     //main container
