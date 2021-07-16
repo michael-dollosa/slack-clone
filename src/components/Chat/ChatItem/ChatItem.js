@@ -1,5 +1,4 @@
 import "./ChatItem.scss"
-import { parseDateTime, formatEmail } from "../../../helper/helper"
 import React  from 'react';
 import Moment from 'react-moment'
 

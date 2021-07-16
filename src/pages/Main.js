@@ -20,6 +20,7 @@ const Main = ({ loginData }) => {
   const [toggleAddChannel, setToggleAddChannel] = useState(false);
   const [dummyAddChannel, setDummyAddChannel] = useState(true);
   const [toggleSearchBar, setToggleSearchBar] = useState(false)
+  const [toggleRender, setToggleRender] = useState(false)
 
   const handleDummyAddChannel = () => {
     setDummyAddChannel(!dummyAddChannel);
@@ -30,8 +31,11 @@ const Main = ({ loginData }) => {
   };
 
   const handleToggleSearch = () => {
-    console.log("search toggle")
     setToggleSearchBar(!toggleSearchBar)
+  }
+
+  const handleToggleRender = () => {
+    setToggleRender(!toggleRender)
   }
 
   //close toggle add channel
@@ -64,9 +68,7 @@ const Main = ({ loginData }) => {
     getInteractedUsers(headers)
       .then((data) => setUserInteractedList(data.data.data))
       .catch((err) => console.log("Fetch Interacted Users Error: ", err));
-  }, [dummyAddChannel, toggleSearchBar]);
-
-  //render
+  }, [dummyAddChannel, toggleSearchBar, toggleRender]);
 
   //always have a condition to render a Loading state
   //since we are using API which is asynchronus, components will mount even without the data. Since our components uses data, we need first to set a condition to render nothing while data is being populated
@@ -89,8 +91,6 @@ const Main = ({ loginData }) => {
             : null
           }
 
-      
-
           {toggleAddChannel ? (
             <AddChannel
               headers={userHeaders}
@@ -108,13 +108,14 @@ const Main = ({ loginData }) => {
               channels={userChannels}
               interactedUsers={userInteractedList}
               handleAddChannelToggle={handleAddChannelToggle}
+              toggleRender={toggleRender}
             />
           </nav>
 
           <section>
             <Switch>
               <Route path="/:type/:id">
-                <ChatContainer headers={userHeaders} userDetails={userDetails} />
+                <ChatContainer headers={userHeaders} userDetails={userDetails} handleToggleRender={handleToggleRender}/>
               </Route>
               <Route exact path="/new-message">
                 <ChatNewMessage headers={userHeaders} />

@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { getMessage, getSpecificUser, getChannelDetail } from "../../../api/api"
 import { captalizeWord } from "../../../helper/helper"
-const ChatContainer = ({headers, userDetails}) => {
+const ChatContainer = ({headers, userDetails, handleToggleRender}) => {
   //declare state variable to put chat room data
   const [chatData, setChatData] = useState("")
   //declare state to get specific reciever details
@@ -16,6 +16,7 @@ const ChatContainer = ({headers, userDetails}) => {
   //set handler for toggleRender
   const handleSetToggleRender = () => {
     setToggleRender(!toggleRender)
+    handleToggleRender()
   }
   //get parameter from URL
   const params = useParams()
@@ -32,7 +33,6 @@ const ChatContainer = ({headers, userDetails}) => {
     headers: headers
   }
   useEffect(() => {
-    console.log("reciever data", receiverData)
     //use getmessage API
     getMessage(sampleGetMessageObj)
       .then(data => setChatData(data.data.data.reverse()))
