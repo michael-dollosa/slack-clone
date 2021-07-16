@@ -61,43 +61,6 @@ const SearchBar = ({headers, handleToggleSearch}) => {
                 <div className="searchBar_results">
                     {searchItemList}
                 </div>
-                {/*
-                    <div className="searchBar_body">
-                    <span>I'm Looking for...</span>
-                    <div className="searchBar-body-buttons">
-                        <button>
-                            <IoChatbubblesOutline/>
-                            Messages
-                        </button>
-                        <button>
-                            <BsFiles />
-                            Files
-                        </button>
-                        <button>
-                            <BsFileText />
-                            Channels
-                        </button>
-                        <button>
-                            <IoPeopleOutline />
-                            People
-                        </button>
-                    </div>
-                </div>
-                <div className="searchBar_footer">
-                    <div className="footer-items">
-                        <span>Not the result you expected? </span>
-                        <Link>Give feedback</Link>
-                        <span> or </span>
-                        <Link>learn more</Link>
-                    </div>
-                    
-                </div>
-
-                
-
-                */}
-                
-
             </div>
         </div>
     )

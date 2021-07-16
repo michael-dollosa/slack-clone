@@ -19,14 +19,14 @@
 
 .searchBar_input{
     height: 6vh;
-    padding-left: 1rem;
+    padding-left: 4rem;
     padding-right: 1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid var(--color-gray-light);
     >input{
-        width: 80%;
+        width: 90%;
         outline: none;
         border: none;
         font-family: inherit;
@@ -34,9 +34,14 @@
         font-weight: 300;
         padding: .5rem;
     }
+
+    >.searchBar-close-icon{
+        float: right;
+    }
 }
 
 .searchBar-icon{
+    // flex-grow: 1;
     font-size: 1.5rem;
 }
 
