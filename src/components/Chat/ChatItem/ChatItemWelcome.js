@@ -44,7 +44,7 @@ const ChatItemWelcome = ({receiverData, userData, type}) => {
                 This is the very beginning of your direct message history with <label className="span-email"> @{email} </label>. Only the two of you are in this conversation, and no one else can join it.
               </>
           : <>
-              This is the very beginning of your direct message history with <label className="span-email"> #{name} </label>. Only the members of this channel can see the messages.
+              This is the very beginning of your direct message history in <label className="span-email"> #{name} </label>. Only the members of this channel can see the messages.
             </>
         }
             

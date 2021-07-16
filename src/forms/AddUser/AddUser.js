@@ -63,8 +63,6 @@ const AddUser = ({headers}) => {
                     </div>
                 </div>
                 <h5><HiLockClosed /> batch9_Channel</h5>
-
-                
                 <div className="addUser_searchBar" ref={userSearchRef}>
                     <input type="search" placeholder="Enter a name, email, or user group" 
                     onChange={ handleSearchInput} onClick={() => handleToggleSearchUserList(true)} value={searchInput}
