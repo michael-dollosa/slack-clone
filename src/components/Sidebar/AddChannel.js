@@ -39,14 +39,15 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
           className=
             { formToggle ? `addChannel-form-header addChannel-hidden`
               : `addChannel-form-header addChannel-block`}>
-          <h3>Create a private channel</h3>
           <div className="addChannel-closeBtn">
             <IoCloseOutline onClick={handleClose} />
           </div>
+          <h1>Create a private channel</h1>
+          
           
         </div>
 
-        <div
+        <h5
           className={
             formToggle
               ? `addChannel-form-text addChannel-hidden`
@@ -57,18 +58,18 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
             Channels are where your team communicates. They’re best when <br />
             organized around a topic — #marketing, for example.
           </span>
-        </div>
+        </h5>
 
-        <div
+        {/* <div
           ClassName={
             formToggle
               ? `addChannel-form-header addChannel-hidden`
               : `addChannel-form-header  addChannel-block`
           }
         >
-          {/* <h2>Add people</h2> */}
+          <h2>Add people</h2>
           <h6>{addChannelName}</h6>
-        </div>
+        </div> */}
 
         <form onSubmit={onSubmit}>
           <div
@@ -79,7 +80,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose }) => {
             }
           >
             <label htmlFor="text">
-              <h2>Name</h2>
+              <h3>Name</h3>
             </label>
             <input
               type="text"

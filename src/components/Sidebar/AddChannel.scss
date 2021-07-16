@@ -26,18 +26,18 @@
   padding: 1rem;
   width: 28%;
   height: 32vh;
-  border: 1px solid var(--font-color-black);
   border-radius: 5px;
+  border: 1px solid var(--font-color-black);
   background-color: var(--font-color-white-header);
   z-index: 5;
 }
 
 .addChannel-form-header {
-  border: 1px solid black;
-  height: 5vh;
-  display: flex;
-  flex-direction: column;
+  // border: 1px solid black;
+  padding: 0.5rem;
+  height: 6vh;
   font-family: inherit;
+  font-weight: 400px;
 
   // > h1,
   // h2 {
@@ -49,6 +49,13 @@
 
 .addChannel-closeBtn{
   font-size: 2rem;
+  float: right;
+}
+
+h5{
+  color: var(--font-color-light-gray);
+  font-family: inherit;
+  font-weight: normal;
 }
 
 // .addChannel-form-closebtn {
