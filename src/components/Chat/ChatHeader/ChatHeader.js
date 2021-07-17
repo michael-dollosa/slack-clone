@@ -95,6 +95,7 @@ const ChatHeader = ({receiverData, chatType, type, headers, handleSetToggleRende
               currentUsers={currentUsers}
               handleFormAddUserExit={handleToggleAddMembers}
               handleSubmitAddMembers={handleSubmitAddMembers}
+              name={name}
             />
           </section>
         : null

@@ -66,6 +66,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
     e.preventDefault();
   
     setToggleSubmitWarning(false)
+    
     //create obj
     const addNewChannel = {
       name: addChannelName,

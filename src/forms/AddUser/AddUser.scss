@@ -126,15 +126,22 @@
   align-items: center;
   padding-bottom: 1rem;
   >img{
+    
     background-size: cover;
     overflow: hidden;
     border-radius: 5px;
   }
   >h3{
+    flex-grow: 1;
     font-family: inherit;
     font-weight: 500;
     font-size: 1.5rem;
     padding-left: 1rem;
+  }
+
+  >.icon{
+    font-size: 2rem;
+    cursor: pointer;
   }
 }
 

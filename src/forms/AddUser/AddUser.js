@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { searchUser, getSpecificUser } from "../../api/api";
 import Warning from "../../components/Warnings/Warning";
 
-const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, name="", receiverData, currentUsers, handleSubmitAddMembers, handleSetToggleSubmitWarning, toggleSubmitWarning }) => {
+const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, name="", receiverData, currentUsers, handleSubmitAddMembers, handleSetToggleSubmitWarning=null, toggleSubmitWarning }) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchUserList, setSearchUserList] = useState([]);
   const [toggleSearchUserList, setToggleSearchUserList] = useState(false);
@@ -23,6 +23,11 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
     str: searchInput,
     headers: headers,
   };
+
+  const removeUserFromArray = (id) => {
+    const updatedList = confirmUserList.filter(user => user.id !== id)
+    setConfirmUserList(updatedList)
+  }
 
   const chooseUser = (data, currentUsers=defaultParam) => {
     /*since this component is used by both Create Channel and Add Member which have different APIs, we have 2 variables to setup our logic
@@ -42,7 +47,7 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
 
     //since states are immutable, we have to create a new array and add the new data into it
     const updateUserListArr = [...confirmUserList, data]
-  
+    setToggleWarning(false)
     //set state by giving a new array
     setConfirmUserList(updateUserListArr)
     //use function from channel component to get ids 
@@ -51,7 +56,7 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
 
   //function to get specific user detail
   const searchUserDetail = (id) => {
-    handleSetToggleSubmitWarning(false)
+    
     //create object to get specific user detail
     const getSpecificUserObj = {
       id,
@@ -78,7 +83,7 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
 
   useEffect(() => {
     console.log("user list", confirmUserList)
-    console.log("current ids", currentUsers)
+    // console.log("current ids", currentUsers)
     //warning reset
     setToggleWarning(false)
     //generate member info from current user ids
@@ -105,6 +110,7 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
       <div className="addUser_search-result-item" onClick={() => searchUserDetail(item.id)}> {/**When div is clicked, trigger function passing down item.id */}
         <img src={`https://picsum.photos/id/${item.id}/20`} alt="" />
         <h3>{item.email}</h3>
+        
       </div>
     );
   });
@@ -114,6 +120,7 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
         <div className="addUser_toAdd-users">
           <img src={`https://picsum.photos/id/${user.id}/40`} alt="" />
           <h3>{user.email}</h3>
+          <IoCloseOutline className="icon" onClick={() => removeUserFromArray(user.id)}/>
         </div>
     )
   })
@@ -161,8 +168,6 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
               {toBeAddedUserList}
             </div>
           </section>
-
-
 
         <div className="addUser_DoneBtn">
           <button onClick={handleSubmitAddMembers}>Done</button>
