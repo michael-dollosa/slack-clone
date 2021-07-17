@@ -8,26 +8,33 @@ import { GrFormClose } from "react-icons/gr";
 
 const SearchBar = ({headers, handleToggleSearch}) => {
     
+    //for search
     const [userSearch, setUserSearch] = useState("")
+    //to record search result
     const [searchList, setSearchList] = useState([])
 
-
+    //create object required for API function
     const searchObj = {
-    str: userSearch,
-    headers: headers
+      str: userSearch,
+      headers: headers
     }
+
     const handleUserInput = (event) => {
         setUserSearch(event.target.value)
+        //trigger searchUser in API
         searchUser(searchObj)
         .then(res => setSearchList(res))
         .catch(err => console.log("search error: ", err))
     }
 
+    //get reference of search container
     const searchRef = useRef()
 
     useEffect(() => {
         const hideSearchResult = (event) => {
+          //if user clicks inside the referenced component, do nothing
           if(searchRef.current.contains(event.target)) return
+          //if clicked outside referenced component, toggle search
           handleToggleSearch()
         }
         document.body.addEventListener("click", hideSearchResult, { capture: true })
@@ -38,6 +45,7 @@ const SearchBar = ({headers, handleToggleSearch}) => {
         }
       }, [])
 
+    //generate UI for searches
     const searchItemList = searchList.map(item => {
         return(
           <NavLink to={`/user/${item.id}`} onClick={handleToggleSearch}>
@@ -47,7 +55,8 @@ const SearchBar = ({headers, handleToggleSearch}) => {
             </div>
           </NavLink>
         )
-      })
+    })
+
     return (
         <div className="searchBar_container" >
             <div className="searchBar_items" ref={searchRef}>

@@ -73,7 +73,7 @@ const ChatHeader = ({receiverData, chatType, type, headers, handleSetToggleRende
 
       <div className="chat_container-header__icon" onClick={ type === "channel" ? handleToggleAddMembers : null}>
       {
-        type === "user"
+        type !== "channel"
         ? <>
           <MdErrorOutline className="icon"/>
           </>

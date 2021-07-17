@@ -8,11 +8,17 @@ import Warning from '../../../components/Warnings/Warning';
 
 const LoginContainer = ({handleSetLoginData}) => {
 
+    //set up states
     const [email, setEmail] = useState("testnochannel@example.com")
     const [password, setPassword] = useState("test12345")
-    const [toggleWarning, setToggleWarning] = useState(false)
+
+    //state for toggling warning
+    const [toggleWarning, setToggleWarning] = useState(false) //false - hidden //true - visible
+
+    //for history push
     const history = useHistory()
 
+    //to record input value of form
     const handleEmailInput = (event) => {
         setEmail(event.target.value)
     }
@@ -21,18 +27,23 @@ const LoginContainer = ({handleSetLoginData}) => {
         setPassword(event.target.value)
     }
 
+    //login user logic
     const loginUser = (event) => {
+        //to prevent refresh
         event.preventDefault()
+
         //create data obj for API request
         const data = {
             email,
             password
         }
-
+        
         userLogin(data)
             .then(res => {
-                console.log("Response from API", res)
+                // console.log("Response from API", res)
+                //use referenced function from App to be passed down to Main Page
                 handleSetLoginData(res)
+                //to hide warning if success
                 setToggleWarning(false)
                 //redirect to URL of his own chat
                 history.push(`/user/${res.data.data.id}`)

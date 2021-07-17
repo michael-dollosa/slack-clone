@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { searchUser, getSpecificUser } from "../../api/api";
 import Warning from "../../components/Warnings/Warning";
 
-const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, name="", receiverData, currentUsers, handleSubmitAddMembers }) => {
+const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, name="", receiverData, currentUsers, handleSubmitAddMembers, handleSetToggleSubmitWarning, toggleSubmitWarning }) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchUserList, setSearchUserList] = useState([]);
   const [toggleSearchUserList, setToggleSearchUserList] = useState(false);
@@ -18,6 +18,7 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
   const defaultParam = [{
     id: null
   }]
+
   const searchUserObj = {
     str: searchInput,
     headers: headers,
@@ -25,30 +26,33 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
 
   const chooseUser = (data, currentUsers=defaultParam) => {
     /*since this component is used by both Create Channel and Add Member which have different APIs, we have 2 variables to setup our logic
-    
+  
     data - data that is chosen by user input via search
     currentUsers - an array of current users of the channel (used by add member api)
 
     */
     //clears value of search input
     setSearchInput("")
-    //combine first arrays needed to be checked
-    console.log("inside click", confirmUserList)
-    console.log("inside click", currentUsers)
+    //combine arrays needed to be checked
     const tempUsersArray = [...confirmUserList, ...currentUsers]
-    console.log("temp user arr", tempUsersArray)
+    // console.log("temp user arr", tempUsersArray)
     //using some to check for existing ids
     const found = tempUsersArray.some(user => user.id === data.id)
     if(found) return setToggleWarning(true) //exit function if there is a duplicate 
+
     //since states are immutable, we have to create a new array and add the new data into it
     const updateUserListArr = [...confirmUserList, data]
+  
     //set state by giving a new array
     setConfirmUserList(updateUserListArr)
     //use function from channel component to get ids 
     if(handlesetGetUserArr !== null) handlesetGetUserArr(updateUserListArr)
   }
 
+  //function to get specific user detail
   const searchUserDetail = (id) => {
+    handleSetToggleSubmitWarning(false)
+    //create object to get specific user detail
     const getSpecificUserObj = {
       id,
       headers
@@ -95,9 +99,10 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
     };
   }, [confirmUserList]);
 
+  //variable to hold search item UI array
   const searchUserItemList = searchUserList.map((item) => {
     return (
-      <div className="addUser_search-result-item" onClick={() => searchUserDetail(item.id)}>
+      <div className="addUser_search-result-item" onClick={() => searchUserDetail(item.id)}> {/**When div is clicked, trigger function passing down item.id */}
         <img src={`https://picsum.photos/id/${item.id}/20`} alt="" />
         <h3>{item.email}</h3>
       </div>
@@ -112,7 +117,6 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
         </div>
     )
   })
-
 
   return (
     <div className="addUser-container">
@@ -147,6 +151,10 @@ const AddUser = ({ headers, handleFormAddUserExit, handlesetGetUserArr=null, nam
         </div>
         <section className="addUser-search-body-container">
         <Warning body={ "User is already added" } showWarning={toggleWarning}/>
+        <div className="warning-float">
+        <Warning body={ "Name already added. Please try again" } showWarning={toggleSubmitWarning} />
+        </div>
+        
           <section className="addUser_confirm-list">
             <h5>Users to be Added:</h5>
             <div className="addUser_users-list">

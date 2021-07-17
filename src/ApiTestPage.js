@@ -42,8 +42,9 @@ const ApiTestPage = () => {
     //although we made API functions reusable, each function STILL returns a promise. So if we want to set it to a state, or even console.log the data, we need to do it INSIDE the then.
 
     //Or you may use async-await
-    userLogin(loginObject)
-      .then(res => console.log("Login Data", res))
+    // userLogin(loginObject)
+    //   .then(res => console.log("Login Data", res))
+    console.log(userLogin(loginObject))
     
       //if we want to set it to a state it should be: .then(response => setState(response))
   }

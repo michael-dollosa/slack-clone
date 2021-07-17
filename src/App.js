@@ -13,7 +13,7 @@ const App = () => {
 
   //create function to set  header data to child components
   const handleSetLoginData = (data) => {
-    console.log("header data", data);
+    // console.log("header data", data);
     setLoginData(data);
   };
   

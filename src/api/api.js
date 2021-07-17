@@ -16,13 +16,18 @@ export const registerUser = ({ email, password, password_confirmation }) => {
 }
 
 //login
+/*
+obj = {
+  email: asdasd,
+  password: asdasd
+}
+*/
 export const userLogin = ({ email, password }) => {
   return axiosFetch.post("/api/v1/auth/sign_in", {
     email,
     password
   })
-  .then(response => response)
-  .then(result => result)
+  .then(response => response) //promise
   .catch(error => error)
 }
 

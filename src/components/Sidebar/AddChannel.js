@@ -7,21 +7,27 @@ import { useHistory } from "react-router-dom"
 import Warning from "../Warnings/Warning";
 
 const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChannel }) => {
+  //for input
   const [addChannelName, setChannel] = useState("");
-  const [addMembers, setMembers] = useState("");
+  const [getUserArr, setGetUserArr] = useState([])
   const [formCreateChannelToggle, setFormCreateChannelToggle] = useState(false);
   const [formAddUserToggle, setFormAddUserToggle] = useState(false)
   const [addUserToggle, setAddUserToggle] = useState(false);
-  const [getUserArr, setGetUserArr] = useState([])
   const [toggleWarning, setToggleWarning] = useState(false)
+  const [toggleSubmitWarning, setToggleSubmitWarning] = useState(false)
   //used to push to URL of created channel upon success
   const history = useHistory()
 
+  const handleSetToggleSubmitWarning = (data) => {
+    setToggleSubmitWarning(data)
+  }
   const handlesetGetUserArr = (usersToBeAdded) => {
+
+    //create an array of just ids of users to be added
     const pullUserId = usersToBeAdded.map(user => user.id)
-    console.log("inside add channel: ", pullUserId)
     setGetUserArr(pullUserId)
   }
+
   const showAddUser = () => {
     setAddUserToggle(!addUserToggle);
   };
@@ -34,9 +40,12 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
   };
 
   const handleFormCreateChannelConfirmBtn = () => {
-    console.log(addChannelName.length, addChannelName)
-    if(addChannelName.length < 3 || (addChannelName === "") ) return setToggleWarning(true)
+    // console.log(addChannelName.length, addChannelName)
+    //validation for minimum string
+    if(addChannelName.length < 3 || (addChannelName === "") || addChannelName.length > 15) return setToggleWarning(true)
+    //hide create channel
     setFormCreateChannelToggle(!formCreateChannelToggle);
+    //show add user
     setFormAddUserToggle(!formAddUserToggle)
   }
 
@@ -55,23 +64,27 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("On Submit Triggered")
   
+    setToggleSubmitWarning(false)
+    //create obj
     const addNewChannel = {
       name: addChannelName,
       user_ids: getUserArr,
       headers: headers,
     };
-    console.log(addNewChannel);
+
+    //request api
     createChannel(addNewChannel)
       .then((res) => {
-        console.log("Add channel success", res);
         const channelId = res.data.data.id
         handleFormSubmitToggle()
         //push to URL of Channel
         history.push(`/channel/${channelId}`)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log("Create Channel Error",err)
+        setToggleSubmitWarning(true)
+      });
   };
 
   return (
@@ -83,7 +96,7 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
       }
     >
       <form className="addChannel-form" onSubmit={onSubmit}>
-
+        {/**Add User Part */}
         <div
           className={
             formAddUserToggle
@@ -96,9 +109,12 @@ const AddChannel = ({ headers, handleDummyAddChannel, handleClose, toggleAddChan
           handleFormAddUserExit={handleFormAddUserExit} 
           handlesetGetUserArr={handlesetGetUserArr}
           name={addChannelName}
+          toggleSubmitWarning={toggleSubmitWarning}
+          handleSetToggleSubmitWarning={handleSetToggleSubmitWarning}
         />
         </div>
 
+        {/**Create Channel Part */}
         <div
           className={
             formCreateChannelToggle

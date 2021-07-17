@@ -6,11 +6,15 @@ import Warning from '../../../components/Warnings/Warning'
 
 
 const SignupContainer = ({handleSetLoginData}) => {
-
+    //set state for input
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [password_confirmation, setConfirm] = useState("")
+
+    //set state for warning
     const [toggleWarning, setToggleWarning] = useState(false)
+
+    //push history
     const history = useHistory()
 
     const handleEmailInput = (event) => {
@@ -32,21 +36,29 @@ const SignupContainer = ({handleSetLoginData}) => {
     }
 
     const signupUser = (event) => {
+        //prevent refresh
         event.preventDefault()
+
+        //create object required for API function
         const data = {
             email,
             password,
             password_confirmation
         }
-        console.log(data)
+
+        //use API to register
         registerUser(data)
             .then(res => {
-                //console log success
+                //condition for success
+                //.then does not always correspond to successful signup
+                // it still depends on the ".data.status"
                 if(res.data.status !== "success") {
                     console.log("Registration Error", res)
                     console.log("Registration Res", res.data.status )
                     setToggleWarning(true)
                 }
+
+                //success path
                 setToggleWarning(false)
                 //reset state of inputs
                 resetInput()
@@ -55,7 +67,8 @@ const SignupContainer = ({handleSetLoginData}) => {
                     email: data.email,
                     password: data.password
                 }
-
+                
+                //use login API
                 userLogin(loginObj)
                     .then(res => {
                         console.log("Login After Signup", res)
